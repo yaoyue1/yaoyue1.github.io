@@ -1,0 +1,752 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="canvas," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="jiemo blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="canvas学习一点点的第四篇啦~，这次写的是一个仿知乎的登录页面:传送门,感觉这效果已经被n多人写(wan)过(huai)了，但是感觉这个效果还是很适合做背景的，于是我还是跟风了一把。看完你会发现其实这个效果的写法和下雨那个很像，只不过下雪那个运动会稍微简单点，但是本质是不变的，都是控制粒子的运动。上代码">
+<meta name="keywords" content="canvas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="canvas学习一点点（四）--仿知乎登录页">
+<meta property="og:url" content="http://yaoyue.com/2017/04/05/canvas学习一点点（四）-仿知乎登录页/index.html">
+<meta property="og:site_name" content="jiemo blog">
+<meta property="og:description" content="canvas学习一点点的第四篇啦~，这次写的是一个仿知乎的登录页面:传送门,感觉这效果已经被n多人写(wan)过(huai)了，但是感觉这个效果还是很适合做背景的，于是我还是跟风了一把。看完你会发现其实这个效果的写法和下雨那个很像，只不过下雪那个运动会稍微简单点，但是本质是不变的，都是控制粒子的运动。上代码">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-04-05T08:09:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="canvas学习一点点（四）--仿知乎登录页">
+<meta name="twitter:description" content="canvas学习一点点的第四篇啦~，这次写的是一个仿知乎的登录页面:传送门,感觉这效果已经被n多人写(wan)过(huai)了，但是感觉这个效果还是很适合做背景的，于是我还是跟风了一把。看完你会发现其实这个效果的写法和下雨那个很像，只不过下雪那个运动会稍微简单点，但是本质是不变的，都是控制粒子的运动。上代码">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yaoyue.com/2017/04/05/canvas学习一点点（四）-仿知乎登录页/"/>
+
+
+
+
+
+  <title> canvas学习一点点（四）--仿知乎登录页 | jiemo blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <canvas id="mycanvas" style="position:fixed;top:0;left:0;z-index: -1;"></canvas>
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">jiemo blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">前端开发/学生/菜鸟</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content" style="background-color: #fff">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yaoyue.com/2017/04/05/canvas学习一点点（四）-仿知乎登录页/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="芥末">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="jiemo blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="jiemo blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                canvas学习一点点（四）--仿知乎登录页
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-05T15:28:04+08:00">
+                2017-04-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/canvas/" itemprop="url" rel="index">
+                    <span itemprop="name">canvas</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>canvas学习一点点的第四篇啦~，这次写的是一个仿知乎的登录页面:<a href="https://yaoyue1.github.io/dot.html" target="_blank" rel="external">传送门</a>,感觉这效果已经被n多人写(wan)过(huai)了，但是感觉这个效果还是很适合做背景的，于是我还是跟风了一把。<br>看完你会发现其实这个效果的写法和下雨那个很像，只不过下雪那个运动会稍微简单点，但是本质是不变的，都是控制粒子的运动。上代码<br><a id="more"></a></p>
+<p><pre><br><code><br>    $(function(){<br>      var cvs = document.getElementById(“mycanvas”);<br>      var ctx = cvs.getContext(‘2d’);<br>      var docWidth = document.documentElement.clientWidth;<br>      var docHeight = document.documentElement.clientHeight;<br>      cvs.width = docWidth;<br>      cvs.height = docHeight;//初始化准备，让canvas的宽高等于可视区的宽高<br>      var dotNum = 100;//整个区域粒子的数量<br>      var dots = [];//用来存放粒子对象的数组<br>      var mouse = new Object();//声明的对象用来存放鼠标的初始X、Y值<br>      mouse.x = 800;<br>      mouse.y = 350;<br>      for(var i=0;i<dotnum;i++){ 循环dotnum数量的粒子为每个粒子对象添加属性="" var="" dotobj="new" object();="" dotobj.x="Math.random()*docWidth;//初始的x坐标位置" dotobj.y="Math.random()*docHeight;//初始的y坐标位置" dotobj.r="Math.ceil(Math.random()*4);//粒子半径" dotobj.color="white" ;="" 粒子颜色="" dotobj.speedx="Math.floor(Math.random()*2)?1:-1//粒子X轴的运动方向" dotobj.speedy="Math.floor(Math.random()*2)?1:-1//粒子Y轴的运动方向" dots[i]="dotObj;//把粒子对象装进数组" }="" function="" drawball(x,y,r,color){="" 画每个粒子圆="" ctx.beginpath();="" ctx.arc(x,y,r,0,math.pi*2,false);="" ctx.fillstyle="color;" ctx.fill()="" move(obj){="" 粒子的移动函数="" obj.x="" +="obj.speedX*0.2;//粒子x轴方向每次移动的距离" obj.y="" if(obj.y<="obj.r){//上边界小球反弹处理" obj.speedy*="-1;" if(obj.y="">= docHeight-obj.r){//下边界小球反弹处理<br>          obj.y = docHeight-obj.r;<br>          obj.speedY<em>=-1;<br>        }<br>        if(obj.x&lt;=obj.r){//左边界的小球反弹处理<br>          obj.x = obj.x;<br>          obj.speedX</em>=-1;<br>        }<br>        if(obj.x &gt;= docWidth-obj.r){//右边界的小球反弹处理<br>          obj.x = docWidth-obj.r;<br>          obj.speedX<em>=-1;<br>        }<br>      }<br>      function ballAndball(obj1,obj2){//封装函数用来求两个球或者是球和鼠标直接的直线距离<br>        var disX = Math.abs(obj1.x-obj2.x);//相距的X绝对值<br>        var disY = Math.abs(obj1.y-obj2.y);//相距的Y绝对值<br>        return Math.sqrt(disX</em>disX+disY*disY)//平方根求直线距离<br>      }<br>      function mouseball(mouse,obj){//鼠标移动，把鼠标和距离其130内的小球连成线<br>        if(ballAndball(mouse,obj)&lt;130){<br>          ctx.lineWidth = 0.2;<br>          ctx.beginPath();<br>          ctx.moveTo(obj.x,obj.y);<br>          ctx.lineTo(mouse.x,mouse.y);<br>          ctx.strokeStyle = obj.color;<br>          ctx.stroke();</dotnum;i++){></code></pre></p>
+<pre><code>    }
+  }
+  render();
+  function render(){
+    ctx.clearRect(0, 0, docWidth, docHeight);//清除画布
+    for(var j= 0;j &lt; dots.length;j++){//两层for循环，第一层是先画小球然后让每个小球移动，鼠标移动连线
+      little = dots[j]
+      move(little)
+      drawball(little.x,little.y,little.r,little.color)
+      mouseball(mouse,little)
+      for(var k = 0;k &lt; dots.length;k++){//第二层循环是用来找出两个球如果相距100就把他们用线连接起来
+        if(ballAndball(dots[j],dots[k])&lt;100){
+          ctx.lineWidth = 0.2;
+          ctx.globalAlpha = (130 - ballAndball(dots[j], dots[k])) * 1 / 100;//这句代码是用来控制线的消失和出现的效果
+          ctx.beginPath();
+          ctx.moveTo(dots[j].x, dots[j].y);
+          ctx.lineTo(dots[k].x, dots[k].y);
+          ctx.strokeStyle = dots[j].color;
+          ctx.stroke();
+        }
+      }
+      ctx.globalAlpha = 1.0
+    }
+    requestAnimationFrame(render);//浏览器自动刷新时间来循环调用render
+  }
+
+
+  cvs.onmousemove = function(event){//鼠标移动是的X、Y坐标
+    e = event || window.event;
+    mouse = new Object();
+    mouse.x = e.offsetX;
+    mouse.y = e.offsetY;
+  }
+})
+</code></pre><p><br>代码的核心部分可能就是求两个小球的距离来再次循环连线了。因为注释写的比较清楚，所以我就不多说了，下次的canvas学习一点点（五）还不知道些什么？？？纠结啊，你有啥想法可以告诉我。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/canvas/" rel="tag"># canvas</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/05/canvas学习一点点（三）-黑客帝国/" rel="next" title="canvas学习一点点（三）--黑客帝国">
+                <i class="fa fa-chevron-left"></i> canvas学习一点点（三）--黑客帝国
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="芥末" />
+          <p class="site-author-name" itemprop="name">芥末</p>
+          <p class="site-description motion-element" itemprop="description">前端开发/程序媛/菜鸟/搬砖</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yaoyue1" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://yaoyue1.github.io/practice/" target="_blank" title="Practice">
+                  
+                    <i class="fa fa-fw fa-pencil"></i>
+                  
+                  Practice
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">芥末</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+<script>
+   $(function(){
+      var cvs = document.getElementById("mycanvas")
+      var ctx = cvs.getContext("2d");
+      var width = cvs.width = document.documentElement.clientWidth;
+      var height = cvs.height = document.documentElement.clientHeight; 
+      // 初始化准备
+      var words = "012345678abcederqwertyuipljnbvgfdcxsaz/c/,[]scQAZWSXEDCRFVTGBYHNUJMIKLOP";//随机的文字
+      var wordsArr = words.split('');
+      var fontSize = 16;
+      var wordColor = '#000';
+      var clumns = width/fontSize;
+      console.log(clumns)
+      var drops = [];
+      for(var i = 0;i<clumns;i++){
+        drops[i] = 1;
+      }
+
+      function draw(){
+        ctx.save();
+        ctx.fillStyle = wordColor;
+        ctx.font = fontSize+"px arial";
+        for (var i=0;i<clumns;i++){
+          var text = wordsArr[Math.floor(Math.random()*wordsArr.length)];
+          ctx.fillText(text,i*fontSize, drops[i]*fontSize);
+          if(drops[i]*fontSize>height&& Math.random()<0.01){
+            drops[i]=0;
+          }
+          drops[i]++;
+        }
+        ctx.restore();
+      }
+
+      // 循环调用
+      render()
+      function render(){
+        window.requestAnimationFrame(render);
+        ctx.fillStyle = 'rgba(255,255,255,0.2)';
+        ctx.fillRect(0, 0, width, height);
+        draw()
+      }
+
+   })
+       
+   </script>
+</body>
+</html>

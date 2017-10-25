@@ -1,0 +1,912 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="CSS3," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="jiemo blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="公司前端的技术分享轮到我了，有点小迷茫，不知道该讲什么，纠结来纠结去，偶然看到了腾讯全端 AlloyTeam团队的一篇博文分享，是关于clip-path的，虽然写的比较简单（也可能是我的level还没有达到辣么个水平,完全不能理解）但是真的被那个炫酷的动画给迷倒了。就想一探究竟，然后讲讲这个。（其实最主要我还是觉得这个属性大家平时用到的不多，可能很多人也不是特别了解，作为一个实习生去讲给一堆大">
+<meta name="keywords" content="CSS3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="和clip-path来场美丽的初识">
+<meta property="og:url" content="http://yaoyue.com/2017/03/08/和clip-path来场美丽的初识/index.html">
+<meta property="og:site_name" content="jiemo blog">
+<meta property="og:description" content="公司前端的技术分享轮到我了，有点小迷茫，不知道该讲什么，纠结来纠结去，偶然看到了腾讯全端 AlloyTeam团队的一篇博文分享，是关于clip-path的，虽然写的比较简单（也可能是我的level还没有达到辣么个水平,完全不能理解）但是真的被那个炫酷的动画给迷倒了。就想一探究竟，然后讲讲这个。（其实最主要我还是觉得这个属性大家平时用到的不多，可能很多人也不是特别了解，作为一个实习生去讲给一堆大">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://i.imgur.com/sz4Ch4N.png">
+<meta property="og:image" content="http://i.imgur.com/Nbzb5t7.png">
+<meta property="og:image" content="http://i.imgur.com/2ult15m.png">
+<meta property="og:image" content="http://i.imgur.com/xTdSXJT.png">
+<meta property="og:image" content="http://i.imgur.com/Tuf1SKm.png">
+<meta property="og:image" content="http://i.imgur.com/LuuZY9k.png">
+<meta property="og:image" content="http://i.imgur.com/99XETlr.png">
+<meta property="og:image" content="http://i.imgur.com/Pf8WLgN.png">
+<meta property="og:image" content="http://i.imgur.com/TENe2KI.png">
+<meta property="og:image" content="http://i.imgur.com/ws4s1hb.png">
+<meta property="og:image" content="http://i.imgur.com/lzqH2O7.png">
+<meta property="og:image" content="http://i.imgur.com/SRgETH7.png">
+<meta property="og:image" content="http://i.imgur.com/QnUqTGh.png">
+<meta property="og:image" content="http://i.imgur.com/3ffWx4p.png">
+<meta property="og:updated_time" content="2017-03-21T08:24:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="和clip-path来场美丽的初识">
+<meta name="twitter:description" content="公司前端的技术分享轮到我了，有点小迷茫，不知道该讲什么，纠结来纠结去，偶然看到了腾讯全端 AlloyTeam团队的一篇博文分享，是关于clip-path的，虽然写的比较简单（也可能是我的level还没有达到辣么个水平,完全不能理解）但是真的被那个炫酷的动画给迷倒了。就想一探究竟，然后讲讲这个。（其实最主要我还是觉得这个属性大家平时用到的不多，可能很多人也不是特别了解，作为一个实习生去讲给一堆大">
+<meta name="twitter:image" content="http://i.imgur.com/sz4Ch4N.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yaoyue.com/2017/03/08/和clip-path来场美丽的初识/"/>
+
+
+
+
+
+  <title> 和clip-path来场美丽的初识 | jiemo blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <canvas id="mycanvas" style="position:fixed;top:0;left:0;z-index: -1;"></canvas>
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">jiemo blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">前端开发/学生/菜鸟</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content" style="background-color: #fff">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yaoyue.com/2017/03/08/和clip-path来场美丽的初识/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="芥末">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="jiemo blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="jiemo blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                和clip-path来场美丽的初识
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-08T10:30:01+08:00">
+                2017-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS3/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS3</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>  公司前端的技术分享轮到我了，有点小迷茫，不知道该讲什么，纠结来纠结去，偶然看到了腾讯全端 AlloyTeam团队的一篇博文分享，是关于clip-path的，虽然写的比较简单（也可能是我的level还没有达到辣么个水平,完全不能理解）但是真的被那个炫酷的动画给迷倒了。就想一探究竟，然后讲讲这个。（其实最主要我还是觉得这个属性大家平时用到的不多，可能很多人也不是特别了解，作为一个实习生去讲给一堆大牛听这种偏冷门的属性是最合适不过了，哈哈哈，小心机一下）正式开始写啦啦~</p>
+<h3 id="clip-path基本属性"><a href="#clip-path基本属性" class="headerlink" title="clip-path基本属性"></a>clip-path基本属性</h3><p>clip-path一共有四个基本的属性裁剪再加上一个可以直接引用SVG的属性算是五个吧。前面四个基本的是polygon（多边形），circle（圆形），ellipse（椭圆）、inset（圆弧）。下面先开始说这四个属性：</p>
+<h4 id="裁剪多边形"><a href="#裁剪多边形" class="headerlink" title="裁剪多边形"></a>裁剪多边形</h4><p><pre><br>-webkit-clip-path: polygon(0 25%,25% 0,75% 0,100% 25%,100% 75%,75% 100%,25% 100%,0 75%);<br></pre><br><a id="more"></a><br>一步一步分析：以上一共是8组坐标，每组坐标之间用逗号隔开，前面的一个表示x坐标，后面一个表示y坐标，所有的坐标连接起来就构成你所需要裁剪的形状。（原谅本人较懒随便用qq截图画的这个坐标(^o^)/~，之后的坐标都是这样的，我就更懒得画了）</p>
+<p><img src="http://i.imgur.com/sz4Ch4N.png" alt=""></p>
+<h4 id="裁剪圆形"><a href="#裁剪圆形" class="headerlink" title="裁剪圆形"></a>裁剪圆形</h4><p><pre><br>-webkit-clip-path: circle(300px at 50% 50%);<br></pre><br>画圆是circle:接受三个参数，第一个参数为圆的半径，第二个参数为圆的圆心x坐标，第三个参数为圆的圆心y坐标，用at隔开</p>
+<p><img src="http://i.imgur.com/Nbzb5t7.png" alt=""></p>
+<h4 id="裁剪椭圆"><a href="#裁剪椭圆" class="headerlink" title="裁剪椭圆"></a>裁剪椭圆</h4><p><pre><br>-webkit-clip-path: ellipse(50% 40% at 50% 50%);<br></pre><br>裁剪椭圆为ellipse：at前面的一对值表示椭圆的半径值（a,b），at后面的一对值表示椭圆的圆心值<br><img src="http://i.imgur.com/2ult15m.png" alt=""></p>
+<h4 id="裁剪圆弧"><a href="#裁剪圆弧" class="headerlink" title="裁剪圆弧"></a>裁剪圆弧</h4><p><pre><br>-webkit-clip-path:  inset(30px 90px 50px 90px round 0 25% 0 25%);<br></pre><br>inset属性老版本的chrome浏览器可能不支持。它有8个参数，round前面的四个值表示上、右、下、左的四个坐标值，round后面的四个值表示top-radius right-radius bottom-radius left-radius等弧度。</p>
+<p><img src="http://i.imgur.com/xTdSXJT.png" alt=""></p>
+<h3 id="实际用例"><a href="#实际用例" class="headerlink" title="实际用例"></a>实际用例</h3><p>就这么个普通的clip-path属性你可能会想它在实际的应用中一般都有啥用途呢？我将列举一下它比较常见的通途，如果你有遇到比较好玩的，也可以告诉我哦~~对啦在讲应用前还是先贴一张clip-path属性的浏览器支持情况：<br><img src="http://i.imgur.com/Tuf1SKm.png" alt=""></p>
+<h4 id="小三角形的实现"><a href="#小三角形的实现" class="headerlink" title="小三角形的实现"></a>小三角形的实现</h4><p><img src="http://i.imgur.com/LuuZY9k.png" alt=""></p>
+<p>如图的对话框下面的小三角形就可以使用clip-path的方法实现。当然这个小三角形的实现方法也不是只有这一种，而且此种方法也是有一些弊病的，就是ie浏览器是不会支持你的哈哈哈哈~~<br>关于这个小三角形实现的其他几种方法我也提一下吧，都是自己之前做项目的时候使用过的，顺便写一下，自己再熟悉一下。</p>
+<ul>
+<li>第一种：clip-path    </li>
+</ul>
+<p>也就是把一个小的div裁剪成一个三角形在定位到指定位置</p>
+<pre><code>//html
+&lt;div class=&quot;tangle1&quot;&gt;
+  &lt;span&gt;hello world!&lt;/span&gt;
+  &lt;div class=&quot;icon1&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+//css
+.tangle1{
+        position: relative;
+        margin:100px auto;
+        width: 400px;
+        height: 200px;
+        border-radius: 8%;
+        background: #f5a0bd;
+        color: #fff;
+        text-align: center;
+        line-height: 200px;
+        font-size: 40px;
+    }
+    .icon1{
+        position: absolute;
+        left:70%;
+        top:100%;
+        width: 50px;
+        height: 30px;
+        background: #f5a0bd;
+        -webkit-clip-path: polygon(0 0,100% 0,50% 100%)
+    }
+</code></pre><ul>
+<li><p>第二种：transparent</p>
+<pre><code>//html
+&lt;div class=&quot;tangle2&quot;&gt;
+    &lt;span&gt;hello world!&lt;/span&gt;
+    &lt;div class=&quot;icon2&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+//css
+.tangle2{
+        position: relative;
+        margin:100px auto;
+        width: 400px;
+        height: 200px;
+        border-radius: 8%;
+        background: #f5a0bd;
+        color: #fff;
+        text-align: center;
+        line-height: 200px;
+        font-size: 40px;
+    }
+    .icon2{
+        position: absolute;
+        left:70%;
+        top:99%;
+        width: 0px;
+        height: 0px;
+        font-size: 0;
+        border: 20px solid transparent;
+        border-top-color: #f5a0bd;
+    }
+</code></pre></li>
+<li>第三种：transfrom 的旋转功能</li>
+<li><pre><code>//html
+&lt;div class=&quot;tangle3&quot;&gt;
+  &lt;span&gt;hello world!&lt;/span&gt;
+  &lt;div class=&quot;icon3&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+//css
+.tangle3{
+        position: relative;
+        margin:100px auto;
+        width: 400px;
+        height: 200px;
+        border-radius: 8%;
+        background: #f5a0bd;
+        color: #fff;
+        text-align: center;
+        line-height: 200px;
+        font-size: 40px;
+    }
+    .icon3{
+        position: absolute;
+        left:70%;
+        top:93%;
+        width: 30px;
+        height: 30px;
+        background-color: #f5a0bd;
+        transform: rotate(45deg);
+
+    }
+</code></pre><h4 id="species-in-pieces"><a href="#species-in-pieces" class="headerlink" title="species-in-pieces"></a>species-in-pieces</h4><p>先给你看个网站：<a href="http://species-in-pieces.com/#" target="_blank" rel="external">传送门</a>，你会不会和我第一次看到的那样一样惊叹。怎么可以实现这么炫酷的效果。<br>今天我就来讲讲这是咋实现的。<br><img src="http://i.imgur.com/99XETlr.png" alt=""><br>拿这个动物来说，你会发现这些图形都是由30个如下的代码组成。每个shard的宽高都是100%，他们都是position：absolute。</p>
+<p>  <div class="shard-wrap"></div></p>
+<pre><code>&lt;div class=&quot;shard&quot;&gt;&lt;/div&gt;
+</code></pre><p>  <br>也就是说其实这些图形都是堆叠在一起的他们的宽高都是100%是为了响应式~他们的样式是同个nth-child(n)来实现的，例如：</p>
+<p>   //child one<br>  .shard-wrap:nth-child(1) .shard {</p>
+<pre><code>-webkit-clip-path: polygon(11.1% 81.286%, 13.9% 80.286%, 13.9% 74.429%);
+        clip-path: polygon(11.1% 81.286%, 13.9% 80.286%, 13.9% 74.429%);
+background-color: #262327;
+-webkit-transition-delay: 0.02s;
+        transition-delay: 0.02s;
+</code></pre><p>  }<br>   //child two<br>  .shard-wrap:nth-child(2) .shard {</p>
+<pre><code>-webkit-clip-path: polygon(9.6% 71.3%, 11.2% 81.2%, 13.95% 74.571%);
+        clip-path: polygon(9.6% 71.3%, 11.2% 81.2%, 13.95% 74.571%);
+background-color: #3C3642;
+-webkit-transition-delay: 0.04s;
+        transition-delay: 0.04s;
+</code></pre><p>  }<br>这样就可以控制每个三角形的样式和颜色。最后组合成为这个图形。你会发现这真没啥难得，想要hover这个图片的时候变化成另外一个动物比方说这个<br><img src="http://i.imgur.com/Pf8WLgN.png" alt=""><br>只需要给每个shard命名的class再加上一个hover的新样式就可：<br><img src="http://i.imgur.com/TENe2KI.png" alt=""><br>这样的直接变化可能会太突然，所以你可以给所有的shard加上一个transition</p>
+<pre><code>-webkit-transition: all 1s;
+transition: all 1s;
+</code></pre><p>然后给每个shard加上不同时间的延迟动画，这样就好变的很好了。我写的<a href="https://yaoyue1.github.io/clip_path/last.html" target="_blank" rel="external">demo</a>点击一下第一个动物出现，点击两下第二个动物出现。</p>
+</li>
+</ul>
+<p>也许你也会觉得这确实很简单，但是这些shard的polygon后的裁剪数据是怎样得来的，那我就要告诉你算的的！！就是算出来的。我也觉得真是复杂~所以我觉得真的需要一个强大的设计师~这是一个灵感满满的设计和动效。这些数据是需要事先提取出来的~</p>
+<h4 id="写几个小动画"><a href="#写几个小动画" class="headerlink" title="写几个小动画"></a>写几个小动画</h4><p><a href="https://yaoyue1.github.io/clip_path/littleicon.html" target="_blank" rel="external">demo</a><br>是不是觉得你小瞧了clip-path这个属性了。当初我也是以为他只能裁剪一下图片而已的。</p>
+<p><img src="http://i.imgur.com/ws4s1hb.png" alt=""></p>
+<p>这个动画有一个点需要注意的是：这些字母都是通过一个div裁剪的例如第二个字母K，它是由12个顶点所组成的，所以你的div从刚开始就必须由12个点组成，不然浏览器咋知道你要重一个长方形的div变成是一个字母K，所以这里就存在一条件：动画在一定条件下可以对clip-path生效 . 这里的一定条件即裁剪的多边形必须具有相同的顶点数。</p>
+<p>这里就算是讲完clip-path的前四个基本属性了，把最后一个与SVG相引用的属性方最后讲是因为我最喜欢这个属性了，可好玩了~</p>
+<h3 id="clip-path与SVG配合"><a href="#clip-path与SVG配合" class="headerlink" title="clip-path与SVG配合"></a>clip-path与SVG配合</h3><p>先上张图：</p>
+<p><img src="http://i.imgur.com/lzqH2O7.png" alt=""></p>
+<p>是不是超级美，我可是用代码写不出来这路径的，但是SVG可以。<br>clip-path的最后一个属性是-webkit-clip-path: url(#svgTextPath);url中间引用的是一段SVG的路径。当然我还不会写，但是我知道咋弄，，哈哈哈，来推荐一个<a href="http://www.yyyweb.com/ctools/demo.php?t=http%3A%2F%2Feditor.method.ac%2F&amp;h=2000&amp;c=&amp;n=" target="_blank" rel="external">网站</a>这是一个SVG的在线编辑器</p>
+<p><img src="http://i.imgur.com/SRgETH7.png" alt=""></p>
+<p>我框的这个是用来画路径的</p>
+<ol>
+<li><p>我先画两个<br><img src="http://i.imgur.com/QnUqTGh.png" alt=""></p>
+</li>
+<li><p>然后把这个文件保存为SVG，把这个svg用你的编辑器打开，你会发现他记录了一长串的路径~我们需要的就是这段路径，把它copy下来。像这样放到你的html的body中</p>
+<pre><code>&lt;img src=&quot;&quot; alt=&quot;&quot; /&gt;    
+&lt;svg height=&quot;0&quot; width=&quot;0&quot;&gt;
+   &lt;defs&gt;
+       &lt;clipPath id=&quot;svgTextPath&quot;&gt;
+           //你copy的路径
+        &lt;/clipPath&gt;
+   &lt;/defs&gt;
+&lt;/svg&gt;    
+</code></pre><p>img的图片换成你自己喜欢的,然后给这个图片加上-webkit-clip-path: url(#svgTextPath)的属性，你想要的效果就出现啦啦啦~</p>
+</li>
+</ol>
+<p><img src="http://i.imgur.com/3ffWx4p.png" alt=""></p>
+<p>是不是很好看~</p>
+<p>最后的最后我要对你说，你真的好厉害~居然看到这里了。我自己都不忍心写到这里的，哈哈哈哈~</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS3/" rel="tag"># CSS3</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/20/vue入门到放弃（三）/" rel="next" title="vue入门到放弃（三）">
+                <i class="fa fa-chevron-left"></i> vue入门到放弃（三）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/15/下拉加载你这个坑货-1/" rel="prev" title="下拉加载你这个坑货~">
+                下拉加载你这个坑货~ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="芥末" />
+          <p class="site-author-name" itemprop="name">芥末</p>
+          <p class="site-description motion-element" itemprop="description">前端开发/程序媛/菜鸟/搬砖</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yaoyue1" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://yaoyue1.github.io/practice/" target="_blank" title="Practice">
+                  
+                    <i class="fa fa-fw fa-pencil"></i>
+                  
+                  Practice
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#clip-path基本属性"><span class="nav-number">1.</span> <span class="nav-text">clip-path基本属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#裁剪多边形"><span class="nav-number">1.1.</span> <span class="nav-text">裁剪多边形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#裁剪圆形"><span class="nav-number">1.2.</span> <span class="nav-text">裁剪圆形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#裁剪椭圆"><span class="nav-number">1.3.</span> <span class="nav-text">裁剪椭圆</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#裁剪圆弧"><span class="nav-number">1.4.</span> <span class="nav-text">裁剪圆弧</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实际用例"><span class="nav-number">2.</span> <span class="nav-text">实际用例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#小三角形的实现"><span class="nav-number">2.1.</span> <span class="nav-text">小三角形的实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#species-in-pieces"><span class="nav-number">2.2.</span> <span class="nav-text">species-in-pieces</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#写几个小动画"><span class="nav-number">2.3.</span> <span class="nav-text">写几个小动画</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clip-path与SVG配合"><span class="nav-number">3.</span> <span class="nav-text">clip-path与SVG配合</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">芥末</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+<script>
+   $(function(){
+      var cvs = document.getElementById("mycanvas")
+      var ctx = cvs.getContext("2d");
+      var width = cvs.width = document.documentElement.clientWidth;
+      var height = cvs.height = document.documentElement.clientHeight; 
+      // 初始化准备
+      var words = "012345678abcederqwertyuipljnbvgfdcxsaz/c/,[]scQAZWSXEDCRFVTGBYHNUJMIKLOP";//随机的文字
+      var wordsArr = words.split('');
+      var fontSize = 16;
+      var wordColor = '#000';
+      var clumns = width/fontSize;
+      console.log(clumns)
+      var drops = [];
+      for(var i = 0;i<clumns;i++){
+        drops[i] = 1;
+      }
+
+      function draw(){
+        ctx.save();
+        ctx.fillStyle = wordColor;
+        ctx.font = fontSize+"px arial";
+        for (var i=0;i<clumns;i++){
+          var text = wordsArr[Math.floor(Math.random()*wordsArr.length)];
+          ctx.fillText(text,i*fontSize, drops[i]*fontSize);
+          if(drops[i]*fontSize>height&& Math.random()<0.01){
+            drops[i]=0;
+          }
+          drops[i]++;
+        }
+        ctx.restore();
+      }
+
+      // 循环调用
+      render()
+      function render(){
+        window.requestAnimationFrame(render);
+        ctx.fillStyle = 'rgba(255,255,255,0.2)';
+        ctx.fillRect(0, 0, width, height);
+        draw()
+      }
+
+   })
+       
+   </script>
+</body>
+</html>

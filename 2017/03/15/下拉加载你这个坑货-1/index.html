@@ -1,0 +1,754 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="项目总结," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="jiemo blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="前两天刚做的一个项目,需要用下拉加载的方式去请求数据。我原以为这会是很简单的，肯定分分钟写完（不过确实也挺简单的），只不过还是坑了我一些的。 坑一$(window).scroll(function(){　　var scrollTop = $(this).scrollTop();　　var scrollHeight = $(document).height();　　var windowHeig">
+<meta name="keywords" content="项目总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="下拉加载你这个坑货~">
+<meta property="og:url" content="http://yaoyue.com/2017/03/15/下拉加载你这个坑货-1/index.html">
+<meta property="og:site_name" content="jiemo blog">
+<meta property="og:description" content="前两天刚做的一个项目,需要用下拉加载的方式去请求数据。我原以为这会是很简单的，肯定分分钟写完（不过确实也挺简单的），只不过还是坑了我一些的。 坑一$(window).scroll(function(){　　var scrollTop = $(this).scrollTop();　　var scrollHeight = $(document).height();　　var windowHeig">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://i.imgur.com/OExNWyP.png">
+<meta property="og:image" content="http://i.imgur.com/nCJqq2h.png">
+<meta property="og:image" content="http://i.imgur.com/REdmMFd.png">
+<meta property="og:updated_time" content="2017-03-15T09:34:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="下拉加载你这个坑货~">
+<meta name="twitter:description" content="前两天刚做的一个项目,需要用下拉加载的方式去请求数据。我原以为这会是很简单的，肯定分分钟写完（不过确实也挺简单的），只不过还是坑了我一些的。 坑一$(window).scroll(function(){　　var scrollTop = $(this).scrollTop();　　var scrollHeight = $(document).height();　　var windowHeig">
+<meta name="twitter:image" content="http://i.imgur.com/OExNWyP.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yaoyue.com/2017/03/15/下拉加载你这个坑货-1/"/>
+
+
+
+
+
+  <title> 下拉加载你这个坑货~ | jiemo blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <canvas id="mycanvas" style="position:fixed;top:0;left:0;z-index: -1;"></canvas>
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">jiemo blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">前端开发/学生/菜鸟</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content" style="background-color: #fff">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yaoyue.com/2017/03/15/下拉加载你这个坑货-1/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="芥末">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="jiemo blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="jiemo blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                下拉加载你这个坑货~
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-15T12:00:53+08:00">
+                2017-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/项目总结/" itemprop="url" rel="index">
+                    <span itemprop="name">项目总结</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>   前两天刚做的一个<a href="https://www.in66.com/html/photoShare2017/index.html" target="_blank" rel="external">项目</a>,需要用下拉加载的方式去请求数据。我原以为这会是很简单的，肯定分分钟写完（不过确实也挺简单的），只不过还是坑了我一些的。</p>
+<h3 id="坑一"><a href="#坑一" class="headerlink" title="坑一"></a>坑一</h3><p><pre><br>$(window).scroll(function(){<br>　　var scrollTop = $(this).scrollTop();<br>　　var scrollHeight = $(document).height();<br>　　var windowHeight = $(this).height();<br>　　if(scrollTop + windowHeight == scrollHeight){<br>　　　　alert(“you are in the bottom”);<br>　　}<br>});<br></pre><br><a id="more"></a><br>看完上面的代码是不是觉得完全没有毛病，嗯呐~，当初我也是这样觉得的，很对呀。而且我在安卓手机和chrome模拟器上完全没有问题。scrollTop获取的是滚动条滚动的距离，scrollHeight获取到的是整个文档的高度，windowHeight是获取当前也就是你浏览器所能看到的页面的那部分的高度，你已经滚过的高度+你目前看到的剩下的可视高度等于你整个文档高度的时候，确实表示了滚动条就在文档的最下面了。嗯，灰常好。然后你就灰常开心的去请求数据去了，也就是这样：<br><img src="http://i.imgur.com/OExNWyP.png" alt=""><br>是不是你现在也觉得木有毛病。我当时测的时候也很开心。但是当我去借了个苹果的测试机来测的时候尼玛问题来了。也就是我要讲到的第一个坑。这段js对苹果木有反应。我就想着是咋回事嘛~，搞了半天才发现，原来自己傻了</p>
+<p><pre><br>if(scrollTop + windowHeight == scrollHeight){<br>　　　　alert(“you are in the bottom”);<br>　　}<br></pre><br>其实坑就在这句话中，因为是写的等于，所以只有一个点能判断到达底部了，如果你不断的触动屏幕，很有可能的你滚动条就已经达不到这个点了，而且加上苹果手机到达底部的时候，你再滑动的时候页面会被拖出一个区域，所以这个点对于苹果手机来说有问题。所以不能改成一个点。而且还有一个重要的原因就是，你的数据是请求得来的，你还需要拿数据去渲染页面，为了用户不等待，你需要预留一段时间来请求，而不是等到已经最底部了再去请求。所以我立马高兴的改成了这样：</p>
+<p><pre><br>if(scrollTop + windowHeight &gt; scrollHeight -100){<br>　　　　alert(“you are in the bottom”);<br>　　}<br></pre><br>这样就是代表你在距离底部100px的时候都会给你触发到达底部了。这样果然苹果没问题了。但是我立马发现了另外一个问题，也就是坑二。</p>
+<h3 id="坑二"><a href="#坑二" class="headerlink" title="坑二"></a>坑二</h3><p>数据重复了，啥意思呢？就是说你的滚动条如果一直在距离底部100px的范围内得到话，它就会给你去执行你的render()方法，然后去渲染页面。你想如果你一直在100px的范围的话，那他就会给你不断的去发请求，上一个请求还没执行完，你又去了，请求的数据肯定会被重复。所以解决的办法呢就是你设置一个标志，如果上一次请求成功了之后，页面渲染完成了之后，你再去请求，这样就好了。代码如下：<br><img src="http://i.imgur.com/nCJqq2h.png" alt=""><br>相比于刚刚的代码，我加上了一个isSucc的变量来判断，第一次请求这个变量是true，你可以去请求，一进入后立马把这个变量设置为false，代表我这次的请求还没完全走完，你下一波等等，等到页面完全渲染好了，请求已经done了后你再把这个变量设置为true，然后下一波就可以去请求了。</p>
+<p>你以为写到现在完了，其实还有一个问题，就是当数据库中已经没有数据了，你就不能再狂发请求了，所以你还需要干一件事，就是再设置一个标志来判断数据库中是否还有数据，有，就去请求，没有就不要再去请求了。<br>所以最终的代码应该是这样：<br><img src="http://i.imgur.com/REdmMFd.png" alt=""><br>好啦~到现在为止一个下拉加载才写好了，啦啦啦啦啦~写的不对的地方望大神指教好改正！</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/项目总结/" rel="tag"># 项目总结</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/08/和clip-path来场美丽的初识/" rel="next" title="和clip-path来场美丽的初识">
+                <i class="fa fa-chevron-left"></i> 和clip-path来场美丽的初识
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/30/canvas学习一点点（一）/" rel="prev" title="canvas学习一点点（一）">
+                canvas学习一点点（一） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="芥末" />
+          <p class="site-author-name" itemprop="name">芥末</p>
+          <p class="site-description motion-element" itemprop="description">前端开发/程序媛/菜鸟/搬砖</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yaoyue1" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://yaoyue1.github.io/practice/" target="_blank" title="Practice">
+                  
+                    <i class="fa fa-fw fa-pencil"></i>
+                  
+                  Practice
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#坑一"><span class="nav-number">1.</span> <span class="nav-text">坑一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#坑二"><span class="nav-number">2.</span> <span class="nav-text">坑二</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">芥末</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+<script>
+   $(function(){
+      var cvs = document.getElementById("mycanvas")
+      var ctx = cvs.getContext("2d");
+      var width = cvs.width = document.documentElement.clientWidth;
+      var height = cvs.height = document.documentElement.clientHeight; 
+      // 初始化准备
+      var words = "012345678abcederqwertyuipljnbvgfdcxsaz/c/,[]scQAZWSXEDCRFVTGBYHNUJMIKLOP";//随机的文字
+      var wordsArr = words.split('');
+      var fontSize = 16;
+      var wordColor = '#000';
+      var clumns = width/fontSize;
+      console.log(clumns)
+      var drops = [];
+      for(var i = 0;i<clumns;i++){
+        drops[i] = 1;
+      }
+
+      function draw(){
+        ctx.save();
+        ctx.fillStyle = wordColor;
+        ctx.font = fontSize+"px arial";
+        for (var i=0;i<clumns;i++){
+          var text = wordsArr[Math.floor(Math.random()*wordsArr.length)];
+          ctx.fillText(text,i*fontSize, drops[i]*fontSize);
+          if(drops[i]*fontSize>height&& Math.random()<0.01){
+            drops[i]=0;
+          }
+          drops[i]++;
+        }
+        ctx.restore();
+      }
+
+      // 循环调用
+      render()
+      function render(){
+        window.requestAnimationFrame(render);
+        ctx.fillStyle = 'rgba(255,255,255,0.2)';
+        ctx.fillRect(0, 0, width, height);
+        draw()
+      }
+
+   })
+       
+   </script>
+</body>
+</html>
