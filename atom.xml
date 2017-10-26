@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yaoyue.com/"/>
-  <updated>2017-04-05T08:09:04.000Z</updated>
+  <updated>2017-10-26T14:03:22.000Z</updated>
   <id>http://yaoyue.com/</id>
   
   <author>
@@ -15,6 +15,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>jiemo</title>
+    <link href="http://yaoyue.com/2017/10/26/jiemo/"/>
+    <id>http://yaoyue.com/2017/10/26/jiemo/</id>
+    <published>2017-10-26T14:03:22.000Z</published>
+    <updated>2017-10-26T14:03:22.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>canvas学习一点点（四）--仿知乎登录页</title>
@@ -488,40 +502,6 @@ console.log(list)
     
     
       <category term="css3" scheme="http://yaoyue.com/tags/css3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>markdonw学习</title>
-    <link href="http://yaoyue.com/2016/11/11/test/"/>
-    <id>http://yaoyue.com/2016/11/11/test/</id>
-    <published>2016-11-11T06:29:03.000Z</published>
-    <updated>2016-12-13T06:20:17.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>第一次学习markdown写法</p><h1 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h1><blockquote><p>引用引用</p></blockquote><ul><li>无序列表</li><li>无序列表</li><li>无序列表</li></ul><h3 id="22222"><a href="#22222" class="headerlink" title="22222"></a>22222</h3><ol><li>有序列表</li><li>有序列表</li><li>有序列表<a id="more"></a><h3 id="插入链接"><a href="#插入链接" class="headerlink" title="插入链接"></a>插入链接</h3><a href="http://baidu.com" target="_blank" rel="external">百度</a></li></ol><h3 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h3><p><img src="http://www.cy580.com/file/upload/201307/29/14-03-21-44-88802.png" alt="百度"></p><h3 id="粗体斜体"><a href="#粗体斜体" class="headerlink" title="粗体斜体"></a>粗体斜体</h3><p><strong>粗体粗体</strong><br><em>斜体斜体</em></p><h3 id="代码框"><a href="#代码框" class="headerlink" title="代码框"></a>代码框</h3><p>1)</p><p><pre><br>.cloud {<br>        width: rem(627);<br>        height: rem(770);<br>        background-image: url(“../images/cloud.png”);<br>        background-repeat: no-repeat;<br>        background-size: contain;<br>    }<br></pre><br>2)</p><p><code>nnnnnn</code></p><p>3)<br><code>nnnn</code></p><h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><hr><h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><table><thead><tr><th>Tables</th><th style="text-align:center">Are</th><th style="text-align:right">Cool</th></tr></thead><tbody><tr><td>col 3 is</td><td style="text-align:center">right-aligned</td><td style="text-align:right">$1600</td></tr><tr><td>col 2 is</td><td style="text-align:center">centered</td><td style="text-align:right">$12</td></tr><tr><td>zebra stripes</td><td style="text-align:center">are neat</td><td style="text-align:right">$1</td></tr></tbody></table>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;第一次学习markdown写法&lt;/p&gt;
-&lt;h1 id=&quot;标题&quot;&gt;&lt;a href=&quot;#标题&quot; class=&quot;headerlink&quot; title=&quot;标题&quot;&gt;&lt;/a&gt;标题&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;引用引用&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;无序列表&lt;/li&gt;
-&lt;li&gt;无序列表&lt;/li&gt;
-&lt;li&gt;无序列表&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;22222&quot;&gt;&lt;a href=&quot;#22222&quot; class=&quot;headerlink&quot; title=&quot;22222&quot;&gt;&lt;/a&gt;22222&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;有序列表&lt;/li&gt;
-&lt;li&gt;有序列表&lt;/li&gt;
-&lt;li&gt;有序列表
-    
-    </summary>
-    
-      <category term="Markdown" scheme="http://yaoyue.com/categories/Markdown/"/>
-    
-    
-      <category term="markdown" scheme="http://yaoyue.com/tags/markdown/"/>
     
   </entry>
   
