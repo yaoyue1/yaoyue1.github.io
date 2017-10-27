@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://i.imgur.com/INUMDFO.png">
 <meta property="og:image" content="http://i.imgur.com/qMDTjFc.png">
 <meta property="og:image" content="http://i.imgur.com/hcx4oWQ.png">
-<meta property="og:updated_time" content="2017-02-21T07:56:01.000Z">
+<meta property="og:updated_time" content="2017-02-21T07:56:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue入门到放弃（三）">
 <meta name="twitter:description" content="上两篇关于Vue的博文，一篇是环境的搭建和运行，另一篇是自己回顾之前所学的基本指令。这些准备完毕之后，也是时候来写demo练手了，不然好像一直看文档看API也没啥作用，开始啦，自己一边写demo一边把重要的部分记录下来吧。">
@@ -156,7 +156,7 @@
   
     
   
-  <canvas id="mycanvas" style="position:fixed;top:0;left:0;z-index: -1;"></canvas>
+  <!-- <canvas id="mycanvas" style="position:fixed;top:0;left:0;z-index: -1;"></canvas> -->
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
@@ -264,7 +264,7 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content" style="background-color: #fff">
+          <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
@@ -368,7 +368,7 @@
       
 
       
-        <p> 上两篇关于Vue的博文，一篇是环境的搭建和运行，另一篇是自己回顾之前所学的基本指令。这些准备完毕之后，也是时候来写demo练手了，不然好像一直看文档看API也没啥作用，开始啦，自己一边写demo一边把重要的部分记录下来吧。<br> <a id="more"></a></p>
+        <script src="/assets/js/APlayer.min.js"> </script><p> 上两篇关于Vue的博文，一篇是环境的搭建和运行，另一篇是自己回顾之前所学的基本指令。这些准备完毕之后，也是时候来写demo练手了，不然好像一直看文档看API也没啥作用，开始啦，自己一边写demo一边把重要的部分记录下来吧。<br> <a id="more"></a></p>
 <h3 id="新建项目文件夹"><a href="#新建项目文件夹" class="headerlink" title="新建项目文件夹"></a>新建项目文件夹</h3><p>通过Vue init webpack searchdemo新建一个项目。<br><img src="http://i.imgur.com/6352VQQ.png" alt=""><br>进入项目文件：cd searchdemo</p>
 <p>安装项目依赖：cnpm install</p>
 <p>运行项目：npm run dev</p>
@@ -494,7 +494,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -502,7 +502,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -511,7 +511,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -714,50 +714,9 @@
 
   
 
-<script>
-   $(function(){
-      var cvs = document.getElementById("mycanvas")
-      var ctx = cvs.getContext("2d");
-      var width = cvs.width = document.documentElement.clientWidth;
-      var height = cvs.height = document.documentElement.clientHeight; 
-      // 初始化准备
-      var words = "012345678abcederqwertyuipljnbvgfdcxsaz/c/,[]scQAZWSXEDCRFVTGBYHNUJMIKLOP";//随机的文字
-      var wordsArr = words.split('');
-      var fontSize = 16;
-      var wordColor = '#000';
-      var clumns = width/fontSize;
-      console.log(clumns)
-      var drops = [];
-      for(var i = 0;i<clumns;i++){
-        drops[i] = 1;
-      }
 
-      function draw(){
-        ctx.save();
-        ctx.fillStyle = wordColor;
-        ctx.font = fontSize+"px arial";
-        for (var i=0;i<clumns;i++){
-          var text = wordsArr[Math.floor(Math.random()*wordsArr.length)];
-          ctx.fillText(text,i*fontSize, drops[i]*fontSize);
-          if(drops[i]*fontSize>height&& Math.random()<0.01){
-            drops[i]=0;
-          }
-          drops[i]++;
-        }
-        ctx.restore();
-      }
 
-      // 循环调用
-      render()
-      function render(){
-        window.requestAnimationFrame(render);
-        ctx.fillStyle = 'rgba(255,255,255,0.2)';
-        ctx.fillRect(0, 0, width, height);
-        draw()
-      }
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
-   })
-       
-   </script>
 </body>
 </html>

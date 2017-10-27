@@ -151,7 +151,7 @@
   
     
   
-  <canvas id="mycanvas" style="position:fixed;top:0;left:0;z-index: -1;"></canvas>
+  <!-- <canvas id="mycanvas" style="position:fixed;top:0;left:0;z-index: -1;"></canvas> -->
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
@@ -259,7 +259,7 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content" style="background-color: #fff">
+          <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
@@ -363,7 +363,7 @@
       
 
       
-        <h1 id="css3学习"><a href="#css3学习" class="headerlink" title="css3学习"></a>css3学习</h1><hr>
+        <script src="/assets/js/APlayer.min.js"> </script><h1 id="css3学习"><a href="#css3学习" class="headerlink" title="css3学习"></a>css3学习</h1><hr>
 <h3 id="旋转动画容易漏掉的点"><a href="#旋转动画容易漏掉的点" class="headerlink" title="旋转动画容易漏掉的点"></a>旋转动画容易漏掉的点</h3><ol>
 <li>steps()函数：animation默认以ease方式过渡，会以在每个关键帧之间插入补间动画，所以动画效果是连贯性的。ease，linear等之类的过渡函数都会为其插入补间。但有些效果不需要补间，只需要关键帧之间的跳跃，这时应该使用steps过渡方式。（例如：如果是只需要在两帧动画之间来回切换的话只需要设置steps（2）就可）steps()中设置的数字是每一步动画的跳跃步数而不是整个动画的跳跃步数。<a id="more"></a>
 <a href="http://web.jobbole.com/83657/" target="_blank" rel="external">参考文章</a><pre>
@@ -545,7 +545,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -553,7 +553,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -562,7 +562,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -765,50 +765,9 @@
 
   
 
-<script>
-   $(function(){
-      var cvs = document.getElementById("mycanvas")
-      var ctx = cvs.getContext("2d");
-      var width = cvs.width = document.documentElement.clientWidth;
-      var height = cvs.height = document.documentElement.clientHeight; 
-      // 初始化准备
-      var words = "012345678abcederqwertyuipljnbvgfdcxsaz/c/,[]scQAZWSXEDCRFVTGBYHNUJMIKLOP";//随机的文字
-      var wordsArr = words.split('');
-      var fontSize = 16;
-      var wordColor = '#000';
-      var clumns = width/fontSize;
-      console.log(clumns)
-      var drops = [];
-      for(var i = 0;i<clumns;i++){
-        drops[i] = 1;
-      }
 
-      function draw(){
-        ctx.save();
-        ctx.fillStyle = wordColor;
-        ctx.font = fontSize+"px arial";
-        for (var i=0;i<clumns;i++){
-          var text = wordsArr[Math.floor(Math.random()*wordsArr.length)];
-          ctx.fillText(text,i*fontSize, drops[i]*fontSize);
-          if(drops[i]*fontSize>height&& Math.random()<0.01){
-            drops[i]=0;
-          }
-          drops[i]++;
-        }
-        ctx.restore();
-      }
 
-      // 循环调用
-      render()
-      function render(){
-        window.requestAnimationFrame(render);
-        ctx.fillStyle = 'rgba(255,255,255,0.2)';
-        ctx.fillRect(0, 0, width, height);
-        draw()
-      }
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
-   })
-       
-   </script>
 </body>
 </html>

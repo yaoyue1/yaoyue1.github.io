@@ -151,7 +151,7 @@
   
     
   
-  <canvas id="mycanvas" style="position:fixed;top:0;left:0;z-index: -1;"></canvas>
+  <!-- <canvas id="mycanvas" style="position:fixed;top:0;left:0;z-index: -1;"></canvas> -->
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
@@ -259,7 +259,7 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content" style="background-color: #fff">
+          <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
@@ -363,7 +363,7 @@
       
 
       
-        <p>canvas学习一点点的第四篇啦~，这次写的是一个仿知乎的登录页面:<a href="https://yaoyue1.github.io/dot.html" target="_blank" rel="external">传送门</a>,感觉这效果已经被n多人写(wan)过(huai)了，但是感觉这个效果还是很适合做背景的，于是我还是跟风了一把。<br>看完你会发现其实这个效果的写法和下雨那个很像，只不过下雪那个运动会稍微简单点，但是本质是不变的，都是控制粒子的运动。上代码<br><a id="more"></a></p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>canvas学习一点点的第四篇啦~，这次写的是一个仿知乎的登录页面:<a href="https://yaoyue1.github.io/dot.html" target="_blank" rel="external">传送门</a>,感觉这效果已经被n多人写(wan)过(huai)了，但是感觉这个效果还是很适合做背景的，于是我还是跟风了一把。<br>看完你会发现其实这个效果的写法和下雨那个很像，只不过下雪那个运动会稍微简单点，但是本质是不变的，都是控制粒子的运动。上代码<br><a id="more"></a></p>
 <p><pre><br><code><br>    $(function(){<br>      var cvs = document.getElementById(“mycanvas”);<br>      var ctx = cvs.getContext(‘2d’);<br>      var docWidth = document.documentElement.clientWidth;<br>      var docHeight = document.documentElement.clientHeight;<br>      cvs.width = docWidth;<br>      cvs.height = docHeight;//初始化准备，让canvas的宽高等于可视区的宽高<br>      var dotNum = 100;//整个区域粒子的数量<br>      var dots = [];//用来存放粒子对象的数组<br>      var mouse = new Object();//声明的对象用来存放鼠标的初始X、Y值<br>      mouse.x = 800;<br>      mouse.y = 350;<br>      for(var i=0;i<dotnum;i++){ 循环dotnum数量的粒子为每个粒子对象添加属性="" var="" dotobj="new" object();="" dotobj.x="Math.random()*docWidth;//初始的x坐标位置" dotobj.y="Math.random()*docHeight;//初始的y坐标位置" dotobj.r="Math.ceil(Math.random()*4);//粒子半径" dotobj.color="white" ;="" 粒子颜色="" dotobj.speedx="Math.floor(Math.random()*2)?1:-1//粒子X轴的运动方向" dotobj.speedy="Math.floor(Math.random()*2)?1:-1//粒子Y轴的运动方向" dots[i]="dotObj;//把粒子对象装进数组" }="" function="" drawball(x,y,r,color){="" 画每个粒子圆="" ctx.beginpath();="" ctx.arc(x,y,r,0,math.pi*2,false);="" ctx.fillstyle="color;" ctx.fill()="" move(obj){="" 粒子的移动函数="" obj.x="" +="obj.speedX*0.2;//粒子x轴方向每次移动的距离" obj.y="" if(obj.y<="obj.r){//上边界小球反弹处理" obj.speedy*="-1;" if(obj.y="">= docHeight-obj.r){//下边界小球反弹处理<br>          obj.y = docHeight-obj.r;<br>          obj.speedY<em>=-1;<br>        }<br>        if(obj.x&lt;=obj.r){//左边界的小球反弹处理<br>          obj.x = obj.x;<br>          obj.speedX</em>=-1;<br>        }<br>        if(obj.x &gt;= docWidth-obj.r){//右边界的小球反弹处理<br>          obj.x = docWidth-obj.r;<br>          obj.speedX<em>=-1;<br>        }<br>      }<br>      function ballAndball(obj1,obj2){//封装函数用来求两个球或者是球和鼠标直接的直线距离<br>        var disX = Math.abs(obj1.x-obj2.x);//相距的X绝对值<br>        var disY = Math.abs(obj1.y-obj2.y);//相距的Y绝对值<br>        return Math.sqrt(disX</em>disX+disY*disY)//平方根求直线距离<br>      }<br>      function mouseball(mouse,obj){//鼠标移动，把鼠标和距离其130内的小球连成线<br>        if(ballAndball(mouse,obj)&lt;130){<br>          ctx.lineWidth = 0.2;<br>          ctx.beginPath();<br>          ctx.moveTo(obj.x,obj.y);<br>          ctx.lineTo(mouse.x,mouse.y);<br>          ctx.strokeStyle = obj.color;<br>          ctx.stroke();</dotnum;i++){></code></pre></p>
 <pre><code>    }
   }
@@ -442,8 +442,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/10/26/jiemo/" rel="prev" title="jiemo">
-                jiemo <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/24/rem适配/" rel="prev" title="rem适配">
+                rem适配 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -503,7 +503,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -511,7 +511,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -520,7 +520,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -707,50 +707,9 @@
 
   
 
-<script>
-   $(function(){
-      var cvs = document.getElementById("mycanvas")
-      var ctx = cvs.getContext("2d");
-      var width = cvs.width = document.documentElement.clientWidth;
-      var height = cvs.height = document.documentElement.clientHeight; 
-      // 初始化准备
-      var words = "012345678abcederqwertyuipljnbvgfdcxsaz/c/,[]scQAZWSXEDCRFVTGBYHNUJMIKLOP";//随机的文字
-      var wordsArr = words.split('');
-      var fontSize = 16;
-      var wordColor = '#000';
-      var clumns = width/fontSize;
-      console.log(clumns)
-      var drops = [];
-      for(var i = 0;i<clumns;i++){
-        drops[i] = 1;
-      }
 
-      function draw(){
-        ctx.save();
-        ctx.fillStyle = wordColor;
-        ctx.font = fontSize+"px arial";
-        for (var i=0;i<clumns;i++){
-          var text = wordsArr[Math.floor(Math.random()*wordsArr.length)];
-          ctx.fillText(text,i*fontSize, drops[i]*fontSize);
-          if(drops[i]*fontSize>height&& Math.random()<0.01){
-            drops[i]=0;
-          }
-          drops[i]++;
-        }
-        ctx.restore();
-      }
 
-      // 循环调用
-      render()
-      function render(){
-        window.requestAnimationFrame(render);
-        ctx.fillStyle = 'rgba(255,255,255,0.2)';
-        ctx.fillRect(0, 0, width, height);
-        draw()
-      }
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
-   })
-       
-   </script>
 </body>
 </html>

@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="jiemo blog">
 <meta property="og:description" content="splice()从数组中添加/删除项目，然后返回被删除的项目,该方法会改变原始数组从1开始计算  arrayObject.splice(添加|删除项位置,删除数量若为0则不删除,向数组添加的新项item1,.....,itemX)   var list = [1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5] for(var i=0;i &amp;lt; list.length;+">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-12-13T06:15:57.000Z">
+<meta property="og:updated_time" content="2016-12-13T06:15:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数组方法汇总">
 <meta name="twitter:description" content="splice()从数组中添加/删除项目，然后返回被删除的项目,该方法会改变原始数组从1开始计算  arrayObject.splice(添加|删除项位置,删除数量若为0则不删除,向数组添加的新项item1,.....,itemX)   var list = [1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5] for(var i=0;i &amp;lt; list.length;+">
@@ -151,7 +151,7 @@
   
     
   
-  <canvas id="mycanvas" style="position:fixed;top:0;left:0;z-index: -1;"></canvas>
+  <!-- <canvas id="mycanvas" style="position:fixed;top:0;left:0;z-index: -1;"></canvas> -->
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
@@ -259,7 +259,7 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content" style="background-color: #fff">
+          <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
@@ -363,7 +363,7 @@
       
 
       
-        <h2 id="splice"><a href="#splice" class="headerlink" title="splice()"></a>splice()</h2><p>从数组中添加/删除项目，然后返回被删除的项目,<strong>该方法会改变原始数组</strong>从1开始计算</p>
+        <script src="/assets/js/APlayer.min.js"> </script><h2 id="splice"><a href="#splice" class="headerlink" title="splice()"></a>splice()</h2><p>从数组中添加/删除项目，然后返回被删除的项目,<strong>该方法会改变原始数组</strong>从1开始计算</p>
 <pre>
 arrayObject.splice(添加|删除项位置,删除数量若为0则不删除,向数组添加的新项item1,.....,itemX)
 </pre>
@@ -527,7 +527,7 @@ document.write(a.concat(arr2,arr3));
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -535,7 +535,7 @@ document.write(a.concat(arr2,arr3));
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -544,7 +544,7 @@ document.write(a.concat(arr2,arr3));
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -747,50 +747,9 @@ document.write(a.concat(arr2,arr3));
 
   
 
-<script>
-   $(function(){
-      var cvs = document.getElementById("mycanvas")
-      var ctx = cvs.getContext("2d");
-      var width = cvs.width = document.documentElement.clientWidth;
-      var height = cvs.height = document.documentElement.clientHeight; 
-      // 初始化准备
-      var words = "012345678abcederqwertyuipljnbvgfdcxsaz/c/,[]scQAZWSXEDCRFVTGBYHNUJMIKLOP";//随机的文字
-      var wordsArr = words.split('');
-      var fontSize = 16;
-      var wordColor = '#000';
-      var clumns = width/fontSize;
-      console.log(clumns)
-      var drops = [];
-      for(var i = 0;i<clumns;i++){
-        drops[i] = 1;
-      }
 
-      function draw(){
-        ctx.save();
-        ctx.fillStyle = wordColor;
-        ctx.font = fontSize+"px arial";
-        for (var i=0;i<clumns;i++){
-          var text = wordsArr[Math.floor(Math.random()*wordsArr.length)];
-          ctx.fillText(text,i*fontSize, drops[i]*fontSize);
-          if(drops[i]*fontSize>height&& Math.random()<0.01){
-            drops[i]=0;
-          }
-          drops[i]++;
-        }
-        ctx.restore();
-      }
 
-      // 循环调用
-      render()
-      function render(){
-        window.requestAnimationFrame(render);
-        ctx.fillStyle = 'rgba(255,255,255,0.2)';
-        ctx.fillRect(0, 0, width, height);
-        draw()
-      }
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
-   })
-       
-   </script>
 </body>
 </html>

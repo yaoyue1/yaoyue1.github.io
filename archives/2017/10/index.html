@@ -149,7 +149,7 @@
   
     
   
-  <canvas id="mycanvas" style="position:fixed;top:0;left:0;z-index: -1;"></canvas>
+  <!-- <canvas id="mycanvas" style="position:fixed;top:0;left:0;z-index: -1;"></canvas> -->
   <div class="container one-collumn sidebar-position-left  page-archive  ">
     <div class="headband"></div>
 
@@ -257,7 +257,7 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content" style="background-color: #fff">
+          <div id="content" class="content">
             
 
   <section id="posts" class="posts-collapse">
@@ -269,7 +269,7 @@
       
         
       
-      嗯..! 目前共计 21 篇日志。 继续努力。
+      嗯..! 目前共计 28 篇日志。 继续努力。
     </span>
 
     
@@ -293,9 +293,9 @@
 
       <h1 class="post-title">
         
-            <a class="post-title-link" href="/2017/10/26/jiemo/" itemprop="url">
+            <a class="post-title-link" href="/2017/10/13/three-js初始（一）/" itemprop="url">
               
-                <span itemprop="name">jiemo</span>
+                <span itemprop="name">three.js初始（一）</span>
               
             </a>
         
@@ -303,9 +303,46 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-26T22:03:22+08:00"
-              content="2017-10-26" >
-          10-26
+              datetime="2017-10-13T14:02:15+08:00"
+              content="2017-10-13" >
+          10-13
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+    
+
+      
+      
+      
+
+      
+      
+
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2017/10/13/10月月初/" itemprop="url">
+              
+                <span itemprop="name">所以等我好不好</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2017-10-13T11:17:49+08:00"
+              content="2017-10-13" >
+          10-13
         </time>
       </div>
 
@@ -358,7 +395,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -366,7 +403,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -375,7 +412,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -564,50 +601,9 @@
 
   
 
-<script>
-   $(function(){
-      var cvs = document.getElementById("mycanvas")
-      var ctx = cvs.getContext("2d");
-      var width = cvs.width = document.documentElement.clientWidth;
-      var height = cvs.height = document.documentElement.clientHeight; 
-      // 初始化准备
-      var words = "012345678abcederqwertyuipljnbvgfdcxsaz/c/,[]scQAZWSXEDCRFVTGBYHNUJMIKLOP";//随机的文字
-      var wordsArr = words.split('');
-      var fontSize = 16;
-      var wordColor = '#000';
-      var clumns = width/fontSize;
-      console.log(clumns)
-      var drops = [];
-      for(var i = 0;i<clumns;i++){
-        drops[i] = 1;
-      }
 
-      function draw(){
-        ctx.save();
-        ctx.fillStyle = wordColor;
-        ctx.font = fontSize+"px arial";
-        for (var i=0;i<clumns;i++){
-          var text = wordsArr[Math.floor(Math.random()*wordsArr.length)];
-          ctx.fillText(text,i*fontSize, drops[i]*fontSize);
-          if(drops[i]*fontSize>height&& Math.random()<0.01){
-            drops[i]=0;
-          }
-          drops[i]++;
-        }
-        ctx.restore();
-      }
 
-      // 循环调用
-      render()
-      function render(){
-        window.requestAnimationFrame(render);
-        ctx.fillStyle = 'rgba(255,255,255,0.2)';
-        ctx.fillRect(0, 0, width, height);
-        draw()
-      }
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
-   })
-       
-   </script>
 </body>
 </html>

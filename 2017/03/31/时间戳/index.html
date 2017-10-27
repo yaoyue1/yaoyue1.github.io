@@ -86,19 +86,19 @@
 
 
 
-<meta name="description" content="关于时间戳这个东西，其实是我第一次单独做项目的时候就遇到过的，但是当时忙着项目上线我就利索的直接copy了别人的代码来用。后面就忘记这事了，最近这几天在看之前自己写的项目，一个字形容：惨。连我自己都快认不出这事我自己写的代码，因为要渲染页面所以js里面掺杂了大量的html代码，我真佩服当时自己咋写出来的。还是不扯远了，今天主要讲时间戳。我们前端调用后端接口的时候，他们通常传时间都不是传“2017年">
+<meta name="description" content="再次更新： 最近再回看自己写的文章的时候，才发现写的地方没讲清楚，哈哈哈，也许是当时并没有理解清楚，重新更新一下。 关于时间戳这个东西，其实是我第一次单独做项目的时候就遇到过的，但是当时忙着项目上线我就利索的直接copy了别人的代码来用。后面就忘记这事了，最近这几天在看之前自己写的项目，一个字形容：惨。连我自己都快认不出这事我自己写的代码，因为要渲染页面所以js里面掺杂了大量的html代码，我真佩">
 <meta name="keywords" content="项目总结">
 <meta property="og:type" content="article">
 <meta property="og:title" content="时间戳">
 <meta property="og:url" content="http://yaoyue.com/2017/03/31/时间戳/index.html">
 <meta property="og:site_name" content="jiemo blog">
-<meta property="og:description" content="关于时间戳这个东西，其实是我第一次单独做项目的时候就遇到过的，但是当时忙着项目上线我就利索的直接copy了别人的代码来用。后面就忘记这事了，最近这几天在看之前自己写的项目，一个字形容：惨。连我自己都快认不出这事我自己写的代码，因为要渲染页面所以js里面掺杂了大量的html代码，我真佩服当时自己咋写出来的。还是不扯远了，今天主要讲时间戳。我们前端调用后端接口的时候，他们通常传时间都不是传“2017年">
+<meta property="og:description" content="再次更新： 最近再回看自己写的文章的时候，才发现写的地方没讲清楚，哈哈哈，也许是当时并没有理解清楚，重新更新一下。 关于时间戳这个东西，其实是我第一次单独做项目的时候就遇到过的，但是当时忙着项目上线我就利索的直接copy了别人的代码来用。后面就忘记这事了，最近这几天在看之前自己写的项目，一个字形容：惨。连我自己都快认不出这事我自己写的代码，因为要渲染页面所以js里面掺杂了大量的html代码，我真佩">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://i.imgur.com/ljI4ovd.png">
-<meta property="og:updated_time" content="2017-04-05T08:11:23.000Z">
+<meta property="og:updated_time" content="2017-09-14T02:47:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="时间戳">
-<meta name="twitter:description" content="关于时间戳这个东西，其实是我第一次单独做项目的时候就遇到过的，但是当时忙着项目上线我就利索的直接copy了别人的代码来用。后面就忘记这事了，最近这几天在看之前自己写的项目，一个字形容：惨。连我自己都快认不出这事我自己写的代码，因为要渲染页面所以js里面掺杂了大量的html代码，我真佩服当时自己咋写出来的。还是不扯远了，今天主要讲时间戳。我们前端调用后端接口的时候，他们通常传时间都不是传“2017年">
+<meta name="twitter:description" content="再次更新： 最近再回看自己写的文章的时候，才发现写的地方没讲清楚，哈哈哈，也许是当时并没有理解清楚，重新更新一下。 关于时间戳这个东西，其实是我第一次单独做项目的时候就遇到过的，但是当时忙着项目上线我就利索的直接copy了别人的代码来用。后面就忘记这事了，最近这几天在看之前自己写的项目，一个字形容：惨。连我自己都快认不出这事我自己写的代码，因为要渲染页面所以js里面掺杂了大量的html代码，我真佩">
 <meta name="twitter:image" content="http://i.imgur.com/ljI4ovd.png">
 
 
@@ -153,7 +153,7 @@
   
     
   
-  <canvas id="mycanvas" style="position:fixed;top:0;left:0;z-index: -1;"></canvas>
+  <!-- <canvas id="mycanvas" style="position:fixed;top:0;left:0;z-index: -1;"></canvas> -->
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
@@ -261,7 +261,7 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content" style="background-color: #fff">
+          <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
@@ -365,15 +365,20 @@
       
 
       
-        <p>关于时间戳这个东西，其实是我第一次单独做项目的时候就遇到过的，但是当时忙着项目上线我就利索的直接copy了别人的代码来用。后面就忘记这事了，最近这几天在看之前自己写的项目，一个字形容：惨。连我自己都快认不出这事我自己写的代码，因为要渲染页面所以js里面掺杂了大量的html代码，我真佩服当时自己咋写出来的。还是不扯远了，今天主要讲时间戳。<br>我们前端调用后端接口的时候，他们通常传时间都不是传“2017年4月1日”这样的东西过来，而是直接传一个时间戳：1491030469000；这样一串数字就是时间戳。<br><a id="more"></a><br>你会想知道明明js可以获取到时间啊，为啥还需要这样传，那是因为js是获取到你系统本地的时间，你想如果你自己调快了时间那岂不是不准确了。所以时间戳的用处就是这样。<br>拿到一串时间戳你要怎样把它转化成为XX年xx月xx日这样的呢？</p>
-<p><img src="http://i.imgur.com/ljI4ovd.png" alt=""></p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>再次更新：</p>
+<p>最近再回看自己写的文章的时候，才发现写的地方没讲清楚，哈哈哈，也许是当时并没有理解清楚，重新更新一下。</p>
+<p>关于时间戳这个东西，其实是我第一次单独做项目的时候就遇到过的，但是当时忙着项目上线我就利索的直接copy了别人的代码来用。后面就忘记这事了，最近这几天在看之前自己写的项目，一个字形容：惨。连我自己都快认不出这事我自己写的代码，因为要渲染页面所以js里面掺杂了大量的html代码，我真佩服当时自己咋写出来的。稍微吐槽一下自己写的代码，不过有点扯远了，今天主要讲时间戳。<br>我们前端调用后端接口的时候，他们通常传时间都不是传“2017年4月1日”这样的东西过来，而是直接传一个时间戳过来：1505232000，这样一串数字就是时间戳。<br><a id="more"></a><br>你会想知道明明js可以获取到时间啊，为啥还需要这样传，那是因为js是获取到你系统本地的时间，你想如果你自己调快了时间那岂不是不准确了。所以时间戳的用处就是这样。<br>拿到一串时间戳你要怎样把它转化成为XX年xx月xx日这样的呢？<br>这里必须要提到PHP的时间戳和js的时间戳是不一样的，你通过new Data().getTime()或者是通过Date.parse(new Date())方法获取到的js时间戳是13位，而你会发现php传过来的时间戳是10位，是的，js获取的时间戳和PHP获取的时间戳是有区别的：</p>
+<ul>
+<li>单位区别：PHP获取的时间戳是以秒为单位的，而js获取的时间戳是以毫秒为单位的，所以你必须要转换单位，1秒=1000毫秒</li>
+<li>时区区别：PHP通过time()获取的时间戳，通常会跟服务器所在的时区有关，js获取的时间戳则是依据你的系统时间确定的，如果你把你的手机或者电脑的时间设置比正常快或慢，js获取的时间会以你的设置时间为准，这也是为什么我们用实际不能通过js本地获取。<br><img src="http://i.imgur.com/ljI4ovd.png" alt=""></li>
+</ul>
 <p>封装一个方法format（）；这样你只有把时间戳传进去就可以给你返回xx年xx月xx日xx:xx</p>
 <pre><code> function add0(m) {
     return m &lt; 10 ? &apos;0&apos; + m : m;
 }
 
 function format(t) {
-    var time = new Date(parseInt(t) * 1000);
+    var time = new Date(parseInt(t) * 1000);//这里为什么乘以1000，也就是因为PHP和js的时间戳的单位不一致
     var y = time.getFullYear();
     var m = time.getMonth() + 1;
     var d = time.getDate();
@@ -382,7 +387,8 @@ function format(t) {
     var s = time.getSeconds();
     return y+&apos;年&apos;+add0(m) + &apos;月&apos; + add0(d) + &apos;日 &apos; + add0(h) + &apos;:&apos; + add0(mm);
 }
-</code></pre>
+</code></pre><p>截图放一张我这次做的活动的签到日历：<br>！<a href=""></a></p>
+
       
     </div>
 
@@ -485,7 +491,7 @@ function format(t) {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -493,7 +499,7 @@ function format(t) {
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -502,7 +508,7 @@ function format(t) {
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -689,50 +695,9 @@ function format(t) {
 
   
 
-<script>
-   $(function(){
-      var cvs = document.getElementById("mycanvas")
-      var ctx = cvs.getContext("2d");
-      var width = cvs.width = document.documentElement.clientWidth;
-      var height = cvs.height = document.documentElement.clientHeight; 
-      // 初始化准备
-      var words = "012345678abcederqwertyuipljnbvgfdcxsaz/c/,[]scQAZWSXEDCRFVTGBYHNUJMIKLOP";//随机的文字
-      var wordsArr = words.split('');
-      var fontSize = 16;
-      var wordColor = '#000';
-      var clumns = width/fontSize;
-      console.log(clumns)
-      var drops = [];
-      for(var i = 0;i<clumns;i++){
-        drops[i] = 1;
-      }
 
-      function draw(){
-        ctx.save();
-        ctx.fillStyle = wordColor;
-        ctx.font = fontSize+"px arial";
-        for (var i=0;i<clumns;i++){
-          var text = wordsArr[Math.floor(Math.random()*wordsArr.length)];
-          ctx.fillText(text,i*fontSize, drops[i]*fontSize);
-          if(drops[i]*fontSize>height&& Math.random()<0.01){
-            drops[i]=0;
-          }
-          drops[i]++;
-        }
-        ctx.restore();
-      }
 
-      // 循环调用
-      render()
-      function render(){
-        window.requestAnimationFrame(render);
-        ctx.fillStyle = 'rgba(255,255,255,0.2)';
-        ctx.fillRect(0, 0, width, height);
-        draw()
-      }
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
-   })
-       
-   </script>
 </body>
 </html>

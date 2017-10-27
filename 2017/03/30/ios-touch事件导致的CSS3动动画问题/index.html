@@ -154,7 +154,7 @@
   
     
   
-  <canvas id="mycanvas" style="position:fixed;top:0;left:0;z-index: -1;"></canvas>
+  <!-- <canvas id="mycanvas" style="position:fixed;top:0;left:0;z-index: -1;"></canvas> -->
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
@@ -262,7 +262,7 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content" style="background-color: #fff">
+          <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
@@ -366,7 +366,7 @@
       
 
       
-        <p>刚刚做完一个腾讯动漫的项目：<a href="https://www.in66.com/html/tonglingfei/index.html" target="_blank" rel="external">传送门</a>,这项目就是一个漫画类的，有许多图片对话框啥的，所以当初切图都快切死。本来我也觉得应该就是切图和顺序方面的事情比较麻烦的，但却还是遇到另外一个问题，而且是一个比较麻烦的。下面开始讲这个麻烦了啦啦啦~<br><a id="more"></a></p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>刚刚做完一个腾讯动漫的项目：<a href="https://www.in66.com/html/tonglingfei/index.html" target="_blank" rel="external">传送门</a>,这项目就是一个漫画类的，有许多图片对话框啥的，所以当初切图都快切死。本来我也觉得应该就是切图和顺序方面的事情比较麻烦的，但却还是遇到另外一个问题，而且是一个比较麻烦的。下面开始讲这个麻烦了啦啦啦~<br><a id="more"></a></p>
 <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>当你到达这个页面的时候，你会看到5个不同的美男子，你点击其中任何一个都会去一个相对应的故事，假如你点击第二个你会看到第二张图。第二张图中我用红色框框出来的这些对话框都是需要一个一个的接着出现，所以我当时的第一反应是采用CSS3的animation-delay属性来解决，只需要给每个对话框设置一个延迟的属性，让她依次出来不就行了，我也确实是这样做了。然而因为我穷，只买得起安卓手机，所以只测了安卓一点问题都木有，在chrome模拟器上也啥事没有，我就真信了这样做简直不能太好，等全部做完了，来测试上线的时候才发现ios尼玛的又出现问题了。因为这些故事的页面都超过了一屏，所以必须要滑动屏幕才能看下面的，ios出问题就出现在这：ios当你触摸屏幕或者滑动屏幕时它会暂停掉你屏幕上CSS的渲染，所以只要你的手还在屏幕上，对话框的出现就会被截断，你放开手后才能继续加载。但是蛋疼的是后来加载的对话框它的延迟时间会重头开始算起而不是从你松开手的那一刻算，这就真是坑了，等半天都出不来。</p>
 <p><img src="http://i.imgur.com/YVK0j59.png" alt=""><br><img src="http://i.imgur.com/Ch5vXwA.png" alt=""></p>
 <h3 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h3><p>赶紧去google一下才发现这事前端真的很无辜，是ios事件的处理机制有关。<br>ios和安卓不同，他们处理事情的机制顺序不一样。</p>
@@ -487,7 +487,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -495,7 +495,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -504,7 +504,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -707,50 +707,9 @@
 
   
 
-<script>
-   $(function(){
-      var cvs = document.getElementById("mycanvas")
-      var ctx = cvs.getContext("2d");
-      var width = cvs.width = document.documentElement.clientWidth;
-      var height = cvs.height = document.documentElement.clientHeight; 
-      // 初始化准备
-      var words = "012345678abcederqwertyuipljnbvgfdcxsaz/c/,[]scQAZWSXEDCRFVTGBYHNUJMIKLOP";//随机的文字
-      var wordsArr = words.split('');
-      var fontSize = 16;
-      var wordColor = '#000';
-      var clumns = width/fontSize;
-      console.log(clumns)
-      var drops = [];
-      for(var i = 0;i<clumns;i++){
-        drops[i] = 1;
-      }
 
-      function draw(){
-        ctx.save();
-        ctx.fillStyle = wordColor;
-        ctx.font = fontSize+"px arial";
-        for (var i=0;i<clumns;i++){
-          var text = wordsArr[Math.floor(Math.random()*wordsArr.length)];
-          ctx.fillText(text,i*fontSize, drops[i]*fontSize);
-          if(drops[i]*fontSize>height&& Math.random()<0.01){
-            drops[i]=0;
-          }
-          drops[i]++;
-        }
-        ctx.restore();
-      }
 
-      // 循环调用
-      render()
-      function render(){
-        window.requestAnimationFrame(render);
-        ctx.fillStyle = 'rgba(255,255,255,0.2)';
-        ctx.fillRect(0, 0, width, height);
-        draw()
-      }
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
-   })
-       
-   </script>
 </body>
 </html>

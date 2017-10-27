@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="jiemo blog">
 <meta property="og:description" content="上一篇记录的是Vue的环境搭建以及如何去运行它。此篇文章是回顾一下自己之前所学的Vue的指令，上次学了一些后，后面公司项目忙断了一段时间，现在都有点记得不是特别清楚了，所以趁着这次写博客，来把之前学习的指令回顾一遍。（所以说看的多不如实际操练几把，说多都是泪） 常用指令v-text &amp;amp;&amp;amp; v-html12345678&amp;lt;span v-text=&amp;quot;msg&amp;quot;&amp;g">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-02-17T09:07:43.000Z">
+<meta property="og:updated_time" content="2017-08-01T03:47:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue入门到放弃(二)">
 <meta name="twitter:description" content="上一篇记录的是Vue的环境搭建以及如何去运行它。此篇文章是回顾一下自己之前所学的Vue的指令，上次学了一些后，后面公司项目忙断了一段时间，现在都有点记得不是特别清楚了，所以趁着这次写博客，来把之前学习的指令回顾一遍。（所以说看的多不如实际操练几把，说多都是泪） 常用指令v-text &amp;amp;&amp;amp; v-html12345678&amp;lt;span v-text=&amp;quot;msg&amp;quot;&amp;g">
@@ -151,7 +151,7 @@
   
     
   
-  <canvas id="mycanvas" style="position:fixed;top:0;left:0;z-index: -1;"></canvas>
+  <!-- <canvas id="mycanvas" style="position:fixed;top:0;left:0;z-index: -1;"></canvas> -->
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
@@ -259,7 +259,7 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content" style="background-color: #fff">
+          <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
@@ -363,18 +363,31 @@
       
 
       
-        <p>上一篇记录的是Vue的环境搭建以及如何去运行它。此篇文章是回顾一下自己之前所学的Vue的指令，上次学了一些后，后面公司项目忙断了一段时间，现在都有点记得不是特别清楚了，所以趁着这次写博客，来把之前学习的指令回顾一遍。（所以说看的多不如实际操练几把，说多都是泪）</p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>上一篇记录的是Vue的环境搭建以及如何去运行它。此篇文章是回顾一下自己之前所学的Vue的指令，上次学了一些后，后面公司项目忙断了一段时间，现在都有点记得不是特别清楚了，所以趁着这次写博客，来把之前学习的指令回顾一遍。（所以说看的多不如实际操练几把，说多都是泪）</p>
 <h3 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h3><h4 id="v-text-amp-amp-v-html"><a href="#v-text-amp-amp-v-html" class="headerlink" title="v-text &amp;&amp; v-html"></a>v-text &amp;&amp; v-html</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;span v-text=&quot;msg&quot;&gt;&lt;/span&gt;</div><div class="line">&lt;span v-html=&quot;msg&quot;&gt;&lt;/span&gt;</div><div class="line">var app = new Vue(&#123;</div><div class="line">		el: &apos;#app&apos;,   </div><div class="line">		data: &#123;</div><div class="line">			msg:&apos;&lt; h1 &gt; hi &lt; /h1 &gt;&apos;</div><div class="line">		&#125;</div><div class="line">	&#125;)</div></pre></td></tr></table></figure>
 <p>v-text会把message中有html标签的部分都会显示出来，v-html则会把message中的信息根据html规则进行渲染。<br> <a id="more"></a></p>
 <h4 id="条件指令"><a href="#条件指令" class="headerlink" title="条件指令"></a>条件指令</h4><ol>
 <li>v-if v-else</li>
 <li>v-show 元素始终渲染保存在DOM中，只是控制display属性。</li>
-<li><p>v-else-if 类似于if，else if，else</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;div v-if=&quot;type === &apos;A&apos;&quot;&gt;</div><div class="line">  A</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div v-else-if=&quot;type === &apos;B&apos;&quot;&gt;</div><div class="line">  B</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div v-else-if=&quot;type === &apos;C&apos;&quot;&gt;</div><div class="line">  C</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div v-else&gt;</div><div class="line">  Not A/B/C</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
-</li>
+<li>v-else-if 类似于if，else if，else</li>
+</ol>
+<pre><code>&lt;div v-if=&quot;type === &apos;A&apos;&quot;&gt;
+   A
+&lt;/div&gt;
+&lt;div v-else-if=&quot;type === &apos;B&apos;&quot;&gt;
+   B
+&lt;/div&gt;
+&lt;div v-else-if=&quot;type === &apos;C&apos;&quot;&gt;
+  C
+&lt;/div&gt;
+&lt;div v-else&gt;
+  Not A/B/C
+&lt;/div&gt;
+</code></pre><ol>
 <li><p>key控制元素的可重用性：提供一种方式让你自己决定是否重用元素，key后必须带唯一的值，添加key属性的元素就不具有复用性了</p>
 <h4 id="v-for"><a href="#v-for" class="headerlink" title="v-for"></a>v-for</h4><p>循环多次渲染元素</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div v-for=&quot;(item, index) in items&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;div v-for=&quot;(val, key) in object&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;div v-for=&quot;(val, key, index) in object&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
+  <div v-for="(item, index) in items"></div><br>  <div v-for="(val, key) in object"></div><br>  <div v-for="(val, key, index) in object"></div>
+
 </li>
 </ol>
 <h4 id="v-on"><a href="#v-on" class="headerlink" title="v-on"></a>v-on</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">绑定事件监听器</div><div class="line"> 方法处理器 </div><div class="line">&lt;button v-on:click=&quot;doThis&quot;&gt;&lt;/button&gt;</div><div class="line"></div><div class="line">内联语句 </div><div class="line">&lt;button v-on:click=&quot;doThat(&apos;hello&apos;, $event)&quot;&gt;&lt;/button&gt;</div><div class="line"></div><div class="line"> 缩写 </div><div class="line">&lt;button @click=&quot;doThis&quot;&gt;&lt;/button&gt;</div><div class="line"></div><div class="line"> 停止冒泡</div><div class="line">&lt;button @click.stop=&quot;doThis&quot;&gt;&lt;/button&gt;</div><div class="line"></div><div class="line"> 阻止默认行为</div><div class="line">&lt;button @click.prevent=&quot;doThis&quot;&gt;&lt;/button&gt;</div><div class="line"></div><div class="line">阻止默认行为，没有表达式</div><div class="line">&lt;form @submit.prevent&gt;&lt;/form&gt;</div><div class="line"></div><div class="line">串联修饰符</div><div class="line">&lt;button @click.stop.prevent=&quot;doThis&quot;&gt;&lt;/button&gt;</div><div class="line"></div><div class="line">键修饰符，键别名</div><div class="line">&lt;input @keyup.enter=&quot;onEnter&quot;&gt;</div><div class="line"></div><div class="line">键修饰符，键代码</div><div class="line">&lt;input @keyup.13=&quot;onEnter&quot;&gt;</div><div class="line">#### v-bind</div><div class="line">绑定一个属性</div><div class="line">&lt;img v-bind:src=&quot;imageSrc&quot;&gt;</div><div class="line"></div><div class="line">缩写</div><div class="line">&lt;img :src=&quot;imageSrc&quot;&gt;</div><div class="line">with inline string concatenation</div><div class="line">&lt;img :src=&quot;&apos;/path/to/images/&apos; + fileName&quot;&gt;</div><div class="line"></div><div class="line"> class 绑定 </div><div class="line">&lt;div :class=&quot;&#123; red: isRed &#125;&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;div :class=&quot;[classA, classB]&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;div :class=&quot;[classA, &#123; classB: isB, classC: isC &#125;]&quot;&gt;</div><div class="line"></div><div class="line">style 绑定 </div><div class="line">&lt;div :style=&quot;&#123; fontSize: size + &apos;px&apos; &#125;&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;div :style=&quot;[styleObjectA, styleObjectB]&quot;&gt;&lt;/div&gt;</div><div class="line"></div><div class="line"> 绑定一个有属性的对象</div><div class="line">&lt;div v-bind=&quot;&#123; id: someProp, &apos;other-attr&apos;: otherProp &#125;&quot;&gt;&lt;/div&gt;</div><div class="line"></div><div class="line">通过 prop 修饰符绑定 DOM 属性</div><div class="line">&lt;div v-bind:text-content.prop=&quot;text&quot;&gt;&lt;/div&gt;</div><div class="line">prop 绑定. “prop” 必须在 my-component 中声明。</div><div class="line">&lt;my-component :prop=&quot;someThing&quot;&gt;&lt;/my-component&gt;</div><div class="line"></div><div class="line">XLink </div><div class="line">&lt;svg&gt;&lt;a :xlink:special=&quot;foo&quot;&gt;&lt;/a&gt;&lt;/svg&gt;</div></pre></td></tr></table></figure>
@@ -506,7 +519,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -514,7 +527,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -523,7 +536,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -726,50 +739,9 @@
 
   
 
-<script>
-   $(function(){
-      var cvs = document.getElementById("mycanvas")
-      var ctx = cvs.getContext("2d");
-      var width = cvs.width = document.documentElement.clientWidth;
-      var height = cvs.height = document.documentElement.clientHeight; 
-      // 初始化准备
-      var words = "012345678abcederqwertyuipljnbvgfdcxsaz/c/,[]scQAZWSXEDCRFVTGBYHNUJMIKLOP";//随机的文字
-      var wordsArr = words.split('');
-      var fontSize = 16;
-      var wordColor = '#000';
-      var clumns = width/fontSize;
-      console.log(clumns)
-      var drops = [];
-      for(var i = 0;i<clumns;i++){
-        drops[i] = 1;
-      }
 
-      function draw(){
-        ctx.save();
-        ctx.fillStyle = wordColor;
-        ctx.font = fontSize+"px arial";
-        for (var i=0;i<clumns;i++){
-          var text = wordsArr[Math.floor(Math.random()*wordsArr.length)];
-          ctx.fillText(text,i*fontSize, drops[i]*fontSize);
-          if(drops[i]*fontSize>height&& Math.random()<0.01){
-            drops[i]=0;
-          }
-          drops[i]++;
-        }
-        ctx.restore();
-      }
 
-      // 循环调用
-      render()
-      function render(){
-        window.requestAnimationFrame(render);
-        ctx.fillStyle = 'rgba(255,255,255,0.2)';
-        ctx.fillRect(0, 0, width, height);
-        draw()
-      }
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
-   })
-       
-   </script>
 </body>
 </html>

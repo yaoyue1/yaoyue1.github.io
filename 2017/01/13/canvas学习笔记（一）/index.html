@@ -93,7 +93,7 @@
 <meta property="og:site_name" content="jiemo blog">
 <meta property="og:description" content="最近一段时间接触的项目大多数都涉及到canvas对于图片的操作包括多图的合成、图片从input上传后读取到canvas中、图片的裁剪等，所以觉得自己很有必要的学习一下canvas了。入坑碰到的第一个问题就canvas画图需要等到图片加载完成之后才能进行画图，否则canvas上是显示不出图片。所以首先来解决这个问题。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-03-17T12:17:43.000Z">
+<meta property="og:updated_time" content="2017-03-17T12:17:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="canvas多图预加载">
 <meta name="twitter:description" content="最近一段时间接触的项目大多数都涉及到canvas对于图片的操作包括多图的合成、图片从input上传后读取到canvas中、图片的裁剪等，所以觉得自己很有必要的学习一下canvas了。入坑碰到的第一个问题就canvas画图需要等到图片加载完成之后才能进行画图，否则canvas上是显示不出图片。所以首先来解决这个问题。">
@@ -150,7 +150,7 @@
   
     
   
-  <canvas id="mycanvas" style="position:fixed;top:0;left:0;z-index: -1;"></canvas>
+  <!-- <canvas id="mycanvas" style="position:fixed;top:0;left:0;z-index: -1;"></canvas> -->
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
@@ -258,7 +258,7 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content" style="background-color: #fff">
+          <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
@@ -344,7 +344,7 @@
       
 
       
-        <p>最近一段时间接触的项目大多数都涉及到canvas对于图片的操作包括多图的合成、图片从input上传后读取到canvas中、图片的裁剪等，所以觉得自己很有必要的学习一下canvas了。入坑碰到的第一个问题就canvas画图需要等到图片加载完成之后才能进行画图，否则canvas上是显示不出图片。所以首先来解决这个问题。<br> <a id="more"></a></p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>最近一段时间接触的项目大多数都涉及到canvas对于图片的操作包括多图的合成、图片从input上传后读取到canvas中、图片的裁剪等，所以觉得自己很有必要的学习一下canvas了。入坑碰到的第一个问题就canvas画图需要等到图片加载完成之后才能进行画图，否则canvas上是显示不出图片。所以首先来解决这个问题。<br> <a id="more"></a></p>
 <h3 id="多图预加载问题"><a href="#多图预加载问题" class="headerlink" title="多图预加载问题"></a>多图预加载问题</h3><h4 id="利用jQuery的deferred对象"><a href="#利用jQuery的deferred对象" class="headerlink" title="利用jQuery的deferred对象"></a>利用jQuery的deferred对象</h4><p>首先介绍一下deferred的对象，他是jQuery1.5版本之后出来的新功能，是为了解决异步回调的问题的。每个deferred对象有三种状态：正在处理中，成功状态，失败状态。deferred对象被resolve/reject触发之后，就会改变其状态，相应的调用不同状态所对应的函数。<br>deferred对象的一些属性：</p>
 <ol>
 <li>$.Deferrd()生成一个deferred对象</li>
@@ -461,7 +461,7 @@ function loadImage(){
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/16/es6学习笔记/" rel="next" title="ES6">
+              <a href="/2016/12/16/es6学习笔记（一）/" rel="next" title="ES6">
                 <i class="fa fa-chevron-left"></i> ES6
               </a>
             
@@ -541,7 +541,7 @@ function loadImage(){
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -549,7 +549,7 @@ function loadImage(){
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -558,7 +558,7 @@ function loadImage(){
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -761,50 +761,9 @@ function loadImage(){
 
   
 
-<script>
-   $(function(){
-      var cvs = document.getElementById("mycanvas")
-      var ctx = cvs.getContext("2d");
-      var width = cvs.width = document.documentElement.clientWidth;
-      var height = cvs.height = document.documentElement.clientHeight; 
-      // 初始化准备
-      var words = "012345678abcederqwertyuipljnbvgfdcxsaz/c/,[]scQAZWSXEDCRFVTGBYHNUJMIKLOP";//随机的文字
-      var wordsArr = words.split('');
-      var fontSize = 16;
-      var wordColor = '#000';
-      var clumns = width/fontSize;
-      console.log(clumns)
-      var drops = [];
-      for(var i = 0;i<clumns;i++){
-        drops[i] = 1;
-      }
 
-      function draw(){
-        ctx.save();
-        ctx.fillStyle = wordColor;
-        ctx.font = fontSize+"px arial";
-        for (var i=0;i<clumns;i++){
-          var text = wordsArr[Math.floor(Math.random()*wordsArr.length)];
-          ctx.fillText(text,i*fontSize, drops[i]*fontSize);
-          if(drops[i]*fontSize>height&& Math.random()<0.01){
-            drops[i]=0;
-          }
-          drops[i]++;
-        }
-        ctx.restore();
-      }
 
-      // 循环调用
-      render()
-      function render(){
-        window.requestAnimationFrame(render);
-        ctx.fillStyle = 'rgba(255,255,255,0.2)';
-        ctx.fillRect(0, 0, width, height);
-        draw()
-      }
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
-   })
-       
-   </script>
 </body>
 </html>

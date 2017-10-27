@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="jiemo blog">
 <meta property="og:description" content="上一次说过“canvas学习一点点”是一个连载的篇目哈哈~~，将会记录一些我学习canvas的实例或者是我觉得好玩的canvas应用分享，反正你记住是关于canvas的东西就好了。今天是第二篇，这一篇打算写个简单的进度条~（哎呀~被你猜中了，是因为我还不会太难的啦），说实话之前我虽然懂一些些canvas图片方面的东西，但是除开操作图片外倒真是对其他的canvas知识知道的甚少。不过我个人觉得can">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-04-01T07:22:41.000Z">
+<meta property="og:updated_time" content="2017-04-01T07:22:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="canvas学习一点点（二）--">
 <meta name="twitter:description" content="上一次说过“canvas学习一点点”是一个连载的篇目哈哈~~，将会记录一些我学习canvas的实例或者是我觉得好玩的canvas应用分享，反正你记住是关于canvas的东西就好了。今天是第二篇，这一篇打算写个简单的进度条~（哎呀~被你猜中了，是因为我还不会太难的啦），说实话之前我虽然懂一些些canvas图片方面的东西，但是除开操作图片外倒真是对其他的canvas知识知道的甚少。不过我个人觉得can">
@@ -151,7 +151,7 @@
   
     
   
-  <canvas id="mycanvas" style="position:fixed;top:0;left:0;z-index: -1;"></canvas>
+  <!-- <canvas id="mycanvas" style="position:fixed;top:0;left:0;z-index: -1;"></canvas> -->
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
@@ -259,7 +259,7 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content" style="background-color: #fff">
+          <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
@@ -363,7 +363,7 @@
       
 
       
-        <p>上一次说过“canvas学习一点点”是一个连载的篇目哈哈~~，将会记录一些我学习canvas的实例或者是我觉得好玩的canvas应用分享，反正你记住是关于canvas的东西就好了。今天是第二篇，这一篇打算写个简单的进度条~（哎呀~被你猜中了，是因为我还不会太难的啦），说实话之前我虽然懂一些些canvas图片方面的东西，但是除开操作图片外倒真是对其他的canvas知识知道的甚少。不过我个人觉得canvas好好玩呀~比起写页面来我还是比较喜欢写这种动画，只是比较悲伤的是，一些属性到现在我都是处于一个懵懂的状态中。<br>最终的效果：<a href="https://yaoyue1.github.io/bar.html" target="_blank" rel="external">传送门</a><br><a id="more"></a></p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>上一次说过“canvas学习一点点”是一个连载的篇目哈哈~~，将会记录一些我学习canvas的实例或者是我觉得好玩的canvas应用分享，反正你记住是关于canvas的东西就好了。今天是第二篇，这一篇打算写个简单的进度条~（哎呀~被你猜中了，是因为我还不会太难的啦），说实话之前我虽然懂一些些canvas图片方面的东西，但是除开操作图片外倒真是对其他的canvas知识知道的甚少。不过我个人觉得canvas好好玩呀~比起写页面来我还是比较喜欢写这种动画，只是比较悲伤的是，一些属性到现在我都是处于一个懵懂的状态中。<br>最终的效果：<a href="https://yaoyue1.github.io/bar.html" target="_blank" rel="external">传送门</a><br><a id="more"></a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//html</div><div class="line">&lt;canvas id= &quot;mycanvas&quot; width=&apos;500&apos; height=&apos;500&apos;&gt;&lt;/canvas&gt;</div></pre></td></tr></table></figure>
 <pre><code>//js
 $(function(){
@@ -521,7 +521,7 @@ $(function(){
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -529,7 +529,7 @@ $(function(){
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -538,7 +538,7 @@ $(function(){
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -725,50 +725,9 @@ $(function(){
 
   
 
-<script>
-   $(function(){
-      var cvs = document.getElementById("mycanvas")
-      var ctx = cvs.getContext("2d");
-      var width = cvs.width = document.documentElement.clientWidth;
-      var height = cvs.height = document.documentElement.clientHeight; 
-      // 初始化准备
-      var words = "012345678abcederqwertyuipljnbvgfdcxsaz/c/,[]scQAZWSXEDCRFVTGBYHNUJMIKLOP";//随机的文字
-      var wordsArr = words.split('');
-      var fontSize = 16;
-      var wordColor = '#000';
-      var clumns = width/fontSize;
-      console.log(clumns)
-      var drops = [];
-      for(var i = 0;i<clumns;i++){
-        drops[i] = 1;
-      }
 
-      function draw(){
-        ctx.save();
-        ctx.fillStyle = wordColor;
-        ctx.font = fontSize+"px arial";
-        for (var i=0;i<clumns;i++){
-          var text = wordsArr[Math.floor(Math.random()*wordsArr.length)];
-          ctx.fillText(text,i*fontSize, drops[i]*fontSize);
-          if(drops[i]*fontSize>height&& Math.random()<0.01){
-            drops[i]=0;
-          }
-          drops[i]++;
-        }
-        ctx.restore();
-      }
 
-      // 循环调用
-      render()
-      function render(){
-        window.requestAnimationFrame(render);
-        ctx.fillStyle = 'rgba(255,255,255,0.2)';
-        ctx.fillRect(0, 0, width, height);
-        draw()
-      }
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
-   })
-       
-   </script>
 </body>
 </html>

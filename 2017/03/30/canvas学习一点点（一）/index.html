@@ -95,7 +95,7 @@
 <meta property="og:description" content="这将会是一个长期更新的篇目~前段时间在朋友圈刚立完flag说要把买的那本canvas的书看完的，现在觉得不做点什么东西出来好像也少点什么，所以以后如果有时间，就每周写一篇关于canvas的实际应用。就让我们一起沉醉在canvas的世界里吧~~ 今天第一次就写一个我最喜欢的canvas雪花呀花瓣呀的飘落效果，其实jQuery操作dom也是可以实现这效果的，但是性能非常的不好，一旦粒子过多，页面就开始">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://a-ssl.duitang.com/uploads/item/201609/04/20160904102522_Fadn4.jpeg">
-<meta property="og:updated_time" content="2017-03-31T07:18:09.000Z">
+<meta property="og:updated_time" content="2017-03-31T07:18:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="canvas学习一点点（一）">
 <meta name="twitter:description" content="这将会是一个长期更新的篇目~前段时间在朋友圈刚立完flag说要把买的那本canvas的书看完的，现在觉得不做点什么东西出来好像也少点什么，所以以后如果有时间，就每周写一篇关于canvas的实际应用。就让我们一起沉醉在canvas的世界里吧~~ 今天第一次就写一个我最喜欢的canvas雪花呀花瓣呀的飘落效果，其实jQuery操作dom也是可以实现这效果的，但是性能非常的不好，一旦粒子过多，页面就开始">
@@ -153,7 +153,7 @@
   
     
   
-  <canvas id="mycanvas" style="position:fixed;top:0;left:0;z-index: -1;"></canvas>
+  <!-- <canvas id="mycanvas" style="position:fixed;top:0;left:0;z-index: -1;"></canvas> -->
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
@@ -261,7 +261,7 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content" style="background-color: #fff">
+          <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
@@ -365,7 +365,7 @@
       
 
       
-        <p>这将会是一个长期更新的篇目~前段时间在朋友圈刚立完flag说要把买的那本canvas的书看完的，现在觉得不做点什么东西出来好像也少点什么，所以以后如果有时间，就每周写一篇关于canvas的实际应用。就让我们一起沉醉在canvas的世界里吧~~</p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>这将会是一个长期更新的篇目~前段时间在朋友圈刚立完flag说要把买的那本canvas的书看完的，现在觉得不做点什么东西出来好像也少点什么，所以以后如果有时间，就每周写一篇关于canvas的实际应用。就让我们一起沉醉在canvas的世界里吧~~</p>
 <p>今天第一次就写一个我最喜欢的canvas雪花呀花瓣呀的飘落效果，其实jQuery操作dom也是可以实现这效果的，但是性能非常的不好，一旦粒子过多，页面就开始抖动不流畅，这方面还是canvas比较好。<br>最终效果链接：<a href="https://yaoyue1.github.io/snow.html" target="_blank" rel="external">传送门</a><br>快和你的妹纸一起来看雪吧~~~<br><a id="more"></a></p>
 <pre><code>//html
 &lt;div class=&quot;container&quot;&gt;&lt;/div&gt;
@@ -548,7 +548,7 @@ var _base = &quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAlCAMAAADy
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -556,7 +556,7 @@ var _base = &quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAlCAMAAADy
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -565,7 +565,7 @@ var _base = &quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAlCAMAAADy
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -752,50 +752,9 @@ var _base = &quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAlCAMAAADy
 
   
 
-<script>
-   $(function(){
-      var cvs = document.getElementById("mycanvas")
-      var ctx = cvs.getContext("2d");
-      var width = cvs.width = document.documentElement.clientWidth;
-      var height = cvs.height = document.documentElement.clientHeight; 
-      // 初始化准备
-      var words = "012345678abcederqwertyuipljnbvgfdcxsaz/c/,[]scQAZWSXEDCRFVTGBYHNUJMIKLOP";//随机的文字
-      var wordsArr = words.split('');
-      var fontSize = 16;
-      var wordColor = '#000';
-      var clumns = width/fontSize;
-      console.log(clumns)
-      var drops = [];
-      for(var i = 0;i<clumns;i++){
-        drops[i] = 1;
-      }
 
-      function draw(){
-        ctx.save();
-        ctx.fillStyle = wordColor;
-        ctx.font = fontSize+"px arial";
-        for (var i=0;i<clumns;i++){
-          var text = wordsArr[Math.floor(Math.random()*wordsArr.length)];
-          ctx.fillText(text,i*fontSize, drops[i]*fontSize);
-          if(drops[i]*fontSize>height&& Math.random()<0.01){
-            drops[i]=0;
-          }
-          drops[i]++;
-        }
-        ctx.restore();
-      }
 
-      // 循环调用
-      render()
-      function render(){
-        window.requestAnimationFrame(render);
-        ctx.fillStyle = 'rgba(255,255,255,0.2)';
-        ctx.fillRect(0, 0, width, height);
-        draw()
-      }
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
-   })
-       
-   </script>
 </body>
 </html>

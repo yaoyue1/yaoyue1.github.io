@@ -154,7 +154,7 @@
   
     
   
-  <canvas id="mycanvas" style="position:fixed;top:0;left:0;z-index: -1;"></canvas>
+  <!-- <canvas id="mycanvas" style="position:fixed;top:0;left:0;z-index: -1;"></canvas> -->
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
@@ -262,7 +262,7 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content" style="background-color: #fff">
+          <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
@@ -366,7 +366,7 @@
       
 
       
-        <p>接触了点Vue后，自己屁颠屁颠去搜索一些实例的来看，结果各种出现Vue-router，尼玛这又是干嘛的？？？（黑人问号脸），于是去Vue-router的官方文档上瞅瞅，遂写了这篇笔记式的博文。</p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>接触了点Vue后，自己屁颠屁颠去搜索一些实例的来看，结果各种出现Vue-router，尼玛这又是干嘛的？？？（黑人问号脸），于是去Vue-router的官方文档上瞅瞅，遂写了这篇笔记式的博文。</p>
 <h3 id="vue-router是干嘛的？"><a href="#vue-router是干嘛的？" class="headerlink" title="vue-router是干嘛的？"></a>vue-router是干嘛的？</h3><p>Vue-router是Vue.js的官方路由插件，Vue的单页面应用是基于路由和组件的，路由用于设定访问的路径，并将路径和组件映射起来。之前我们写项目的时候，页面之前的切换时和跳转是通过超链接等来实现的，在Vue-router单页面应用中，则是通过路径的切换。<br><a id="more"></a></p>
 <h3 id="使用基本步骤"><a href="#使用基本步骤" class="headerlink" title="使用基本步骤"></a>使用基本步骤</h3><ol>
 <li>导入文件<br><pre><br>// 导入Vue，这个是必需的，在使用Vue之前，必须先导入<br>import Vue from ‘vue’<br>// 导入 vue-router，并使用<br>import VueRouter from ‘vue-router’<br>Vue.use(VueRouter) </pre></li>
@@ -641,7 +641,7 @@ const router = new VueRouter({
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -649,7 +649,7 @@ const router = new VueRouter({
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -658,7 +658,7 @@ const router = new VueRouter({
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -861,50 +861,9 @@ const router = new VueRouter({
 
   
 
-<script>
-   $(function(){
-      var cvs = document.getElementById("mycanvas")
-      var ctx = cvs.getContext("2d");
-      var width = cvs.width = document.documentElement.clientWidth;
-      var height = cvs.height = document.documentElement.clientHeight; 
-      // 初始化准备
-      var words = "012345678abcederqwertyuipljnbvgfdcxsaz/c/,[]scQAZWSXEDCRFVTGBYHNUJMIKLOP";//随机的文字
-      var wordsArr = words.split('');
-      var fontSize = 16;
-      var wordColor = '#000';
-      var clumns = width/fontSize;
-      console.log(clumns)
-      var drops = [];
-      for(var i = 0;i<clumns;i++){
-        drops[i] = 1;
-      }
 
-      function draw(){
-        ctx.save();
-        ctx.fillStyle = wordColor;
-        ctx.font = fontSize+"px arial";
-        for (var i=0;i<clumns;i++){
-          var text = wordsArr[Math.floor(Math.random()*wordsArr.length)];
-          ctx.fillText(text,i*fontSize, drops[i]*fontSize);
-          if(drops[i]*fontSize>height&& Math.random()<0.01){
-            drops[i]=0;
-          }
-          drops[i]++;
-        }
-        ctx.restore();
-      }
 
-      // 循环调用
-      render()
-      function render(){
-        window.requestAnimationFrame(render);
-        ctx.fillStyle = 'rgba(255,255,255,0.2)';
-        ctx.fillRect(0, 0, width, height);
-        draw()
-      }
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
-   })
-       
-   </script>
 </body>
 </html>

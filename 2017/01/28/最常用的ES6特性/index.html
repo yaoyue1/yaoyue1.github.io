@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="let和const var：只有全局作用域和函数作用域，也就是说这样会导致函数里层的变量会覆盖函数外部的变量； let：新增块级作用域，用let声明的变量，只有在let命令所在的代码块内有效； const:声明常量，常量一旦声明值就不能改变">
+<meta name="description" content="let和const var：只有全局作用域和函数作用域，也就是说这样会导致函数里层的变量会覆盖函数外部的变量； let：新增块级作用域，用let声明的变量，只有在let命令所在的代码块内有效；存在暂时性死性，必须先声明后使用。 const:声明常量，常量一旦声明值就不能改变">
 <meta name="keywords" content="ES6">
 <meta property="og:type" content="article">
 <meta property="og:title" content="最常用的ES6特性">
 <meta property="og:url" content="http://yaoyue.com/2017/01/28/最常用的ES6特性/index.html">
 <meta property="og:site_name" content="jiemo blog">
-<meta property="og:description" content="let和const var：只有全局作用域和函数作用域，也就是说这样会导致函数里层的变量会覆盖函数外部的变量； let：新增块级作用域，用let声明的变量，只有在let命令所在的代码块内有效； const:声明常量，常量一旦声明值就不能改变">
+<meta property="og:description" content="let和const var：只有全局作用域和函数作用域，也就是说这样会导致函数里层的变量会覆盖函数外部的变量； let：新增块级作用域，用let声明的变量，只有在let命令所在的代码块内有效；存在暂时性死性，必须先声明后使用。 const:声明常量，常量一旦声明值就不能改变">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-02-17T09:13:23.000Z">
+<meta property="og:updated_time" content="2017-09-18T07:33:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最常用的ES6特性">
-<meta name="twitter:description" content="let和const var：只有全局作用域和函数作用域，也就是说这样会导致函数里层的变量会覆盖函数外部的变量； let：新增块级作用域，用let声明的变量，只有在let命令所在的代码块内有效； const:声明常量，常量一旦声明值就不能改变">
+<meta name="twitter:description" content="let和const var：只有全局作用域和函数作用域，也就是说这样会导致函数里层的变量会覆盖函数外部的变量； let：新增块级作用域，用let声明的变量，只有在let命令所在的代码块内有效；存在暂时性死性，必须先声明后使用。 const:声明常量，常量一旦声明值就不能改变">
 
 
 
@@ -151,7 +151,7 @@
   
     
   
-  <canvas id="mycanvas" style="position:fixed;top:0;left:0;z-index: -1;"></canvas>
+  <!-- <canvas id="mycanvas" style="position:fixed;top:0;left:0;z-index: -1;"></canvas> -->
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
@@ -259,7 +259,7 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content" style="background-color: #fff">
+          <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
@@ -363,16 +363,31 @@
       
 
       
-        <h3 id="let和const"><a href="#let和const" class="headerlink" title="let和const"></a>let和const</h3><ul>
+        <script src="/assets/js/APlayer.min.js"> </script><h3 id="let和const"><a href="#let和const" class="headerlink" title="let和const"></a>let和const</h3><ul>
 <li>var：只有全局作用域和函数作用域，也就是说这样会导致函数里层的变量会覆盖函数外部的变量；</li>
-<li>let：新增块级作用域，用let声明的变量，只有在let命令所在的代码块内有效；</li>
+<li>let：新增块级作用域，用let声明的变量，只有在let命令所在的代码块内有效；存在暂时性死性，必须先声明后使用。</li>
 <li>const:声明常量，常量一旦声明值就不能改变<a id="more"></a>
-<h3 id="class、extend和super"><a href="#class、extend和super" class="headerlink" title="class、extend和super"></a>class、extend和super</h3>constructor是构造方法，constructor内定义的方法和属性是实例对象自己的，而constructor外定义的方法和属性则是实例对象可以共享的。<br>class之间通过extends实现继承<br>super它代指父类的实例也即父类的this对象，子类必须在constructor方法中调用super方法，否则新建实例的时候会报错，因为子类是没有自己的实例对象的，而是继承父类的this对象，然后对其加工。<h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3>箭头函数解决了this的指向问题，箭头函数根本没有自己的this，它的this是继承外面的，因此内部的this就是外层代码块的this。</li>
+<h3 id="class、extend和super"><a href="#class、extend和super" class="headerlink" title="class、extend和super"></a>class、extend和super</h3>constructor是构造方法，constructor内定义的方法和属性是实例对象自己的，而constructor外定义的方法和属性则是实例对象可以共享的。<br>class之间通过extends实现继承<br>super它代指父类的实例也即父类的this对象，子类必须在constructor方法中调用super方法，否则新建实例的时候会报错，因为子类是没有自己的实例对象的，而是继承父类的this对象，然后对其加工。<h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3>箭头函数解决了this的指向问题，箭头函数根本没有自己的this，它的this是继承外面的，因此内部的this就是外层代码块的this。使用传统的function函数写法，this的指向很容易就改变，传统的解决方法是：1.将this传给self,再用self来指代this，2.用bind（this）来改变this的指向</li>
 </ul>
 <h3 id="template-string"><a href="#template-string" class="headerlink" title="template string"></a>template string</h3><p>模板字符串（template string）是增强版的字符串，用反引号（<code>）标识。用反引号（</code>）来标识起始，用${}来引用变量，而且所有的空格和缩进都会被保留在输出之中</p>
 <h3 id="解构"><a href="#解构" class="headerlink" title="解构"></a>解构</h3><p>es6允许按照一定的模式，从数组和对象中提取值，对变量进行赋值。</p>
 <h3 id="default和rest"><a href="#default和rest" class="headerlink" title="default和rest"></a>default和rest</h3><p>default：默认值，es6允许为参数指定默认值，即当无参数的时候，函数采用默认的参数。<br>rest：（…）我们知道在strict mode下，对arguments做了很多限制，而且arguments是个arrayLike对象，不能像操作数组那样直接操作它。但用Rest操作符以后，args参数就是一个数组了，任何操作数组的方法都可以直接对args使用。<br>rest操作符只能放在函数形参的最后，即把剩余的都归集在一起。</p>
-<h3 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h3>
+<h3 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h3><pre><code>   const p1 = new Promise((resolve, reject) =&gt; {
+      resolve(&apos;hello&apos;);
+   })
+  .then(result =&gt; result)
+  .catch(e =&gt; e);
+
+  const p2 = new Promise((resolve, reject) =&gt; {
+    throw new Error(&apos;报错了&apos;);
+  })
+  .then(result =&gt; result)
+  .catch(e =&gt; e);
+
+ Promise.all([p1, p2])
+.then(result =&gt; console.log(result))
+.catch(e =&gt; console.log(e));
+</code></pre>
       
     </div>
 
@@ -484,7 +499,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -492,7 +507,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -501,7 +516,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -704,50 +719,9 @@
 
   
 
-<script>
-   $(function(){
-      var cvs = document.getElementById("mycanvas")
-      var ctx = cvs.getContext("2d");
-      var width = cvs.width = document.documentElement.clientWidth;
-      var height = cvs.height = document.documentElement.clientHeight; 
-      // 初始化准备
-      var words = "012345678abcederqwertyuipljnbvgfdcxsaz/c/,[]scQAZWSXEDCRFVTGBYHNUJMIKLOP";//随机的文字
-      var wordsArr = words.split('');
-      var fontSize = 16;
-      var wordColor = '#000';
-      var clumns = width/fontSize;
-      console.log(clumns)
-      var drops = [];
-      for(var i = 0;i<clumns;i++){
-        drops[i] = 1;
-      }
 
-      function draw(){
-        ctx.save();
-        ctx.fillStyle = wordColor;
-        ctx.font = fontSize+"px arial";
-        for (var i=0;i<clumns;i++){
-          var text = wordsArr[Math.floor(Math.random()*wordsArr.length)];
-          ctx.fillText(text,i*fontSize, drops[i]*fontSize);
-          if(drops[i]*fontSize>height&& Math.random()<0.01){
-            drops[i]=0;
-          }
-          drops[i]++;
-        }
-        ctx.restore();
-      }
 
-      // 循环调用
-      render()
-      function render(){
-        window.requestAnimationFrame(render);
-        ctx.fillStyle = 'rgba(255,255,255,0.2)';
-        ctx.fillRect(0, 0, width, height);
-        draw()
-      }
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
-   })
-       
-   </script>
 </body>
 </html>
