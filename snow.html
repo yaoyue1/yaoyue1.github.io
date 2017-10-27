@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>雪花飘落</title>
+	<style>
+	*{padding:0;margin:0;}
+	html,body{width: 100%;height: 100%;background:url(http://file06.16sucai.com/2016/0921/da78bbfe5a27798a8d300f30d5ad594e.jpg);background-size: cover;}
+	.container{width: 100%;height: 100%;margin:0 auto;}
+	</style>
+</head>
+<body>
+	<div class="container"></div>
+</body>
+<script src="//res.jiuyan.info/lib/zepto/1.2.0/zepto.min.js"></script>
+<script>
+$(function(){
+ 	snow()
+	function snow(){
+		var docWidth = document.documentElement.clientWidth //可见区域宽度
+		var docHeight = document.documentElement.clientHeight //可见区域高度
+		// initPage()
+		function initPage(){
+			containerWidth = $(".container").width();//获取外层容器container宽度
+			containerHeight = $(".container").height();//获取外层容器container高度
+			initFloatAnimation()
+		}
+
+		function initFloatAnimation(){
+			var canvas = document.createElement('canvas');//创建canvas元素
+			var ctx = canvas.getContext('2d');
+				canvas.id = 'floatCanvas';//给canvas一个id
+				canvas.width = containerWidth;//让canvas的宽度等于container的宽度
+				canvas.height = containerHeight;//让canvas的高度等于container的高度
+			$(".container").append(canvas);//把canvas追加进html的container
+
+			var particleNum = 100;//粒子的数量
+			var particles = [];//定义空数组用来存储每个粒子对象
+			for (var i=0;i<particleNum;i++){
+				var particleObj = new Object();//创建一个对象
+				particleObj.x = Math.random()*docWidth;//在可视区域宽度的范围内随机生成粒子的初始x坐标
+				particleObj.y = Math.random()*docHeight;//在可视区域g的范围内随机生成粒子的初始y坐标
+				particleObj.vx = Math.random() * 2-1;//生成粒子横向移动的距离
+				particleObj.vy = (Math.random() * 0.8 + 0.2);//生成粒子纵向移动的距离：[0.2-1]
+				particleObj.dw = particleObj.vy*20;//随机生成粒子的宽度
+				particleObj.dh = particleObj.dw;//粒子的宽度等于高度
+				particleObj.ag = (Math.random()*2-1)*10;//粒子的初始角度
+				particles[i] = particleObj;//把这些对象装进事先定义的数组
+			}
+			console.log(particles)
+			// 以上把需要的元素都准备好了，接下来就是渲染让粒子动起来
+			render()
+			function render(){
+				ctx.clearRect(0, 0, containerWidth, containerHeight);//清除画布
+				var little;
+				for(var j=0;j<particles.length;j++){
+					little = particles[j];
+					if(little.x < 0 || little.x > containerWidth || little.y > containerHeight){//if判断如果粒子已经超出了可视的边界就再重新产生它的x,y值
+						little.x = Math.random() * containerWidth;
+						little.y = Math.random() * -200;
+					}
+					little.x += little.vx;
+					little.y += little.vy;
+					drawImage(ctx,img,little.x,little.y,little.dw,little.dh,1,little.ag);
+				}
+				requestAnimationFrame(render);//循环调用自身，requestAnimationFrame是一个新的API,作用与setTimeInterval一样，不同的是它会根据浏览器的刷新频率自动调整动画的时间间隔。
+			}
+		}
+
+		
+		function drawImage (ctx,img,dx,dy,dw,dh,scale,angle) {
+			ctx.save();
+			ctx.translate(dx + dw / 2, dy + dh / 2);//移动画布
+			ctx.scale(scale, scale);
+			ctx.rotate(angle);
+			ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, -1 * dw / 2, -1 * dh / 2, dw, dh);//重新绘制新的粒子
+			ctx.restore();
+		}
+	var _base = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAlCAMAAADyQNAxAAAAilBMVEUAAAD////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////2N2iNAAAALnRSTlMArr2Dd6phklkuBYhdNo0yOmpFFZd/exkOCW4/VkqecqdlJh4Ro04jtVG5KpuwTP8QawAAArlJREFUOMuVlNmSsjAQhXUIIYGEhM0g+6Igou//ev9hsZwZay7+ruLuq3O6T7o5/H+5Z/cQRZfzOT3/DZ2jyHRc8Xmcxz76g7n0nHOpda5zqTg3509BNzWz0mVZDkMxFVMZytlcUve32chlODEmmKCUClaEuebd+BMyXOYDEy0NsqCuSZZRUbCcj5fvVNrLsBBtRjKSnBIrOZEsoGLQSkbfpEaVFzQghCQWyvMsK6kDysJcjm8lrmBHM3KyPN/3HccHCrlWwNS8KKN0yFqYeb4TV3FVxbHjexYhgRjkvLfmrk1lEAJztRvbbppr7HgJIS0LVb931elBBMSynMf1uJZt2wsGU1poHm1SvCxonVh+3NhAXlzlL54s3AZIOzmIzIJUtVK3++22YjE8M6FVdwYVcc0g5fmxDeh5/0Ldnke7iSEWiFKOKaieY0ACwweg29dWd6hVjnWqKZNm0yqhhQErUKvSqnZsFoq0g+wuC6VKaFm+c7WPz51BHe3HEgZluYowouGhCJCo0+yOe2MNKKteori4mBGOATktWvbz3Ra0kP+Wq7vOONH65DkPiN12qYWKHQxJi9XxYDo1tASNVfba/v2G77ik72NGMW1JuEZOYnnqRwOx5yJzB7U+EYIY0NZCjSpk6wshi+a4F3JA8xkddAdqe6JSoH9g2BobZnZzvWJ3EkiVsl8M1yzyYt1By4mxO9fq+oAdIg1oKHnk7rs6qm0LLQ+L6sTOtq01bilUJn3dYjTrSWDv1533EZOXnBYlkSPS93X0Ki9xHjXBAaFgRgCxKefRfuD7AFh9RmlN1sraIKBFoRXme5d7McAG2LYBBbFcd5nnyryR3XTmWheTEAxVsAnTjbD7XVHfzVLn5YRfShhikU0Ku49y3bSbuVKSK87n/tXSJ5deTGd6E6XpT7NPQffwKfIPFOtCNONyh58AAAAASUVORK5CYII="
+		//图片我直接用的base64来写的
+		var img = new Image();
+		img.src = _base;
+		img.onload = function() {
+			initPage()
+		}
+	}
+})
+</script>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>百分比进度条</title>
+   <style>
+        body{
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+        #mycanvas{
+          background: #000;
+        }
+    </style>
+</head>
+<body>
+   <canvas id="mycanvas"></canvas>
+   <script src="//res.jiuyan.info/lib/zepto/1.2.0/zepto.min.js"></script>
+   <script>
+   $(function(){
+      var cvs = document.getElementById("mycanvas")
+      var ctx = cvs.getContext("2d");
+      var width = cvs.width = document.documentElement.clientWidth;//获取可视区的宽度
+      var height = cvs.height = document.documentElement.clientHeight; //获取可视区的高度
+      // 初始化准备
+      var words = "012345678abcederqwertyuipljnbvgfdcxsaz/c/,[]scQAZWSXEDCRFVTGBYHNUJMIKLOP";
+      var wordsArr = words.split('');
+      var fontSize = 16;
+      var wordColor = '#fff';
+      var clumns = width/fontSize;
+      console.log(clumns)
+      var drops = [];
+      for(var i = 0;i<clumns;i++){
+        drops[i] = 1;
+      }
+
+      function draw(){
+        ctx.save();
+        ctx.fillStyle = wordColor;
+        ctx.font = fontSize+"px arial";
+        for (var i=0;i<clumns;i++){
+          var text = wordsArr[Math.floor(Math.random()*wordsArr.length)];
+          ctx.fillText(text,i*fontSize, drops[i]*fontSize);
+          if(drops[i]*fontSize>height&& Math.random()<0.01){
+            drops[i]=0;
+          }
+          drops[i]++;
+        }
+        ctx.restore();
+      }
+
+      // 循环调用
+      render()
+      function render(){
+        window.requestAnimationFrame(render);
+        ctx.fillStyle = 'rgba(0,0,0,0.1)';
+        ctx.fillRect(0, 0, width, height);
+        draw()
+      }
+
+   })
+       
+   </script>
+</html>

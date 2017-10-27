@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>仿知乎登录页</title>
+   <style>
+        body{
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+        #mycanvas{
+          background: lightpink;
+        }
+    </style>
+</head>
+
+<body>
+   <canvas id="mycanvas"></canvas>
+   <script src="//res.jiuyan.info/lib/zepto/1.2.0/zepto.min.js"></script>
+   <script>
+   $(function(){
+      var cvs = document.getElementById("mycanvas");
+      var ctx = cvs.getContext('2d');
+      var docWidth = document.documentElement.clientWidth;
+      var docHeight = document.documentElement.clientHeight;
+      cvs.width = docWidth;
+      cvs.height = docHeight;
+      var dotNum = 100;
+      var dots = [];
+      var mouse = new Object();
+      mouse.x = 800;
+      mouse.y = 350;
+      for(var i=0;i<dotNum;i++){
+        var dotObj = new Object();
+        dotObj.x = Math.random()*docWidth;
+        dotObj.y = Math.random()*docHeight;
+        dotObj.r = Math.ceil(Math.random()*4);
+        dotObj.color = 'white';
+        dotObj.speedX = Math.floor(Math.random()*2)?1:-1
+        dotObj.speedY = Math.floor(Math.random()*2)?1:-1
+        dots[i] = dotObj;
+      }
+      function drawball(x,y,r,color){
+        ctx.beginPath();
+        ctx.arc(x,y,r,0,Math.PI*2,false);
+        ctx.fillStyle = color;
+        ctx.fill()
+      }
+      function move(obj){
+        obj.x +=obj.speedX*0.2;
+        obj.y +=obj.speedY*0.2;
+        if(obj.y<= obj.r){//上边界小球反弹处理
+          obj.y = obj.r;
+          obj.speedY*=-1;
+        }
+        if(obj.y>= docHeight-obj.r){//下边界小球反弹处理
+          obj.y = docHeight-obj.r;
+          obj.speedY*=-1;
+        }
+        if(obj.x<=obj.r){//左边界的小球反弹处理
+          obj.x = obj.x;
+          obj.speedX*=-1;
+        }
+        if(obj.x >= docWidth-obj.r){
+          obj.x = docWidth-obj.r;
+          obj.speedX*=-1;
+        }
+      }
+      function ballAndball(obj1,obj2){
+        var disX = Math.abs(obj1.x-obj2.x);
+        var disY = Math.abs(obj1.y-obj2.y);
+        return Math.sqrt(disX*disX+disY*disY)
+      }
+      function mouseball(mouse,obj){
+        if(ballAndball(mouse,obj)<130){
+          ctx.lineWidth = 0.2;
+          ctx.beginPath();
+          ctx.moveTo(obj.x,obj.y);
+          ctx.lineTo(mouse.x,mouse.y);
+          ctx.strokeStyle = obj.color;
+          ctx.stroke();
+
+        }
+      }
+      render();
+      function render(){
+        ctx.clearRect(0, 0, docWidth, docHeight);
+        for(var j= 0;j<dots.length;j++){
+          little = dots[j]
+          move(little)
+          drawball(little.x,little.y,little.r,little.color)
+          mouseball(mouse,little)
+          for(var k = 0;k<dots.length;k++){
+            if(ballAndball(dots[j],dots[k])<100){
+              ctx.lineWidth = 0.2;
+              ctx.globalAlpha = (130 - ballAndball(dots[j], dots[k])) * 1 / 100;
+              ctx.beginPath();
+              ctx.moveTo(dots[j].x, dots[j].y);
+              ctx.lineTo(dots[k].x, dots[k].y);
+              ctx.strokeStyle = dots[j].color;
+              ctx.stroke();
+            }
+          }
+          ctx.globalAlpha = 1.0
+        }
+        requestAnimationFrame(render);
+      }
+
+      
+      cvs.onmousemove = function(event){
+        e = event || window.event;
+        mouse = new Object();
+        mouse.x = e.offsetX;
+        mouse.y = e.offsetY;
+      }
+
+   })
+       
+   </script>
+</html>
