@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yaoyue.com/"/>
-  <updated>2017-10-27T06:30:59.000Z</updated>
+  <updated>2017-10-31T16:33:06.000Z</updated>
   <id>http://yaoyue.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>图解http学习笔记</title>
+    <link href="http://yaoyue.com/2017/10/31/%E5%9B%BE%E8%A7%A3http%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yaoyue.com/2017/10/31/图解http学习笔记/</id>
+    <published>2017-10-31T14:37:12.000Z</published>
+    <updated>2017-10-31T16:33:06.000Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>由于对http知识知道的甚少，最近做项目，调试接口的时候老是喜欢出问题，也因此浪费了很多的时间，所有打算恶补一下关于http协议这方面的知识。《图解http》这本书其实买了好久了，但是自己一直都没有去看，立个flag，最近要把它看完。</p><h3 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h3><ol><li>TCP/IP的分层管理<br>应用层 =&gt;传输层 =&gt;网络层 =&gt; 数据链路层<br>分层的好处：</li></ol><ul><li>某个地方需要修改只用替换需要变动的层</li><li>处理应用层上的应用只需要考虑分派给自己的任务不需要考虑其他<br>应用层：决定向用户提供应用服务时通信的服务<br>传输层：对上层应用层提供处于网络连接中的两台计算机之间的数据传输<br>网络层：处理在网络上流动的数据包<br>链路层：用来处理连接网路的硬件部分</li></ul><ol><li>ip协议</li></ol><ul><li>ip网际协议位于网络层，ip协议的作用：把各种数据包传送给对方（满足条件：IP地址，指名节点被分配的地址，mac地址，指网卡所属的固定地址，ip地址可以和mac地址进行配对）</li><li>使用ARP协议凭借MAC地址进行通信（arp协议：用以解析地址的协议，根据通信方的ip地址就可以查出对应的mac地址）</li></ul><ol><li>tcp协议</li></ol><ul><li>tcp协议位于传输层，提供可靠的字节流服务</li><li>为了能过更容易的传输大数据，tcp协议把数据进行分割成以报文段为单位的数据包进行管理</li><li>为了准确将数据送达，tcp协议采用了三次握手策略<br>发送端首先发送一个带SYN标志的数据包给对方，接收方收到后回传一个带SYN/ACK的数据包表示传达确认信息，最后，发送端再回传一个带ACK的数据包表示握手结束</li><li>握手过程中任意某个阶段中断，tcp协议会再次以相同的顺序发送数据包</li></ul><ol><li>DNS服务</li></ol><ul><li>位于应用层，提供域名到ip地址之间的解析服务</li></ul><ol><li>uri（统一资源标识符）<br>由某个协议方案表示的资源的定位标识符，url表示资源的地点，url是uri的子集</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;由于对http知识知道的甚少，最近做项目，调试接口的时候老是喜欢出问题，也因此浪费了很多的时间，所有打算恶补一下关于http协议这方面的知识。《图解http》这本书其实买了好
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>怂过了丧过了就好好努力活～</title>
@@ -441,28 +462,6 @@
       &lt;p&gt;上一篇记录的是Vue的环境搭建以及如何去运行它。此篇文章是回顾一下自己之前所学的Vue的指令，上次学了一些后，后面公司项目忙断了一段时间，现在都有点记得不是特别清楚了，所以趁着这次写博客，来把之前学习的指令回顾一遍。（所以说看的多不如实际操练几把，说多都是泪）&lt;/p&gt;
 &lt;h3 id=&quot;常用指令&quot;&gt;&lt;a href=&quot;#常用指令&quot; class=&quot;headerlink&quot; title=&quot;常用指令&quot;&gt;&lt;/a&gt;常用指令&lt;/h3&gt;&lt;h4 id=&quot;v-text-amp-amp-v-html&quot;&gt;&lt;a href=&quot;#v-text-amp-amp-v-html&quot; class=&quot;headerlink&quot; title=&quot;v-text &amp;amp;&amp;amp; v-html&quot;&gt;&lt;/a&gt;v-text &amp;amp;&amp;amp; v-html&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;span v-text=&amp;quot;msg&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;span v-html=&amp;quot;msg&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;var app = new Vue(&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		el: &amp;apos;#app&amp;apos;,   &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		data: &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;			msg:&amp;apos;&amp;lt; h1 &amp;gt; hi &amp;lt; /h1 &amp;gt;&amp;apos;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;#125;)&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;v-text会把message中有html标签的部分都会显示出来，v-html则会把message中的信息根据html规则进行渲染。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Vue" scheme="http://yaoyue.com/categories/Vue/"/>
-    
-    
-      <category term="Vue" scheme="http://yaoyue.com/tags/Vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue入门到放弃(一)</title>
-    <link href="http://yaoyue.com/2017/02/16/vue%E5%85%A5%E9%97%A8%E5%88%B0%E6%94%BE%E5%BC%83-%E4%B8%80/"/>
-    <id>http://yaoyue.com/2017/02/16/vue入门到放弃-一/</id>
-    <published>2017-02-16T03:02:54.000Z</published>
-    <updated>2017-02-21T09:53:30.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>   校招期间每看一次前端招聘的jd就是一次打击，几乎大多数的公司都会要求你会一个框架Vue或者react.js，因为最近Vue特别火，当然也不是说react.js不火，只是听说Vue对于新手更加的友好，遂入了Vue的坑。在网上搜索了一些教程，可是坑的是很多教程都是1.0版本的，但是Vue的1.0版和2.0版的区别还是比较大的，所以就想把自己的学习过程写下来，一方面是锻炼自己，另一方面也是希望更多像我这样的小白入坑比较容易。<br><a id="more"></a><br>环境搭建+sass安装+项目运行</p><h3 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a>安装node</h3><p><a href="https://nodejs.org/en/http://" target="_blank" rel="external">node官网</a>自行安装，安装好后运行node -v查看node版本，node版本最好是不要过低</p><h3 id="安装cnpm"><a href="#安装cnpm" class="headerlink" title="安装cnpm"></a>安装cnpm</h3><p><pre><br>npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org//全局按照淘宝镜像" target="_blank" rel="external">https://registry.npm.taobao.org//全局按照淘宝镜像</a><br></pre></p><h3 id="安装vue-cli脚手架构建工具"><a href="#安装vue-cli脚手架构建工具" class="headerlink" title="安装vue-cli脚手架构建工具"></a>安装vue-cli脚手架构建工具</h3><p><pre><br>cnpm install -g vue-cli//全局安装 Vue-cli，现在开始Vue就会是一个command<br></pre></p><h3 id="新建项目"><a href="#新建项目" class="headerlink" title="新建项目"></a>新建项目</h3><p><pre><br>vue init webpack firstVue //其中webpack是构建工具，也就是整个项目是基于webpack的。其中firstVue是整个项目文件夹的名称<br></pre><br><img src="http://i.imgur.com/jzsWVIS.png" alt=""></p><h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><p>进入你的项目文件夹，然后安装依赖,安装完成后你的firstVue文件夹中会多出一个叫node_modules的文件，这里边就是我们项目需要的依赖包资源。</p><p><pre><br>cd firstVue<br>cnpm install//安装依赖<br></pre></p><h3 id="sass安装"><a href="#sass安装" class="headerlink" title="sass安装"></a>sass安装</h3><p>安装sass依赖包</p><p><pre><br>npm install –save-dev sass-loader<br>//sass-loader依赖于node-sass<br>npm install –save-dev node-sass<br></pre><br>安装成功后你的package.json文件会相应的多出几项：<br><img src="http://i.imgur.com/Mhg4BSo.png" alt=""></p><p>在.Vue文件中使用sass时还必须修改style标签如下：</p><pre><code>&lt;style lang=&quot;sass&quot;&gt;//如果的sass的写法是使用大括号的语法这需要改成lang=&quot;scss&quot;</code></pre><h3 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h3><p><pre><br>npm run dev<br></pre><br>运行成功的话，浏览器会自动的打开localhost:8080页面，如果8080端口被占用的话，会提示错误。<br><img src="http://i.imgur.com/eUU0Fsp.png" alt=""></p><p>到这里就算是环境和项目运行成功了，入坑（一）成功。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;   校招期间每看一次前端招聘的jd就是一次打击，几乎大多数的公司都会要求你会一个框架Vue或者react.js，因为最近Vue特别火，当然也不是说react.js不火，只是听说Vue对于新手更加的友好，遂入了Vue的坑。在网上搜索了一些教程，可是坑的是很多教程都是1.0版本的，但是Vue的1.0版和2.0版的区别还是比较大的，所以就想把自己的学习过程写下来，一方面是锻炼自己，另一方面也是希望更多像我这样的小白入坑比较容易。&lt;br&gt;
     
     </summary>
     
