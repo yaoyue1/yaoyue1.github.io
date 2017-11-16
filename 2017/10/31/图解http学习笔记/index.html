@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="http," />
 
 
 
@@ -86,17 +86,18 @@
 
 
 
-<meta name="description" content="由于对http知识知道的甚少，最近做项目，调试接口的时候老是喜欢出问题，也因此浪费了很多的时间，所有打算恶补一下关于http协议这方面的知识。《图解http》这本书其实买了好久了，但是自己一直都没有去看，立个flag，最近要把它看完。 第一章TCP/IP的分层管理应用层 =&amp;gt;传输层 =&amp;gt;网络层 =&amp;gt; 数据链路层分层的好处：  某个地方需要修改只用替换需要变动的层 处理应用层上的">
+<meta name="description" content="由于对http知识知道的甚少，最近做项目，调试接口的时候老是喜欢出问题，也因此浪费了很多的时间，所有打算恶补一下关于http协议这方面的知识。《图解http》这本书其实买了好久了，但是自己一直都没有去看，立个flag，最近要把它看完。 第一章TCP/IP的分层管理应用层 =&amp;gt;传输层 =&amp;gt;网络层 =&amp;gt; 数据链路层分层的好处：  某个地方需要修改只用替换需要变动的层 处理应用层上的应">
+<meta name="keywords" content="http">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图解http学习笔记">
 <meta property="og:url" content="http://yaoyue.com/2017/10/31/图解http学习笔记/index.html">
 <meta property="og:site_name" content="jiemo blog">
-<meta property="og:description" content="由于对http知识知道的甚少，最近做项目，调试接口的时候老是喜欢出问题，也因此浪费了很多的时间，所有打算恶补一下关于http协议这方面的知识。《图解http》这本书其实买了好久了，但是自己一直都没有去看，立个flag，最近要把它看完。 第一章TCP/IP的分层管理应用层 =&amp;gt;传输层 =&amp;gt;网络层 =&amp;gt; 数据链路层分层的好处：  某个地方需要修改只用替换需要变动的层 处理应用层上的">
+<meta property="og:description" content="由于对http知识知道的甚少，最近做项目，调试接口的时候老是喜欢出问题，也因此浪费了很多的时间，所有打算恶补一下关于http协议这方面的知识。《图解http》这本书其实买了好久了，但是自己一直都没有去看，立个flag，最近要把它看完。 第一章TCP/IP的分层管理应用层 =&amp;gt;传输层 =&amp;gt;网络层 =&amp;gt; 数据链路层分层的好处：  某个地方需要修改只用替换需要变动的层 处理应用层上的应">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-13T08:36:41.000Z">
+<meta property="og:updated_time" content="2017-11-16T06:47:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图解http学习笔记">
-<meta name="twitter:description" content="由于对http知识知道的甚少，最近做项目，调试接口的时候老是喜欢出问题，也因此浪费了很多的时间，所有打算恶补一下关于http协议这方面的知识。《图解http》这本书其实买了好久了，但是自己一直都没有去看，立个flag，最近要把它看完。 第一章TCP/IP的分层管理应用层 =&amp;gt;传输层 =&amp;gt;网络层 =&amp;gt; 数据链路层分层的好处：  某个地方需要修改只用替换需要变动的层 处理应用层上的">
+<meta name="twitter:description" content="由于对http知识知道的甚少，最近做项目，调试接口的时候老是喜欢出问题，也因此浪费了很多的时间，所有打算恶补一下关于http协议这方面的知识。《图解http》这本书其实买了好久了，但是自己一直都没有去看，立个flag，最近要把它看完。 第一章TCP/IP的分层管理应用层 =&amp;gt;传输层 =&amp;gt;网络层 =&amp;gt; 数据链路层分层的好处：  某个地方需要修改只用替换需要变动的层 处理应用层上的应">
 
 
 
@@ -319,6 +320,24 @@
           </span>
 
           
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/http/" itemprop="url" rel="index">
+                    <span itemprop="name">http</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -348,9 +367,8 @@
 <h3 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h3><h4 id="TCP-IP的分层管理"><a href="#TCP-IP的分层管理" class="headerlink" title="TCP/IP的分层管理"></a>TCP/IP的分层管理</h4><p>应用层 =&gt;传输层 =&gt;网络层 =&gt; 数据链路层<br>分层的好处：</p>
 <ul>
 <li>某个地方需要修改只用替换需要变动的层</li>
-<li>处理应用层上的应用只需要考虑分派给自己的任务不需要考虑其他<br>应用层：决定向用户提供应用服务时通信的服务<br>传输层：对上层应用层提供处于网络连接中的两台计算机之间的数据传输<br>网络层：处理在网络上流动的数据包<br>链路层：用来处理连接网路的硬件部分</li>
-</ul>
-<h4 id="ip协议"><a href="#ip协议" class="headerlink" title="ip协议"></a>ip协议</h4><ul>
+<li>处理应用层上的应用只需要考虑分派给自己的任务不需要考虑其他<br>应用层：决定向用户提供应用服务时通信的服务<br>传输层：对上层应用层提供处于网络连接中的两台计算机之间的数据传输<br>网络层：处理在网络上流动的数据包<br>链路层：用来处理连接网路的硬件部分<a id="more"></a>
+<h4 id="ip协议"><a href="#ip协议" class="headerlink" title="ip协议"></a>ip协议</h4></li>
 <li>ip网际协议位于网络层，ip协议的作用：把各种数据包传送给对方（满足条件：IP地址，指名节点被分配的地址，mac地址，指网卡所属的固定地址，ip地址可以和mac地址进行配对）</li>
 <li>使用ARP协议凭借MAC地址进行通信（arp协议：用以解析地址的协议，根据通信方的ip地址就可以查出对应的mac地址）</li>
 </ul>
@@ -438,6 +456,12 @@
 
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/http/" rel="tag"># http</a>
+          
+        </div>
       
 
       
@@ -532,7 +556,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -541,7 +565,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
