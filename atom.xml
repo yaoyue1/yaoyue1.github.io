@@ -42,11 +42,11 @@
   </entry>
   
   <entry>
-    <title>收集一些题</title>
+    <title>css基础知识</title>
     <link href="http://yaoyue.com/2020/07/03/css%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
     <id>http://yaoyue.com/2020/07/03/css基础知识/</id>
     <published>2020-07-03T06:49:09.000Z</published>
-    <updated>2020-07-07T03:37:39.455Z</updated>
+    <updated>2020-07-08T03:59:38.735Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h3 id="Flex布局"><a href="#Flex布局" class="headerlink" title="Flex布局"></a>Flex布局</h3><p>问题：了解 Flex 布局么？平常有使用 Flex 进行布局么？</p>]]></content>
     
@@ -62,7 +62,7 @@
       <category term="css基础篇" scheme="http://yaoyue.com/categories/css%E5%9F%BA%E7%A1%80%E7%AF%87/"/>
     
     
-      <category term="css基础" scheme="http://yaoyue.com/tags/css%E5%9F%BA%E7%A1%80/"/>
+      <category term="css" scheme="http://yaoyue.com/tags/css/"/>
     
   </entry>
   
@@ -117,11 +117,11 @@
   </entry>
   
   <entry>
-    <title>收集一些题</title>
+    <title>shelljs指令学习</title>
     <link href="http://yaoyue.com/2018/10/30/shelljs%E6%8C%87%E4%BB%A4%E5%AD%A6%E4%B9%A0/"/>
     <id>http://yaoyue.com/2018/10/30/shelljs指令学习/</id>
     <published>2018-10-30T09:49:09.000Z</published>
-    <updated>2018-11-06T09:45:12.000Z</updated>
+    <updated>2020-07-08T03:59:57.187Z</updated>
     
     <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
     
