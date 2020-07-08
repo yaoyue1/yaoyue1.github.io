@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="数据类型5种基本类型：undefined,null,number,string,boolean 理解原型和原型链Js对象在创建时就包含一个隐式的内部属性proto，这个属性是不可以被直接访问的（proto是chrom和firefox支持查看的，后面Object.getPrototype(object)才正式支持查看内部属性proto)，这个内部属性指向的就是该对象的原型a.proto = foo.">
+<meta name="description" content="js基础部分vue相关部分vue生命周期 beforeCreate中拿不到任何数据，它在实例初始化之后，数据观测 (data observer) 和 event/watcher 事件配置之前被调用。 created中已经可以拿到data中的数据了，但是dom还没有挂载。会判断有无el，如果没有el则停止后面的模板挂载。在实例创建完成后被立即调用。在这一步，实例已完成以下的配置：数据观测 (data">
 <meta name="keywords" content="项目总结">
 <meta property="og:type" content="article">
 <meta property="og:title" content="收集一些题">
 <meta property="og:url" content="http://yaoyue.com/2018/10/30/收集一些题/index.html">
 <meta property="og:site_name" content="jiemo blog">
-<meta property="og:description" content="数据类型5种基本类型：undefined,null,number,string,boolean 理解原型和原型链Js对象在创建时就包含一个隐式的内部属性proto，这个属性是不可以被直接访问的（proto是chrom和firefox支持查看的，后面Object.getPrototype(object)才正式支持查看内部属性proto)，这个内部属性指向的就是该对象的原型a.proto = foo.">
+<meta property="og:description" content="js基础部分vue相关部分vue生命周期 beforeCreate中拿不到任何数据，它在实例初始化之后，数据观测 (data observer) 和 event/watcher 事件配置之前被调用。 created中已经可以拿到data中的数据了，但是dom还没有挂载。会判断有无el，如果没有el则停止后面的模板挂载。在实例创建完成后被立即调用。在这一步，实例已完成以下的配置：数据观测 (data">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-30T09:50:05.000Z">
+<meta property="og:updated_time" content="2019-07-08T03:08:49.498Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="收集一些题">
-<meta name="twitter:description" content="数据类型5种基本类型：undefined,null,number,string,boolean 理解原型和原型链Js对象在创建时就包含一个隐式的内部属性proto，这个属性是不可以被直接访问的（proto是chrom和firefox支持查看的，后面Object.getPrototype(object)才正式支持查看内部属性proto)，这个内部属性指向的就是该对象的原型a.proto = foo.">
+<meta name="twitter:description" content="js基础部分vue相关部分vue生命周期 beforeCreate中拿不到任何数据，它在实例初始化之后，数据观测 (data observer) 和 event/watcher 事件配置之前被调用。 created中已经可以拿到data中的数据了，但是dom还没有挂载。会判断有无el，如果没有el则停止后面的模板挂载。在实例创建完成后被立即调用。在这一步，实例已完成以下的配置：数据观测 (data">
 
 
 
@@ -363,7 +363,81 @@
       
 
       
-        <script src="/assets/js/APlayer.min.js"> </script><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>5种基本类型：undefined,null,number,string,boolean</p>
+        <script src="/assets/js/APlayer.min.js"> </script><h2 id="js基础部分"><a href="#js基础部分" class="headerlink" title="js基础部分"></a>js基础部分</h2><h2 id="vue相关部分"><a href="#vue相关部分" class="headerlink" title="vue相关部分"></a>vue相关部分</h2><h3 id="vue生命周期"><a href="#vue生命周期" class="headerlink" title="vue生命周期"></a>vue生命周期</h3><ol>
+<li>beforeCreate中拿不到任何数据，它在实例初始化之后，数据观测 (data observer) 和 event/watcher 事件配置之前被调用。</li>
+<li>created中已经可以拿到data中的数据了，但是dom还没有挂载。会判断有无el，如果没有el则停止后面的模板挂载。<br>在实例创建完成后被立即调用。在这一步，实例已完成以下的配置：数据观测 (data observer)，属性和方法的运算，watch/event 事件回调。<br>使用场景:ajax请求和页面初始化</li>
+<li>beforeMount 和 created 拿到的数据相同 在挂载开始之前被调用：相关的 render 函数首次被调用。</li>
+<li>mounted中el被创建dom已经更新，vue实例对象中有template参数选项，则将其作为模板编译成render函数，编译优先级render函数选项 &gt; template选项<br>使用场景:常用于获取VNode信息和操作，ajax请求<br>注意 mounted 不会承诺所有的子组件也都一起被挂载。如果你希望等到整个视图都渲染完毕，可以用 vm.$nextTick 替换掉 mounted</li>
+<li>由于beforeUpdate和updated使用的比较少，一般用计算属性和watch代替所以在此不在说明</li>
+<li>destroyed Vue 实例销毁后调用。调用后，Vue 实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁。</li>
+</ol>
+<h3 id="vue响应式原理-数据绑定原理？（get，set；proxy）"><a href="#vue响应式原理-数据绑定原理？（get，set；proxy）" class="headerlink" title="vue响应式原理||数据绑定原理？（get，set；proxy）"></a>vue响应式原理||数据绑定原理？（get，set；proxy）</h3><h3 id="nextTick的理解"><a href="#nextTick的理解" class="headerlink" title="nextTick的理解"></a>nextTick的理解</h3><h4 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h4><p>官方：在下次 DOM 更新循环结束之后执行延迟回调。在修改数据之后立即使用这个方法，获取更新后的 DOM。<br>Vue 实现响应式并不是数据发生变化之后DOM立即变化，而是按一定的策略进行DOM的更新，即Vue是异步执行DOM更新的<br>异步执行的步骤是：</p>
+<ol>
+<li>所有同步任务都在主线程上执行，形成一个执行栈</li>
+<li>主线程之外，还存在一个”任务队列”（task queue）。只要异步任务有了运行结果，就在”任务队列”之中放置一个事件。</li>
+<li>一旦”执行栈”中的所有同步任务执行完毕，系统就会读取”任务队列”，看看里面有哪些事件。那些对应的异步任务，于是结束等待状态，进入执行栈，开始执行。</li>
+<li>主线程不断重复上面的第三步。<br>所以Vue 在修改数据后，视图不会立刻更新，而是等同一事件循环中的所有数据变化完成之后，再统一进行视图更新。<br>同步代码执行 -&gt; 查找异步队列，推入执行栈，执行Vue.nextTick[事件循环1] -&gt;查找异步队列，推入执行栈，执行Vue.nextTick[事件循环2]…<br>nextTick的作用就是修改数据后需要在视图更新之后，基于新的视图进行操作这是时候就要用到nextTick，它相当于一个回调函数<h4 id="nextTick的主要应该场景"><a href="#nextTick的主要应该场景" class="headerlink" title="nextTick的主要应该场景"></a>nextTick的主要应该场景</h4></li>
+<li>created 和 mounted 阶段，如果需要操作渲染后的试图，也要使用 nextTick 方法，mounted 不会承诺所有的子组件也都一起被挂载。如果你希望等到整个视图都渲染完毕，可以用 vm.$nextTick 替换掉 mounted</li>
+<li>点击按钮显示原本以 v-show = false 隐藏起来的输入框，并获取焦点。获取焦点就需用到nextTick</li>
+<li>点击获取元素宽度。原本隐藏的元素显示然后立即获取其宽度属性</li>
+<li>使用 swiper 插件通过 ajax 请求图片后的滑动问题。</li>
+</ol>
+<h3 id="vue更新数组"><a href="#vue更新数组" class="headerlink" title="vue更新数组"></a>vue更新数组</h3><ol>
+<li>由于 JavaScript 的限制，Vue 不能检测以下变动的数组：<ul>
+<li>当你利用索引直接设置一个项时，例如：vm.items[indexOfItem] = newValue</li>
+<li>当你修改数组的长度时，例如：vm.items.length = newLength</li>
+</ul>
+</li>
+<li>不更新的原因：<br>当你把一个普通的 JavaScript 对象传给 Vue 实例的 data 选项，Vue 将遍历此对象所有的属性，并使用 Object.defineProperty 把这些属性全部转为 getter/setter。<br>这是vue实现响应式的原理，也就是说改变data是会触发setter，但是setter和getter是有局限性的，当属性的值为一个数组时，通过索引修改数组某一项的值或使用数组的某些方法修改数组并不能触发set；当属性的值为一对象时，直接修改对象中属性的值时也无法触发set。</li>
+<li>解决<br>解决第一类问题，你可以使用vm.items[indexOfItem] = newValue<br>解决第二类问题，你可以使用 splice：<br>手动触发</li>
+</ol>
+<h3 id="Vue-data为什么必须是函数"><a href="#Vue-data为什么必须是函数" class="headerlink" title="Vue data为什么必须是函数"></a>Vue data为什么必须是函数</h3><p>因为vue的组件是可以复用的，如果data是一个对象的话，那么复用的组件一个更改其中数据，另外的组件数据也会被更改，因此每个实例必须维护一份被返回对象的独立的拷贝才行</p>
+<h3 id="父子组件created，mounted执行顺序？"><a href="#父子组件created，mounted执行顺序？" class="headerlink" title="父子组件created，mounted执行顺序？"></a>父子组件created，mounted执行顺序？</h3><p>父组件beforeCreate =&gt; 父组件created =&gt; 父组件beforeMount =&gt; 子组件beforeCreate =&gt; 子组件created =&gt; 子组件 beforeMount =&gt; 子组件mounted =&gt; 父组件mounted =&gt; 父组件beforeDestroy =&gt; 子组件 beforeDestroy。<br>从创建到挂载，是从外到内，再从内到外，且mixins的钩子函数总是在当前组件之前执行</p>
+<h3 id="组件间如何通信？父子组件，兄弟组件，任意组件？"><a href="#组件间如何通信？父子组件，兄弟组件，任意组件？" class="headerlink" title="组件间如何通信？父子组件，兄弟组件，任意组件？"></a>组件间如何通信？父子组件，兄弟组件，任意组件？</h3><p>1.父子组件：props和$emit<br>2.eventBus:$emit/$on<br>    var Event=new Vue();<br>    Event.$emit(事件名,数据);<br>    Event.$on(事件名,data =&gt; {});<br>3.vuex:Vuex实现了一个单向数据流，在全局拥有一个State存放数据，当组件要更改State中的数据时，必须通过Mutation进行，Mutation同时提供了订阅者模式供外部插件调用获取State数据的更新。而当所有异步操作(常见于调用后端接口异步获取更新数据)或批量的同步操作需要走Action，但Action也是无法直接修改State的，还是需要通过Mutation来修改State的数据。最后，根据State的变化，渲染到视图上。<br>缺点：<br>4.</p>
+<h3 id="vue-computed实现。"><a href="#vue-computed实现。" class="headerlink" title="vue computed实现。"></a>vue computed实现。</h3><h3 id="vue-diff算法实现。"><a href="#vue-diff算法实现。" class="headerlink" title="vue diff算法实现。"></a>vue diff算法实现。</h3><h3 id="vue-complier-实现"><a href="#vue-complier-实现" class="headerlink" title="vue complier 实现"></a>vue complier 实现</h3><h3 id="computer和watch用法区别？"><a href="#computer和watch用法区别？" class="headerlink" title="computer和watch用法区别？"></a>computer和watch用法区别？</h3><h2 id="vue-router相关部分"><a href="#vue-router相关部分" class="headerlink" title="vue-router相关部分"></a>vue-router相关部分</h2><h2 id="react相关部分"><a href="#react相关部分" class="headerlink" title="react相关部分"></a>react相关部分</h2><h3 id="虚拟dom实现？"><a href="#虚拟dom实现？" class="headerlink" title="虚拟dom实现？"></a>虚拟dom实现？</h3><ol>
+<li>用JS对象模拟DOM（虚拟DOM）<br>createElement =&gt; {tag, props, children}<br>h函数接受三个参数：标签名、属性、子节点，最终返回一个虚拟 DOM 的对象</li>
+<li>把此虚拟DOM转成真实DOM并插入页面中（render）<br>render方法可以将vNode转化成真实dom<ul>
+<li>接收一个dom对象，通过dom对象的类型来亲自创建一个元素</li>
+<li>for in遍历该dom对象上的props并且给该元素设置属性setAttr</li>
+<li>遍历子节点，如果子节点也是Element的实例，那就给子节点递归调用render方法；反之就说明子节点是个文本节点，通过createTextNode来创建一个文本节点就可以了。</li>
+<li>最后把子节点添加到创建出的元素中，返回该元素<br>setAttr方法是给元素设置属性的</li>
+<li>switch去判断key的值<br>value 有两种标签带有这样的属性，input和textarea 如果是这两种那就直接将value值赋给它的value上 如果不是那就直接调用setAttribute来设置key和value<br>style style属性就可以直接通过cssText来赋值了<br>其他默认的就直接setAttribute设置即可了<br>renderDom将元素插入到页面内</li>
+</ul>
+</li>
+<li><p>如果有事件发生修改了虚拟DOM，比较两棵虚拟DOM树的差异，得到差异对象（diff）<br>先序深度优先遍历<br> function diff (oldNode, newNode) {</p>
+<pre><code>const patches = [] // 声明变量patches用来存放补丁的对象
+let index = 0; // 第一次比较应该是树的第0个索引 
+// 递归树 比较后的结果放到补丁里
+walk(oldNode, newNode, patches, index) // 进行深度优先遍历 
+// 返回收集到的大补丁
+return patches
+</code></pre><p> }<br>walk方法里面比较新旧dom，规则如下：<br>每个元素都有一个补丁，所以需要创建一个放当前补丁的数组</p>
+<ul>
+<li>旧节点不存在，插入新节点；新节点不存在，删除旧节点</li>
+<li>新旧节点如果都是 VNode，且新旧节点 tag 相同</li>
+<li>对比新旧节点的属性</li>
+<li>对比新旧节点的子节点差异，通过 key 值进行重排序，key 值相同节点继续向下遍历</li>
+<li>新旧节点如果都是 VText，判断两者文本是否发生变化</li>
+<li>其他情况直接用新节点替代旧节点<br>当前补丁里确实有值的情况，就将对应的补丁放进大补丁包里</li>
+</ul>
+</li>
+<li><p>把差异对象应用到真正的DOM树上（patch）</p>
+</li>
+</ol>
+<ul>
+<li>用一个变量来得到传递过来的所有补丁allPatches,patch方法接收两个参数(node, patches)</li>
+<li>在方法内部调用walk方法，给某个元素打上补丁,walk方法里获取所有的子节点</li>
+<li>给子节点也进行先序深度优先遍历，递归walk,如果当前的补丁是存在的，那么就对其打补丁(doPatch)</li>
+<li>doPatch打补丁方法会根据传递的patches进行遍历,判断补丁的类型来进行不同的操作<ol>
+<li>属性ATTR,for in去遍历attrs对象，当前的key值如果存在，就直接设置属性setAttr； 如果不存在对应的key值那就直接删除这个key键的属性</li>
+<li>文字TEXT,直接将补丁的text赋值给node节点的textContent即可</li>
+<li>替换REPLACE,新节点替换老节点，需要先判断新节点是不是Element的实例，是的话调用render方法渲染新节点；</li>
+<li>不是的话就表明新节点是个文本节点，直接创建一个文本节点就OK了,之后再通过调用父级parentNode的replaceChild方法替换为新的节点</li>
+<li>删除REMOVE,直接调用父级的removeChild方法删除该节点<br>虚拟dom总结：如果没有虚拟dom的话，对比dom是极其困难的，所以最好的方法是重新生成一棵新的树来替换，但这种做性能很差，特别是dom节点过多且改变极少的时候。为了解决这个问题，在dom上方放一层只含有部分必要信息的虚拟dom，当改变发生的时候，精确匹配需要更新的dom，attributes、event listener…然后再精确的更新到真实dom上，减少受影响的dom。但既然有了虚拟层，自然就有了跨平台的副产物，比如像RN，taro等多端统一的框架。事实上，虚拟dom并非那么高效。尤其是dom节点足够小的情况下、或者确实需要整个替换的情况下，直接生成一棵树比diff后再生成要明显高效很多。但虚拟dom的好处是提供了多数场景下的一种通用处理方法。<h2 id="http相关部分"><a href="#http相关部分" class="headerlink" title="http相关部分"></a>http相关部分</h2><h2 id="html布局渲染等相关部分"><a href="#html布局渲染等相关部分" class="headerlink" title="html布局渲染等相关部分"></a>html布局渲染等相关部分</h2><h2 id="git操作相关部分"><a href="#git操作相关部分" class="headerlink" title="git操作相关部分"></a>git操作相关部分</h2><h2 id="开放问题"><a href="#开放问题" class="headerlink" title="开放问题"></a>开放问题</h2></li>
+</ol>
+</li>
+</ul>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>5种基本类型：undefined,null,number,string,boolean</p>
 <h3 id="理解原型和原型链"><a href="#理解原型和原型链" class="headerlink" title="理解原型和原型链"></a>理解原型和原型链</h3><p>Js对象在创建时就包含一个隐式的内部属性<em>proto</em>，这个属性是不可以被直接访问的（<em>proto</em>是chrom和firefox支持查看的，后面Object.getPrototype(object)才正式支持查看内部属性<em>proto</em>)，这个内部属性指向的就是该对象的原型<br>a.<em>proto</em> = foo.prototype<br><a id="more"></a><br>Construct:<br>原型对象还包含一个construct属性，这个属性指向的是创建所有实例的指向该原型对象的构造函数，即指向的就是那个构造函数<br>Prototype<br>每个函数对象都有一个prototype属性，当这个函数被用来当作构造函数来创建实例的时候，prototype的属性值就会被用来赋值给实例的的<em>proto</em>属性<br>实际上在JavaScript中，所有对象的原型都将追溯到”Object {}”对象<br>所以：实例.<em>proto</em> = fun.prototype<br>fun.prototype.<em>proto</em> = object<br>fun.prototype.construct = fun 函数本身</p>
 <p>函数对象和fun.prototype对象相互引用 ： fun.prototype.construct = fun,  fun.prototype 为该对象</p>
 <p>原型链作为实现继承的主要方法，其基本思想是利用原型让一个引用类型继承另一个引用继承的属性和方法</p>
@@ -423,6 +497,23 @@
 <li><p>浏览器会将各层的信息发送给GPU，GPU会将各层合成（composite），显示在屏幕上</p>
 </li>
 </ol>
+<h3 id="浏览器对于静态资源的处理方式"><a href="#浏览器对于静态资源的处理方式" class="headerlink" title="浏览器对于静态资源的处理方式"></a>浏览器对于静态资源的处理方式</h3><p>这里将遇到的静态资源分为一下几大类（未列举所有）：<br>CSS样式资源<br>JS脚本资源<br>img图片类资源</p>
+<ol>
+<li>遇到外链时的处理<br>当遇到上述的外链时，会单独开启一个下载线程去下载资源（http1.1中是每一个资源的下载都要开启一个http请求，对应一个tcp/ip链接）</li>
+<li>遇到CSS样式资源<br>CSS资源的处理有几个特点：<ul>
+<li>CSS下载时异步，不会阻塞浏览器构建DOM树</li>
+<li>会阻塞渲染，也就是在构建render时，会等到css下载解析完毕后才进行（这点与浏览器优化有关，防止css规则不断改变，避免了重复的构建）</li>
+<li>media query声明的CSS是不会阻塞渲染的</li>
+</ul>
+</li>
+<li>遇到JS脚本资源<br>JS脚本资源的处理有几个特点：<ul>
+<li>阻塞浏览器的解析，也就是说发现一个外链脚本时，需等待脚本下载完成并执行后才会继续解析HTML</li>
+<li>浏览器的优化，一般现代浏览器有优化，在脚本阻塞时，也会继续下载其它资源（当然有并发上限），但是虽然脚本可以并行下载，解析过程仍然是阻塞的，也就是说必须这个脚本执行完毕后才会接下来的解析，并行下载只是一种优化而已</li>
+<li>defer与async，普通的脚本是会阻塞浏览器解析的，但是可以加上defer或async属性，这样脚本就变成异步了，可以等到解析完毕后再执行</li>
+</ul>
+</li>
+<li>遇到img图片类资源<br>遇到图片等资源时，直接就是异步下载，不会阻塞解析，下载完毕后直接用图片替换原有src的地方</li>
+</ol>
 <h3 id="回流和重绘，哪些操作会引起回流，哪些会引起重绘"><a href="#回流和重绘，哪些操作会引起回流，哪些会引起重绘" class="headerlink" title="回流和重绘，哪些操作会引起回流，哪些会引起重绘"></a>回流和重绘，哪些操作会引起回流，哪些会引起重绘</h3><p>回流一定会引起重绘，重绘不一定会引起回流</p>
 <ol>
 <li>回流：元素的内容，结构，位置或者尺寸发生了变化，需要重新计算样式和渲染树</li>
@@ -448,6 +539,11 @@
 <li>flash插件等</li>
 </ol>
 <p>复合图层的作用：可以使得元素独立于普通文档流中，改动后可以避免整个页面重绘，提升性能，但是复合图层过多也会导致资源消耗过度，反而更卡<br>注意：硬件加速请使用index，因为如果加速的元素层级较低的话，后面的层级较高的元素会被隐式的转换为同一个复合图层，如此会影响性能</p>
+<h3 id="script标签中的async和defer的区别"><a href="#script标签中的async和defer的区别" class="headerlink" title="script标签中的async和defer的区别"></a>script标签中的async和defer的区别</h3><p>浏览器在执行HTML的时候如果遇到script时会停止页面的渲染,去下载和执行js的文件直接遇见/scirpt会继续渲染页面。故浏览器在执行js文件的时候浏览器表现为一片空白,为了解决这个问题ECMAScript定义了defer和async两个属性用于控制JS的下载和执行</p>
+<ol>
+<li>defer: 对于defer，我们可以认为是将外链的js放在了页面底部。js的加载不会阻塞页面的渲染和资源的加载。不过defer会按照原本的js的顺序执行，所以如果前后有依赖关系的js可以放心使用</li>
+<li>async的情况下，js一旦下载好了就会执行，所以很有可能不是按照原本的顺序来执行的。如果js前后有依赖性，用async，就很有可能出错。</li>
+</ol>
 <h3 id="正向代理和反向代理"><a href="#正向代理和反向代理" class="headerlink" title="正向代理和反向代理"></a>正向代理和反向代理</h3><ol>
 <li><p>正向代理：是一个位于客户端和目标服务器之间的代理服务器(中间服务器)。为了从原始服务器取得内容，客户端向代理服务器发送一个请求，并且指定目标服务器，之后代理向目标服务器转交并且将获得的内容返回给客户端。正向代理的情况下客户端必须要进行一些特别的设置才能使用。（翻墙）</p>
 </li>
@@ -487,6 +583,14 @@
 </li>
 <li>浏览器解密并计算握手消息的HASH，如果与服务端发来的HASH一致，此时握手过程结束，</li>
 </ol>
+<h3 id="首页白屏优化方式"><a href="#首页白屏优化方式" class="headerlink" title="首页白屏优化方式"></a>首页白屏优化方式</h3><h4 id="为什么会存在白屏？"><a href="#为什么会存在白屏？" class="headerlink" title="为什么会存在白屏？"></a>为什么会存在白屏？</h4><p>因为要打开一个webview页面它做了很多的事情：<br>初始化webview =&gt; 域名解析 =&gt; 请求页面 =&gt; 下载数据 =&gt; 解析dom树 =&gt; 解析css规则树 =&gt; 解析js =&gt; js请求数据 =&gt; 解析渲染 =&gt; 下载渲染图片<br>大致上分为以上，页面在 dom 渲染后才能显示雏形，所以这个过程一长就会导致白屏</p>
+<h4 id="优化的几种方式"><a href="#优化的几种方式" class="headerlink" title="优化的几种方式"></a>优化的几种方式</h4><ol>
+<li>降低请求量：合并请求资源，减少http请求数量，minify / gzip 压缩，懒加载</li>
+<li>加快请求速度：预解析DNS，减少域名数，并行加载，CDN 分发。</li>
+<li>缓存：HTTP 协议缓存请求，离线缓存 manifest，离线数据缓存localStorage。</li>
+<li>渲染：JS/CSS优化（GUI渲染线程与JS引擎线程互斥，而且js引擎为单线程，js执行时间过长是会阻塞页面加载的），加载顺序，服务端渲染，pipeline</li>
+<li>服务端渲染，客户端缓存<br><a href="https://juejin.im/entry/599646856fb9a02484490c13" target="_blank" rel="external">https://juejin.im/entry/599646856fb9a02484490c13</a></li>
+</ol>
 <h3 id="数组的slice和splice方法"><a href="#数组的slice和splice方法" class="headerlink" title="数组的slice和splice方法"></a>数组的slice和splice方法</h3><p>slice: 返回数组中的一项或者几项，slice(1) 从位置1到数组最后，slice(1,4)从数组位置1到位置3，位置是从0开始<br>splice: 删除，插入，替换数组中的元素。splice(0,2,’jiemo’,’jiemo1 ‘) 从位置0开始 删除2项，然后插入’jiemo’,’jiemo1’</p>
 <h3 id="函数声明和函数表达式"><a href="#函数声明和函数表达式" class="headerlink" title="函数声明和函数表达式"></a>函数声明和函数表达式</h3><p>函数声明：解析器会率先读取函数声明，使其在执行任何代码之前都可访问<br>函数表达式：必须等解析器执行到它所在的代码行，才会真正被解释执行</p>
 <h3 id="创建对象的方式"><a href="#创建对象的方式" class="headerlink" title="创建对象的方式"></a>创建对象的方式</h3><ol>
@@ -502,7 +606,7 @@ for(var i=0;i&lt;arr.length;i++){
     }
     else{
         right.push(arr[i]);
-    }
+    }
 }
 //递归
 return quickSort(left).concat([pivot],quickSort(right));
@@ -548,6 +652,10 @@ return quickSort(left).concat([pivot],quickSort(right));
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/30/shelljs指令学习/" rel="prev" title="收集一些题">
+                收集一些题 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -615,7 +723,7 @@ return quickSort(left).concat([pivot],quickSort(right));
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">37</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -623,7 +731,7 @@ return quickSort(left).concat([pivot],quickSort(right));
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -632,7 +740,7 @@ return quickSort(left).concat([pivot],quickSort(right));
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -694,7 +802,7 @@ return quickSort(left).concat([pivot],quickSort(right));
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型"><span class="nav-number">1.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理解原型和原型链"><span class="nav-number">2.</span> <span class="nav-text">理解原型和原型链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域和作用域链"><span class="nav-number">3.</span> <span class="nav-text">作用域和作用域链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器缓存"><span class="nav-number">4.</span> <span class="nav-text">浏览器缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#好处"><span class="nav-number">4.1.</span> <span class="nav-text">好处</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大公司前端资源部署的方案"><span class="nav-number">5.</span> <span class="nav-text">大公司前端资源部署的方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tcp三次握手四次挥手"><span class="nav-number">6.</span> <span class="nav-text">tcp三次握手四次挥手</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#三次握手："><span class="nav-number">6.1.</span> <span class="nav-text">三次握手：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四次挥手"><span class="nav-number">6.2.</span> <span class="nav-text">四次挥手</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dns域名解析过程"><span class="nav-number">7.</span> <span class="nav-text">dns域名解析过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五层因特网协议栈"><span class="nav-number">8.</span> <span class="nav-text">五层因特网协议栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器解析资源过程"><span class="nav-number">9.</span> <span class="nav-text">浏览器解析资源过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回流和重绘，哪些操作会引起回流，哪些会引起重绘"><span class="nav-number">10.</span> <span class="nav-text">回流和重绘，哪些操作会引起回流，哪些会引起重绘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#普通图层和复合图层"><span class="nav-number">11.</span> <span class="nav-text">普通图层和复合图层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何变成复合层？"><span class="nav-number">11.1.</span> <span class="nav-text">如何变成复合层？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正向代理和反向代理"><span class="nav-number">12.</span> <span class="nav-text">正向代理和反向代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#get和post请求区别"><span class="nav-number">13.</span> <span class="nav-text">get和post请求区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http和https区别"><span class="nav-number">14.</span> <span class="nav-text">http和https区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组的slice和splice方法"><span class="nav-number">15.</span> <span class="nav-text">数组的slice和splice方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数声明和函数表达式"><span class="nav-number">16.</span> <span class="nav-text">函数声明和函数表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建对象的方式"><span class="nav-number">17.</span> <span class="nav-text">创建对象的方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字节对齐"><span class="nav-number">18.</span> <span class="nav-text">字节对齐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速排序"><span class="nav-number">19.</span> <span class="nav-text">快速排序</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#js基础部分"><span class="nav-number">1.</span> <span class="nav-text">js基础部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue相关部分"><span class="nav-number">2.</span> <span class="nav-text">vue相关部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vue生命周期"><span class="nav-number">2.1.</span> <span class="nav-text">vue生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue响应式原理-数据绑定原理？（get，set；proxy）"><span class="nav-number">2.2.</span> <span class="nav-text">vue响应式原理||数据绑定原理？（get，set；proxy）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nextTick的理解"><span class="nav-number">2.3.</span> <span class="nav-text">nextTick的理解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#理解"><span class="nav-number">2.3.1.</span> <span class="nav-text">理解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nextTick的主要应该场景"><span class="nav-number">2.3.2.</span> <span class="nav-text">nextTick的主要应该场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue更新数组"><span class="nav-number">2.4.</span> <span class="nav-text">vue更新数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vue-data为什么必须是函数"><span class="nav-number">2.5.</span> <span class="nav-text">Vue data为什么必须是函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#父子组件created，mounted执行顺序？"><span class="nav-number">2.6.</span> <span class="nav-text">父子组件created，mounted执行顺序？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件间如何通信？父子组件，兄弟组件，任意组件？"><span class="nav-number">2.7.</span> <span class="nav-text">组件间如何通信？父子组件，兄弟组件，任意组件？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-computed实现。"><span class="nav-number">2.8.</span> <span class="nav-text">vue computed实现。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-diff算法实现。"><span class="nav-number">2.9.</span> <span class="nav-text">vue diff算法实现。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-complier-实现"><span class="nav-number">2.10.</span> <span class="nav-text">vue complier 实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#computer和watch用法区别？"><span class="nav-number">2.11.</span> <span class="nav-text">computer和watch用法区别？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-router相关部分"><span class="nav-number">3.</span> <span class="nav-text">vue-router相关部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#react相关部分"><span class="nav-number">4.</span> <span class="nav-text">react相关部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟dom实现？"><span class="nav-number">4.1.</span> <span class="nav-text">虚拟dom实现？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#http相关部分"><span class="nav-number">5.</span> <span class="nav-text">http相关部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#html布局渲染等相关部分"><span class="nav-number">6.</span> <span class="nav-text">html布局渲染等相关部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git操作相关部分"><span class="nav-number">7.</span> <span class="nav-text">git操作相关部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开放问题"><span class="nav-number">8.</span> <span class="nav-text">开放问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型"><span class="nav-number">8.1.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理解原型和原型链"><span class="nav-number">8.2.</span> <span class="nav-text">理解原型和原型链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域和作用域链"><span class="nav-number">8.3.</span> <span class="nav-text">作用域和作用域链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器缓存"><span class="nav-number">8.4.</span> <span class="nav-text">浏览器缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#好处"><span class="nav-number">8.4.1.</span> <span class="nav-text">好处</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大公司前端资源部署的方案"><span class="nav-number">8.5.</span> <span class="nav-text">大公司前端资源部署的方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tcp三次握手四次挥手"><span class="nav-number">8.6.</span> <span class="nav-text">tcp三次握手四次挥手</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#三次握手："><span class="nav-number">8.6.1.</span> <span class="nav-text">三次握手：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四次挥手"><span class="nav-number">8.6.2.</span> <span class="nav-text">四次挥手</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dns域名解析过程"><span class="nav-number">8.7.</span> <span class="nav-text">dns域名解析过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五层因特网协议栈"><span class="nav-number">8.8.</span> <span class="nav-text">五层因特网协议栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器解析资源过程"><span class="nav-number">8.9.</span> <span class="nav-text">浏览器解析资源过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器对于静态资源的处理方式"><span class="nav-number">8.10.</span> <span class="nav-text">浏览器对于静态资源的处理方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回流和重绘，哪些操作会引起回流，哪些会引起重绘"><span class="nav-number">8.11.</span> <span class="nav-text">回流和重绘，哪些操作会引起回流，哪些会引起重绘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#普通图层和复合图层"><span class="nav-number">8.12.</span> <span class="nav-text">普通图层和复合图层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何变成复合层？"><span class="nav-number">8.12.1.</span> <span class="nav-text">如何变成复合层？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#script标签中的async和defer的区别"><span class="nav-number">8.13.</span> <span class="nav-text">script标签中的async和defer的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正向代理和反向代理"><span class="nav-number">8.14.</span> <span class="nav-text">正向代理和反向代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#get和post请求区别"><span class="nav-number">8.15.</span> <span class="nav-text">get和post请求区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http和https区别"><span class="nav-number">8.16.</span> <span class="nav-text">http和https区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#首页白屏优化方式"><span class="nav-number">8.17.</span> <span class="nav-text">首页白屏优化方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么会存在白屏？"><span class="nav-number">8.17.1.</span> <span class="nav-text">为什么会存在白屏？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#优化的几种方式"><span class="nav-number">8.17.2.</span> <span class="nav-text">优化的几种方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组的slice和splice方法"><span class="nav-number">8.18.</span> <span class="nav-text">数组的slice和splice方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数声明和函数表达式"><span class="nav-number">8.19.</span> <span class="nav-text">函数声明和函数表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建对象的方式"><span class="nav-number">8.20.</span> <span class="nav-text">创建对象的方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字节对齐"><span class="nav-number">8.21.</span> <span class="nav-text">字节对齐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速排序"><span class="nav-number">8.22.</span> <span class="nav-text">快速排序</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -715,7 +823,7 @@ return quickSort(left).concat([pivot],quickSort(right));
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

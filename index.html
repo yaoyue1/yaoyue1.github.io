@@ -272,6 +272,707 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yaoyue.com/2020/07/08/模拟实现Promise.allSettled/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="芥末">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="jiemo blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="jiemo blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2020/07/08/模拟实现Promise.allSettled/" itemprop="url">
+                  模拟实现Promise.allSettled
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-08T09:02:11+08:00">
+                2020-07-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/每日一题/" itemprop="url" rel="index">
+                    <span itemprop="name">每日一题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="/assets/js/APlayer.min.js"> </script><h3 id="模拟实现Promise-allSettled"><a href="#模拟实现Promise-allSettled" class="headerlink" title="模拟实现Promise.allSettled"></a>模拟实现Promise.allSettled</h3><pre><code>Promise.allSettled = (iterators) =&gt; {
+  const promises = Array.from(iterators);
+  const len = promises.length
+  const settledList = new Array(len);
+  let settledNum = 0;
+  return new Promise((resolve) =&gt; {
+    promises.map((promise,idx) =&gt; {
+      Promise.resolve(promise).then((value) =&gt; {
+        settledList[idx] = {
+          status:&apos;fulfilled&apos;,
+          value,
+        }
+        if(++settledNum === len){
+          resolve(settledList)
+        }
+      }).settledList(() =&gt; {
+        timer[idx] = {
+          status:&apos;rejected&apos;,
+          reson:value,
+        }
+        if(++settledNum === len){
+          resolve(settledList)
+        }
+      })
+    })
+  })
+}
+</code></pre>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yaoyue.com/2020/07/03/css基础知识/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="芥末">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="jiemo blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="jiemo blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2020/07/03/css基础知识/" itemprop="url">
+                  收集一些题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-03T14:49:09+08:00">
+                2020-07-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/css基础篇/" itemprop="url" rel="index">
+                    <span itemprop="name">css基础篇</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="/assets/js/APlayer.min.js"> </script><h3 id="Flex布局"><a href="#Flex布局" class="headerlink" title="Flex布局"></a>Flex布局</h3><p>问题：了解 Flex 布局么？平常有使用 Flex 进行布局么？</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yaoyue.com/2019/06/03/理解EventLoop/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="芥末">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="jiemo blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="jiemo blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2019/06/03/理解EventLoop/" itemprop="url">
+                  理解EventLoop
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-03T11:55:43+08:00">
+                2019-06-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习积累/" itemprop="url" rel="index">
+                    <span itemprop="name">学习积累</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="/assets/js/APlayer.min.js"> </script><p>###js单线程？<br>js作为主要运行在浏览器的脚本语言，js主要用途之一是操作DOM。在js高程中举过一个栗子，如果js同时有两个线程，同时对同一个dom进行操作，这时浏览器应该听哪个线程的，如何判断优先级？</p>
+<h3 id="执行栈"><a href="#执行栈" class="headerlink" title="执行栈"></a>执行栈</h3><h3 id="事件队列"><a href="#事件队列" class="headerlink" title="事件队列"></a>事件队列</h3><h3 id="宏任务和微任务"><a href="#宏任务和微任务" class="headerlink" title="宏任务和微任务"></a>宏任务和微任务</h3><p>main script运行结束后，会有微任务队列和宏任务队列。微任务先执行，之后是宏任务。</p>
+<h3 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h3><p>Promise的executor是一个同步函数，即非异步，立即执行的一个函数，因此他应该是和当前的任务一起执行的。而Promise的链式调用then，每次都会在内部生成一个新的Promise，然后执行then，在执行的过程中不断向微任务(microtask)推入新的函数，因此直至微任务(microtask)的队列清空后才会执行下一波的macrotask。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yaoyue.com/2018/11/12/小程序开发尝试与总结/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="芥末">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="jiemo blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="jiemo blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/11/12/小程序开发尝试与总结/" itemprop="url">
+                  小程序开发尝试与总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-12T14:08:30+08:00">
+                2018-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/项目总结/" itemprop="url" rel="index">
+                    <span itemprop="name">项目总结</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="/assets/js/APlayer.min.js"> </script><h3 id="wepy"><a href="#wepy" class="headerlink" title="wepy"></a>wepy</h3><h3 id="taro"><a href="#taro" class="headerlink" title="taro"></a>taro</h3><h3 id="尝试把dva接入taro"><a href="#尝试把dva接入taro" class="headerlink" title="尝试把dva接入taro"></a>尝试把dva接入taro</h3><h3 id="写几个小工具加快开发速度"><a href="#写几个小工具加快开发速度" class="headerlink" title="写几个小工具加快开发速度"></a>写几个小工具加快开发速度</h3><h3 id="小程序开发常见问题总结"><a href="#小程序开发常见问题总结" class="headerlink" title="小程序开发常见问题总结"></a>小程序开发常见问题总结</h3><h3 id="wepy和taro框架比较"><a href="#wepy和taro框架比较" class="headerlink" title="wepy和taro框架比较"></a>wepy和taro框架比较</h3>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yaoyue.com/2018/10/30/shelljs指令学习/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="芥末">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="jiemo blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="jiemo blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/10/30/shelljs指令学习/" itemprop="url">
+                  收集一些题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-30T17:49:09+08:00">
+                2018-10-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/项目总结/" itemprop="url" rel="index">
+                    <span itemprop="name">项目总结</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="/assets/js/APlayer.min.js"> </script>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yaoyue.com/2018/10/30/收集一些题/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -367,7 +1068,81 @@
 
       
         
-          <h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>5种基本类型：undefined,null,number,string,boolean</p>
+          <h2 id="js基础部分"><a href="#js基础部分" class="headerlink" title="js基础部分"></a>js基础部分</h2><h2 id="vue相关部分"><a href="#vue相关部分" class="headerlink" title="vue相关部分"></a>vue相关部分</h2><h3 id="vue生命周期"><a href="#vue生命周期" class="headerlink" title="vue生命周期"></a>vue生命周期</h3><ol>
+<li>beforeCreate中拿不到任何数据，它在实例初始化之后，数据观测 (data observer) 和 event/watcher 事件配置之前被调用。</li>
+<li>created中已经可以拿到data中的数据了，但是dom还没有挂载。会判断有无el，如果没有el则停止后面的模板挂载。<br>在实例创建完成后被立即调用。在这一步，实例已完成以下的配置：数据观测 (data observer)，属性和方法的运算，watch/event 事件回调。<br>使用场景:ajax请求和页面初始化</li>
+<li>beforeMount 和 created 拿到的数据相同 在挂载开始之前被调用：相关的 render 函数首次被调用。</li>
+<li>mounted中el被创建dom已经更新，vue实例对象中有template参数选项，则将其作为模板编译成render函数，编译优先级render函数选项 &gt; template选项<br>使用场景:常用于获取VNode信息和操作，ajax请求<br>注意 mounted 不会承诺所有的子组件也都一起被挂载。如果你希望等到整个视图都渲染完毕，可以用 vm.$nextTick 替换掉 mounted</li>
+<li>由于beforeUpdate和updated使用的比较少，一般用计算属性和watch代替所以在此不在说明</li>
+<li>destroyed Vue 实例销毁后调用。调用后，Vue 实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁。</li>
+</ol>
+<h3 id="vue响应式原理-数据绑定原理？（get，set；proxy）"><a href="#vue响应式原理-数据绑定原理？（get，set；proxy）" class="headerlink" title="vue响应式原理||数据绑定原理？（get，set；proxy）"></a>vue响应式原理||数据绑定原理？（get，set；proxy）</h3><h3 id="nextTick的理解"><a href="#nextTick的理解" class="headerlink" title="nextTick的理解"></a>nextTick的理解</h3><h4 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h4><p>官方：在下次 DOM 更新循环结束之后执行延迟回调。在修改数据之后立即使用这个方法，获取更新后的 DOM。<br>Vue 实现响应式并不是数据发生变化之后DOM立即变化，而是按一定的策略进行DOM的更新，即Vue是异步执行DOM更新的<br>异步执行的步骤是：</p>
+<ol>
+<li>所有同步任务都在主线程上执行，形成一个执行栈</li>
+<li>主线程之外，还存在一个”任务队列”（task queue）。只要异步任务有了运行结果，就在”任务队列”之中放置一个事件。</li>
+<li>一旦”执行栈”中的所有同步任务执行完毕，系统就会读取”任务队列”，看看里面有哪些事件。那些对应的异步任务，于是结束等待状态，进入执行栈，开始执行。</li>
+<li>主线程不断重复上面的第三步。<br>所以Vue 在修改数据后，视图不会立刻更新，而是等同一事件循环中的所有数据变化完成之后，再统一进行视图更新。<br>同步代码执行 -&gt; 查找异步队列，推入执行栈，执行Vue.nextTick[事件循环1] -&gt;查找异步队列，推入执行栈，执行Vue.nextTick[事件循环2]…<br>nextTick的作用就是修改数据后需要在视图更新之后，基于新的视图进行操作这是时候就要用到nextTick，它相当于一个回调函数<h4 id="nextTick的主要应该场景"><a href="#nextTick的主要应该场景" class="headerlink" title="nextTick的主要应该场景"></a>nextTick的主要应该场景</h4></li>
+<li>created 和 mounted 阶段，如果需要操作渲染后的试图，也要使用 nextTick 方法，mounted 不会承诺所有的子组件也都一起被挂载。如果你希望等到整个视图都渲染完毕，可以用 vm.$nextTick 替换掉 mounted</li>
+<li>点击按钮显示原本以 v-show = false 隐藏起来的输入框，并获取焦点。获取焦点就需用到nextTick</li>
+<li>点击获取元素宽度。原本隐藏的元素显示然后立即获取其宽度属性</li>
+<li>使用 swiper 插件通过 ajax 请求图片后的滑动问题。</li>
+</ol>
+<h3 id="vue更新数组"><a href="#vue更新数组" class="headerlink" title="vue更新数组"></a>vue更新数组</h3><ol>
+<li>由于 JavaScript 的限制，Vue 不能检测以下变动的数组：<ul>
+<li>当你利用索引直接设置一个项时，例如：vm.items[indexOfItem] = newValue</li>
+<li>当你修改数组的长度时，例如：vm.items.length = newLength</li>
+</ul>
+</li>
+<li>不更新的原因：<br>当你把一个普通的 JavaScript 对象传给 Vue 实例的 data 选项，Vue 将遍历此对象所有的属性，并使用 Object.defineProperty 把这些属性全部转为 getter/setter。<br>这是vue实现响应式的原理，也就是说改变data是会触发setter，但是setter和getter是有局限性的，当属性的值为一个数组时，通过索引修改数组某一项的值或使用数组的某些方法修改数组并不能触发set；当属性的值为一对象时，直接修改对象中属性的值时也无法触发set。</li>
+<li>解决<br>解决第一类问题，你可以使用vm.items[indexOfItem] = newValue<br>解决第二类问题，你可以使用 splice：<br>手动触发</li>
+</ol>
+<h3 id="Vue-data为什么必须是函数"><a href="#Vue-data为什么必须是函数" class="headerlink" title="Vue data为什么必须是函数"></a>Vue data为什么必须是函数</h3><p>因为vue的组件是可以复用的，如果data是一个对象的话，那么复用的组件一个更改其中数据，另外的组件数据也会被更改，因此每个实例必须维护一份被返回对象的独立的拷贝才行</p>
+<h3 id="父子组件created，mounted执行顺序？"><a href="#父子组件created，mounted执行顺序？" class="headerlink" title="父子组件created，mounted执行顺序？"></a>父子组件created，mounted执行顺序？</h3><p>父组件beforeCreate =&gt; 父组件created =&gt; 父组件beforeMount =&gt; 子组件beforeCreate =&gt; 子组件created =&gt; 子组件 beforeMount =&gt; 子组件mounted =&gt; 父组件mounted =&gt; 父组件beforeDestroy =&gt; 子组件 beforeDestroy。<br>从创建到挂载，是从外到内，再从内到外，且mixins的钩子函数总是在当前组件之前执行</p>
+<h3 id="组件间如何通信？父子组件，兄弟组件，任意组件？"><a href="#组件间如何通信？父子组件，兄弟组件，任意组件？" class="headerlink" title="组件间如何通信？父子组件，兄弟组件，任意组件？"></a>组件间如何通信？父子组件，兄弟组件，任意组件？</h3><p>1.父子组件：props和$emit<br>2.eventBus:$emit/$on<br>    var Event=new Vue();<br>    Event.$emit(事件名,数据);<br>    Event.$on(事件名,data =&gt; {});<br>3.vuex:Vuex实现了一个单向数据流，在全局拥有一个State存放数据，当组件要更改State中的数据时，必须通过Mutation进行，Mutation同时提供了订阅者模式供外部插件调用获取State数据的更新。而当所有异步操作(常见于调用后端接口异步获取更新数据)或批量的同步操作需要走Action，但Action也是无法直接修改State的，还是需要通过Mutation来修改State的数据。最后，根据State的变化，渲染到视图上。<br>缺点：<br>4.</p>
+<h3 id="vue-computed实现。"><a href="#vue-computed实现。" class="headerlink" title="vue computed实现。"></a>vue computed实现。</h3><h3 id="vue-diff算法实现。"><a href="#vue-diff算法实现。" class="headerlink" title="vue diff算法实现。"></a>vue diff算法实现。</h3><h3 id="vue-complier-实现"><a href="#vue-complier-实现" class="headerlink" title="vue complier 实现"></a>vue complier 实现</h3><h3 id="computer和watch用法区别？"><a href="#computer和watch用法区别？" class="headerlink" title="computer和watch用法区别？"></a>computer和watch用法区别？</h3><h2 id="vue-router相关部分"><a href="#vue-router相关部分" class="headerlink" title="vue-router相关部分"></a>vue-router相关部分</h2><h2 id="react相关部分"><a href="#react相关部分" class="headerlink" title="react相关部分"></a>react相关部分</h2><h3 id="虚拟dom实现？"><a href="#虚拟dom实现？" class="headerlink" title="虚拟dom实现？"></a>虚拟dom实现？</h3><ol>
+<li>用JS对象模拟DOM（虚拟DOM）<br>createElement =&gt; {tag, props, children}<br>h函数接受三个参数：标签名、属性、子节点，最终返回一个虚拟 DOM 的对象</li>
+<li>把此虚拟DOM转成真实DOM并插入页面中（render）<br>render方法可以将vNode转化成真实dom<ul>
+<li>接收一个dom对象，通过dom对象的类型来亲自创建一个元素</li>
+<li>for in遍历该dom对象上的props并且给该元素设置属性setAttr</li>
+<li>遍历子节点，如果子节点也是Element的实例，那就给子节点递归调用render方法；反之就说明子节点是个文本节点，通过createTextNode来创建一个文本节点就可以了。</li>
+<li>最后把子节点添加到创建出的元素中，返回该元素<br>setAttr方法是给元素设置属性的</li>
+<li>switch去判断key的值<br>value 有两种标签带有这样的属性，input和textarea 如果是这两种那就直接将value值赋给它的value上 如果不是那就直接调用setAttribute来设置key和value<br>style style属性就可以直接通过cssText来赋值了<br>其他默认的就直接setAttribute设置即可了<br>renderDom将元素插入到页面内</li>
+</ul>
+</li>
+<li><p>如果有事件发生修改了虚拟DOM，比较两棵虚拟DOM树的差异，得到差异对象（diff）<br>先序深度优先遍历<br> function diff (oldNode, newNode) {</p>
+<pre><code>const patches = [] // 声明变量patches用来存放补丁的对象
+let index = 0; // 第一次比较应该是树的第0个索引 
+// 递归树 比较后的结果放到补丁里
+walk(oldNode, newNode, patches, index) // 进行深度优先遍历 
+// 返回收集到的大补丁
+return patches
+</code></pre><p> }<br>walk方法里面比较新旧dom，规则如下：<br>每个元素都有一个补丁，所以需要创建一个放当前补丁的数组</p>
+<ul>
+<li>旧节点不存在，插入新节点；新节点不存在，删除旧节点</li>
+<li>新旧节点如果都是 VNode，且新旧节点 tag 相同</li>
+<li>对比新旧节点的属性</li>
+<li>对比新旧节点的子节点差异，通过 key 值进行重排序，key 值相同节点继续向下遍历</li>
+<li>新旧节点如果都是 VText，判断两者文本是否发生变化</li>
+<li>其他情况直接用新节点替代旧节点<br>当前补丁里确实有值的情况，就将对应的补丁放进大补丁包里</li>
+</ul>
+</li>
+<li><p>把差异对象应用到真正的DOM树上（patch）</p>
+</li>
+</ol>
+<ul>
+<li>用一个变量来得到传递过来的所有补丁allPatches,patch方法接收两个参数(node, patches)</li>
+<li>在方法内部调用walk方法，给某个元素打上补丁,walk方法里获取所有的子节点</li>
+<li>给子节点也进行先序深度优先遍历，递归walk,如果当前的补丁是存在的，那么就对其打补丁(doPatch)</li>
+<li>doPatch打补丁方法会根据传递的patches进行遍历,判断补丁的类型来进行不同的操作<ol>
+<li>属性ATTR,for in去遍历attrs对象，当前的key值如果存在，就直接设置属性setAttr； 如果不存在对应的key值那就直接删除这个key键的属性</li>
+<li>文字TEXT,直接将补丁的text赋值给node节点的textContent即可</li>
+<li>替换REPLACE,新节点替换老节点，需要先判断新节点是不是Element的实例，是的话调用render方法渲染新节点；</li>
+<li>不是的话就表明新节点是个文本节点，直接创建一个文本节点就OK了,之后再通过调用父级parentNode的replaceChild方法替换为新的节点</li>
+<li>删除REMOVE,直接调用父级的removeChild方法删除该节点<br>虚拟dom总结：如果没有虚拟dom的话，对比dom是极其困难的，所以最好的方法是重新生成一棵新的树来替换，但这种做性能很差，特别是dom节点过多且改变极少的时候。为了解决这个问题，在dom上方放一层只含有部分必要信息的虚拟dom，当改变发生的时候，精确匹配需要更新的dom，attributes、event listener…然后再精确的更新到真实dom上，减少受影响的dom。但既然有了虚拟层，自然就有了跨平台的副产物，比如像RN，taro等多端统一的框架。事实上，虚拟dom并非那么高效。尤其是dom节点足够小的情况下、或者确实需要整个替换的情况下，直接生成一棵树比diff后再生成要明显高效很多。但虚拟dom的好处是提供了多数场景下的一种通用处理方法。<h2 id="http相关部分"><a href="#http相关部分" class="headerlink" title="http相关部分"></a>http相关部分</h2><h2 id="html布局渲染等相关部分"><a href="#html布局渲染等相关部分" class="headerlink" title="html布局渲染等相关部分"></a>html布局渲染等相关部分</h2><h2 id="git操作相关部分"><a href="#git操作相关部分" class="headerlink" title="git操作相关部分"></a>git操作相关部分</h2><h2 id="开放问题"><a href="#开放问题" class="headerlink" title="开放问题"></a>开放问题</h2></li>
+</ol>
+</li>
+</ul>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>5种基本类型：undefined,null,number,string,boolean</p>
 <h3 id="理解原型和原型链"><a href="#理解原型和原型链" class="headerlink" title="理解原型和原型链"></a>理解原型和原型链</h3><p>Js对象在创建时就包含一个隐式的内部属性<em>proto</em>，这个属性是不可以被直接访问的（<em>proto</em>是chrom和firefox支持查看的，后面Object.getPrototype(object)才正式支持查看内部属性<em>proto</em>)，这个内部属性指向的就是该对象的原型<br>a.<em>proto</em> = foo.prototype<br>
           <!--noindex-->
           <div class="post-more-link text-center">
@@ -965,691 +1740,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yaoyue.com/2017/10/13/three-js初始（一）/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="芥末">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="jiemo blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="jiemo blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/10/13/three-js初始（一）/" itemprop="url">
-                  three.js初始（一）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-13T14:02:15+08:00">
-                2017-10-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/three-js/" itemprop="url" rel="index">
-                    <span itemprop="name">three.js</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="三大组建"><a href="#三大组建" class="headerlink" title="三大组建"></a>三大组建</h3><pre><code>渲染物体到网页所需的三大组建：场景（scene）、相机（camera）和渲染器（renderer）
-场景：var scene = new THREE.Scene();
-相机： var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-渲染器：var renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
-</code></pre><p>场景=》相机=》渲染器=》添加物体到场景中=》渲染=》渲染循环<br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/10/13/three-js初始（一）/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yaoyue.com/2017/10/13/10月月初/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="芥末">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="jiemo blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="jiemo blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/10/13/10月月初/" itemprop="url">
-                  所以等我好不好
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-13T11:17:49+08:00">
-                2017-10-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活杂记/" itemprop="url" rel="index">
-                    <span itemprop="name">生活杂记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=36496726&auto=0&height=66"></iframe><br>&emsp;&emsp;来杭州还不到一年的时间，马上就要搬进第三个小窝了，其实挺喜欢现在住的这个的，小区环境很好，夜晚再晚下班回家都能看到保安，晚上楼下夜跑也很方便，侧门出去过一条马路就到了浙大，偶尔一个人去晃荡一下，假装自己还在大学。尤其是喜欢这几天，满小区的桂花树都开了，格外的好闻~但是再喜欢也无奈要搬走了，就像你再喜欢的人不喜欢你一样~</p>
-<p>&emsp;&emsp;前晚签了新住单间的合同，房东人很好，这次终于不再是二房东了，应该也不会遇到像现在这样被赶走的情景吧~。还没开始打包，打算找个搬家公司吧，一个人搬家应该是孤独等级的第九级了，哈哈~，上一个住的哥哥，人很好，把我最喜欢的吧台桌免费送给我了，所以在遇到坏人的同时是不是也是会遇到好人的~等搬完家再来更新！<br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/10/13/10月月初/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yaoyue.com/2017/09/28/opacity应用/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="芥末">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="jiemo blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="jiemo blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/09/28/opacity应用/" itemprop="url">
-                  opacity应用~
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-28T15:41:35+08:00">
-                2017-09-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/项目总结/" itemprop="url" rel="index">
-                    <span itemprop="name">项目总结</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>首先讲一个悲伤的话题，手机摔坏了… 是的，我又把屏幕给摔坏了（都想揍我自己了），上下班钉钉打卡都打不了了，然后因为屏幕已经没法点击了，所以存在一起手机屏幕里的手机联系人都取不出来了，所以到现在我只记得我爸妈手机号码了~~，昨天摔坏后，就纠结的要死，到底该买哪款手机，本来还是想买个安卓机的，但看来看去不知道买哪款，最后想着又想快点到，所以就决定了在京东上买了苹果6splus.好了，这个话题收~要总结了。<br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/09/28/opacity应用/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yaoyue.com/2017/09/13/项目遇坑总结（一）——初始nextTick/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="芥末">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="jiemo blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="jiemo blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/09/13/项目遇坑总结（一）——初始nextTick/" itemprop="url">
-                  项目遇坑总结（二）——nextTick及事件循环理解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-13T11:13:12+08:00">
-                2017-09-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/项目总结/" itemprop="url" rel="index">
-                    <span itemprop="name">项目总结</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>  此次是在做公司福利社项目的时候遇到的问题，<a href="https://fuli.in66.com" target="_blank" rel="external">链接</a>,可能你点开的时候并没有看到banner，那是因为有时候后台是没有数据的。上线的第一版，swiper是没有问题，因为整个页面的显示是通过后端一个接口传过来的数据，在created中请求接口，在mouted中实例化swiper，并没有出现问题。页面上线后工作的很好，后面后端跟我说他们需要分离接口，因为banner的代码需要要监测什么的，然后我就被忽悠去改了，因为在我觉得，就在created中多加一个 fetch请求嘛，连数据结构都一样，很简单的，所以我连上webtest测试都没有测试就直接上线了，结果到了线上就出现了今天要讲的问题，swiper他罢工了，滑不动了。<br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/09/13/项目遇坑总结（一）——初始nextTick/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yaoyue.com/2017/08/01/vue组件通信/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="芥末">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="jiemo blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="jiemo blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/08/01/vue组件通信/" itemprop="url">
-                  vue组件通信
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-01T11:49:40+08:00">
-                2017-08-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>学习Vue算是有一段时间了，期间公司的项目开发流程也全换成了Vue了，自己也是接了几个Vue的项目了，不过总感觉，知道的不是特别多，每次做起项目也总会遇到这样或者是那样的问题，这次总结一下项目中用到的比较频繁的组件之间的通信。</p>
-<h3 id="父传子"><a href="#父传子" class="headerlink" title="父传子"></a>父传子</h3><p>props方式：<br>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/08/01/vue组件通信/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1695,7 +1785,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">37</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1703,7 +1793,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1712,7 +1802,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1779,7 +1869,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
