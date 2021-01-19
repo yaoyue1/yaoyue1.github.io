@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yaoyue.com/"/>
-  <updated>2020-07-08T02:39:30.469Z</updated>
+  <updated>2020-07-15T03:57:29.481Z</updated>
   <id>http://yaoyue.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://yaoyue.com/2020/07/15/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E8%B7%B5--%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/"/>
+    <id>http://yaoyue.com/2020/07/15/浏览器原理与实践--学习笔记1/</id>
+    <published>2020-07-15T03:41:54.101Z</published>
+    <updated>2020-07-15T03:57:29.481Z</updated>
+    
+    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h3 id="进程和线程"><a href="#进程和线程" class="headerlink" title="进程和线程"></a>进程和线程</h3><ol><li>线程依附于进程，进程中使用多线程并行处理能提升运算效率。</li><li>进程中的任意一线程执行出错，都会导致整个进程的崩溃。</li><li>线程之间共享进程中的数据</li><li>当一个进程关闭之后，操作系统会回收进程所占用的内存。</li><li>进程之间的内容相互隔离</li></ol><h3 id="chrome进程架构"><a href="#chrome进程架构" class="headerlink" title="chrome进程架构"></a>chrome进程架构</h3><ol><li>浏览器进程：主要负责界面显示、用户交互、子进程管理，同时提供存储等功能</li><li>渲染进程：核心任务是将 HTML、CSS 和 JavaScript 转换为用户可以与之交互的网页，排版引擎 Blink 和 JavaScript 引擎 V8 都是运行在该进程中，默认情况下，Chrome 会为每个 Tab 标签创建一个渲染进程。出于安全考虑，渲染进程都是运行在沙箱模式下。</li><li>gpu进程：、Chrome 的 UI 界面都选择采用 GPU 来绘制，这使得 GPU 成为浏览器普遍的需求。</li><li>网络进程：主要负责页面的网络资源加载</li><li>插件进程： 主要是负责插件的运行，因插件易崩溃，所以需要通过插件进程来隔离，以保证插件进程崩溃不会对浏览器和页面造成影响。</li></ol><p>问：打开一个页面为什么有4个进程？<br>答：因为打开 1 个页面至少需要 1 个网络进程、1 个浏览器进程、1 个 GPU 进程以及 1 个渲染进程，共 4 个；如果打开的页面有运行插件的话，还需要再加上 1 个插件进程。</p><h3 id="浏览器发展"><a href="#浏览器发展" class="headerlink" title="浏览器发展"></a>浏览器发展</h3><p>早期浏览器：<br>不稳定（单独进程）<br>不流畅（单独进程）<br>不安全（沙箱）</p><p>早期多进程架构：<br>主进程 渲染进程 插件进程</p><p>现代多进程架构：<br>主进程 渲染进程 插件进程 GPU进程 网络进程</p><p>未来：<br>面向服务架构</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;script src=&quot;/assets/js/APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;h3 id=&quot;进程和线程&quot;&gt;&lt;a href=&quot;#进程和线程&quot; class=&quot;headerlink&quot; title=&quot;进程和线程&quot;&gt;&lt;/a&gt;进程和线程&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;线程
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>模拟实现Promise.allSettled</title>
@@ -535,29 +557,6 @@ return patches
     
     
       <category term="项目总结" scheme="http://yaoyue.com/tags/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>canvas学习一点点（一）</title>
-    <link href="http://yaoyue.com/2017/03/30/canvas%E5%AD%A6%E4%B9%A0%E4%B8%80%E7%82%B9%E7%82%B9%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>http://yaoyue.com/2017/03/30/canvas学习一点点（一）/</id>
-    <published>2017-03-30T05:47:18.000Z</published>
-    <updated>2017-03-31T07:18:08.000Z</updated>
-    
-    <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>这将会是一个长期更新的篇目~前段时间在朋友圈刚立完flag说要把买的那本canvas的书看完的，现在觉得不做点什么东西出来好像也少点什么，所以以后如果有时间，就每周写一篇关于canvas的实际应用。就让我们一起沉醉在canvas的世界里吧~~</p><p>今天第一次就写一个我最喜欢的canvas雪花呀花瓣呀的飘落效果，其实jQuery操作dom也是可以实现这效果的，但是性能非常的不好，一旦粒子过多，页面就开始抖动不流畅，这方面还是canvas比较好。<br>最终效果链接：<a href="https://yaoyue1.github.io/snow.html" target="_blank" rel="external">传送门</a><br>快和你的妹纸一起来看雪吧~~~<br><a id="more"></a></p><pre><code>//html&lt;div class=&quot;container&quot;&gt;&lt;/div&gt;//js$(function(){ snow()function snow(){    var docWidth = document.documentElement.clientWidth //可见区域宽度    var docHeight = document.documentElement.clientHeight //可见区域高度    // initPage()    function initPage(){        containerWidth = $(&quot;.container&quot;).width();//获取外层容器container宽度        containerHeight = $(&quot;.container&quot;).height();//获取外层容器container高度        initFloatAnimation()    }    function initFloatAnimation(){        var canvas = document.createElement(&apos;canvas&apos;);//创建canvas元素        var ctx = canvas.getContext(&apos;2d&apos;);            canvas.id = &apos;floatCanvas&apos;;//给canvas一个id            canvas.width = containerWidth;//让canvas的宽度等于container的宽度            canvas.height = containerHeight;//让canvas的高度等于container的高度        $(&quot;.container&quot;).append(canvas);//把canvas追加进html的container        var particleNum = 100;//粒子的数量        var particles = [];//定义空数组用来存储每个粒子对象        for (var i=0;i&lt;particleNum;i++){            var particleObj = new Object();//创建一个对象            particleObj.x = Math.random()*docWidth;//在可视区域宽度的范围内随机生成粒子的初始x坐标            particleObj.y = Math.random()*docHeight;//在可视区域g的范围内随机生成粒子的初始y坐标            particleObj.vx = Math.random() * 2-1;//生成粒子横向移动的距离            particleObj.vy = (Math.random() * 0.8 + 0.2);//生成粒子纵向移动的距离：[0.2-1]            particleObj.dw = particleObj.vy*20;//随机生成粒子的宽度            particleObj.dh = particleObj.dw;//粒子的宽度等于高度            particleObj.ag = (Math.random()*2-1)*10;//粒子的初始角度            particles[i] = particleObj;//把这些对象装进事先定义的数组        }        console.log(particles)        // 以上把需要的元素都准备好了，接下来就是渲染让粒子动起来        render()        function render(){            ctx.clearRect(0, 0, containerWidth, containerHeight);//清除画布            var little;            for(var j=0;j&lt;particles.length;j++){                little = particles[j];                if(little.x &lt; 0 || little.x &gt; containerWidth || little.y &gt; containerHeight){//if判断如果粒子已经超出了可视的边界就再重新产生它的x,y值                    little.x = Math.random() * containerWidth;                    little.y = Math.random() * -200;                }                little.x += little.vx;                little.y += little.vy;                drawImage(ctx,img,little.x,little.y,little.dw,little.dh,1,little.ag);            }            requestAnimationFrame(render);//循环调用自身，requestAnimationFrame是一个新的API,作用与setTimeInterval一样，不同的是它会根据浏览器的刷新频率自动调整动画的时间间隔。        }    }    function drawImage (ctx,img,dx,dy,dw,dh,scale,angle) {        ctx.save();        ctx.translate(dx + dw / 2, dy + dh / 2);//移动画布        ctx.scale(scale, scale);        ctx.rotate(angle);        ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, -1 * dw / 2, -1 * dh / 2, dw, dh);//重新绘制新的粒子        ctx.restore();    }var _base = &quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAlCAMAAADyQNAxAAAAilBMVEUAAAD////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////2N2iNAAAALnRSTlMArr2Dd6phklkuBYhdNo0yOmpFFZd/exkOCW4/VkqecqdlJh4Ro04jtVG5KpuwTP8QawAAArlJREFUOMuVlNmSsjAQhXUIIYGEhM0g+6Igou//ev9hsZwZay7+ruLuq3O6T7o5/H+5Z/cQRZfzOT3/DZ2jyHRc8Xmcxz76g7n0nHOpda5zqTg3509BNzWz0mVZDkMxFVMZytlcUve32chlODEmmKCUClaEuebd+BMyXOYDEy0NsqCuSZZRUbCcj5fvVNrLsBBtRjKSnBIrOZEsoGLQSkbfpEaVFzQghCQWyvMsK6kDysJcjm8lrmBHM3KyPN/3HccHCrlWwNS8KKN0yFqYeb4TV3FVxbHjexYhgRjkvLfmrk1lEAJztRvbbppr7HgJIS0LVb931elBBMSynMf1uJZt2wsGU1poHm1SvCxonVh+3NhAXlzlL54s3AZIOzmIzIJUtVK3++22YjE8M6FVdwYVcc0g5fmxDeh5/0Ldnke7iSEWiFKOKaieY0ACwweg29dWd6hVjnWqKZNm0yqhhQErUKvSqnZsFoq0g+wuC6VKaFm+c7WPz51BHe3HEgZluYowouGhCJCo0+yOe2MNKKteori4mBGOATktWvbz3Ra0kP+Wq7vOONH65DkPiN12qYWKHQxJi9XxYDo1tASNVfba/v2G77ik72NGMW1JuEZOYnnqRwOx5yJzB7U+EYIY0NZCjSpk6wshi+a4F3JA8xkddAdqe6JSoH9g2BobZnZzvWJ3EkiVsl8M1yzyYt1By4mxO9fq+oAdIg1oKHnk7rs6qm0LLQ+L6sTOtq01bilUJn3dYjTrSWDv1533EZOXnBYlkSPS93X0Ki9xHjXBAaFgRgCxKefRfuD7AFh9RmlN1sraIKBFoRXme5d7McAG2LYBBbFcd5nnyryR3XTmWheTEAxVsAnTjbD7XVHfzVLn5YRfShhikU0Ku49y3bSbuVKSK87n/tXSJ5deTGd6E6XpT7NPQffwKfIPFOtCNONyh58AAAAASUVORK5CYII=&quot;    //图片我直接用的base64来写的    var img = new Image();    img.src = _base;    img.onload = function() {        initPage()    }}})</code></pre><p>   个人感觉注释已经写的比较详细了，就不再多说了哈~~，来和你的妹纸一起来看雪吧！！！</p><p>   什么？？？你没有没有啊？？</p><p><img src="https://a-ssl.duitang.com/uploads/item/201609/04/20160904102522_Fadn4.jpeg" alt=""></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这将会是一个长期更新的篇目~前段时间在朋友圈刚立完flag说要把买的那本canvas的书看完的，现在觉得不做点什么东西出来好像也少点什么，所以以后如果有时间，就每周写一篇关于canvas的实际应用。就让我们一起沉醉在canvas的世界里吧~~&lt;/p&gt;
-&lt;p&gt;今天第一次就写一个我最喜欢的canvas雪花呀花瓣呀的飘落效果，其实jQuery操作dom也是可以实现这效果的，但是性能非常的不好，一旦粒子过多，页面就开始抖动不流畅，这方面还是canvas比较好。&lt;br&gt;最终效果链接：&lt;a href=&quot;https://yaoyue1.github.io/snow.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;传送门&lt;/a&gt;&lt;br&gt;快和你的妹纸一起来看雪吧~~~&lt;br&gt;
-    
-    </summary>
-    
-      <category term="canvas" scheme="http://yaoyue.com/categories/canvas/"/>
-    
-    
-      <category term="canvas" scheme="http://yaoyue.com/tags/canvas/"/>
     
   </entry>
   

@@ -86,16 +86,17 @@
 
 
 
-<meta name="description" content="前端开发/程序媛/菜鸟/搬砖">
-<meta property="og:type" content="website">
+<meta name="description" content="进程和线程 线程依附于进程，进程中使用多线程并行处理能提升运算效率。 进程中的任意一线程执行出错，都会导致整个进程的崩溃。 线程之间共享进程中的数据 当一个进程关闭之后，操作系统会回收进程所占用的内存。 进程之间的内容相互隔离  chrome进程架构 浏览器进程：主要负责界面显示、用户交互、子进程管理，同时提供存储等功能 渲染进程：核心任务是将 HTML、CSS 和 JavaScript 转换为">
+<meta property="og:type" content="article">
 <meta property="og:title" content="jiemo blog">
-<meta property="og:url" content="http://yaoyue.com/categories/three-js/index.html">
+<meta property="og:url" content="http://yaoyue.com/2020/07/15/浏览器原理与实践--学习笔记1/index.html">
 <meta property="og:site_name" content="jiemo blog">
-<meta property="og:description" content="前端开发/程序媛/菜鸟/搬砖">
+<meta property="og:description" content="进程和线程 线程依附于进程，进程中使用多线程并行处理能提升运算效率。 进程中的任意一线程执行出错，都会导致整个进程的崩溃。 线程之间共享进程中的数据 当一个进程关闭之后，操作系统会回收进程所占用的内存。 进程之间的内容相互隔离  chrome进程架构 浏览器进程：主要负责界面显示、用户交互、子进程管理，同时提供存储等功能 渲染进程：核心任务是将 HTML、CSS 和 JavaScript 转换为">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-07-15T03:57:29.481Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jiemo blog">
-<meta name="twitter:description" content="前端开发/程序媛/菜鸟/搬砖">
+<meta name="twitter:description" content="进程和线程 线程依附于进程，进程中使用多线程并行处理能提升运算效率。 进程中的任意一线程执行出错，都会导致整个进程的崩溃。 线程之间共享进程中的数据 当一个进程关闭之后，操作系统会回收进程所占用的内存。 进程之间的内容相互隔离  chrome进程架构 浏览器进程：主要负责界面显示、用户交互、子进程管理，同时提供存储等功能 渲染进程：核心任务是将 HTML、CSS 和 JavaScript 转换为">
 
 
 
@@ -123,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yaoyue.com/categories/three-js/"/>
+  <link rel="canonical" href="http://yaoyue.com/2020/07/15/浏览器原理与实践--学习笔记1/"/>
 
 
 
 
 
-  <title> 分类: three.js | jiemo blog </title>
+  <title>  | jiemo blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -150,7 +151,7 @@
     
   
   <!-- <canvas id="mycanvas" style="position:fixed;top:0;left:0;z-index: -1;"></canvas> -->
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -260,47 +261,159 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        three.js
-        <small>分类</small>
-      </h2>
-    </div>
-
+  <div id="posts" class="posts-expand">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/10/13/three-js初始（一）/" itemprop="url">
-              
-                <span itemprop="name">three.js初始（一）</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-10-13T14:02:15+08:00"
-              content="2017-10-13" >
-          10-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-  </section>
 
   
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yaoyue.com/2020/07/15/浏览器原理与实践--学习笔记1/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="芥末">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="jiemo blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="jiemo blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-15T11:41:54+08:00">
+                2020-07-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="/assets/js/APlayer.min.js"> </script><h3 id="进程和线程"><a href="#进程和线程" class="headerlink" title="进程和线程"></a>进程和线程</h3><ol>
+<li>线程依附于进程，进程中使用多线程并行处理能提升运算效率。</li>
+<li>进程中的任意一线程执行出错，都会导致整个进程的崩溃。</li>
+<li>线程之间共享进程中的数据</li>
+<li>当一个进程关闭之后，操作系统会回收进程所占用的内存。</li>
+<li>进程之间的内容相互隔离</li>
+</ol>
+<h3 id="chrome进程架构"><a href="#chrome进程架构" class="headerlink" title="chrome进程架构"></a>chrome进程架构</h3><ol>
+<li>浏览器进程：主要负责界面显示、用户交互、子进程管理，同时提供存储等功能</li>
+<li>渲染进程：核心任务是将 HTML、CSS 和 JavaScript 转换为用户可以与之交互的网页，排版引擎 Blink 和 JavaScript 引擎 V8 都是运行在该进程中，默认情况下，Chrome 会为每个 Tab 标签创建一个渲染进程。出于安全考虑，渲染进程都是运行在沙箱模式下。</li>
+<li>gpu进程：、Chrome 的 UI 界面都选择采用 GPU 来绘制，这使得 GPU 成为浏览器普遍的需求。</li>
+<li>网络进程：主要负责页面的网络资源加载</li>
+<li>插件进程： 主要是负责插件的运行，因插件易崩溃，所以需要通过插件进程来隔离，以保证插件进程崩溃不会对浏览器和页面造成影响。</li>
+</ol>
+<p>问：打开一个页面为什么有4个进程？<br>答：因为打开 1 个页面至少需要 1 个网络进程、1 个浏览器进程、1 个 GPU 进程以及 1 个渲染进程，共 4 个；如果打开的页面有运行插件的话，还需要再加上 1 个插件进程。</p>
+<h3 id="浏览器发展"><a href="#浏览器发展" class="headerlink" title="浏览器发展"></a>浏览器发展</h3><p>早期浏览器：<br>不稳定（单独进程）<br>不流畅（单独进程）<br>不安全（沙箱）</p>
+<p>早期多进程架构：<br>主进程 渲染进程 插件进程</p>
+<p>现代多进程架构：<br>主进程 渲染进程 插件进程 GPU进程 网络进程</p>
+<p>未来：<br>面向服务架构</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/07/08/模拟实现Promise.allSettled/" rel="next" title="模拟实现Promise.allSettled">
+                <i class="fa fa-chevron-left"></i> 模拟实现Promise.allSettled
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -308,6 +421,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -327,8 +444,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -408,6 +534,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#进程和线程"><span class="nav-number">1.</span> <span class="nav-text">进程和线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chrome进程架构"><span class="nav-number">2.</span> <span class="nav-text">chrome进程架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器发展"><span class="nav-number">3.</span> <span class="nav-text">浏览器发展</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
@@ -506,6 +648,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
